@@ -1,0 +1,357 @@
+The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla sites and deployment should follow the recommendations below.
+The Operations Security (OpSec) team maintains this document as a reference guide for operational teams.
+
+<table><tr>
+<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
+<td valign="top">
+{| class="wikitable"
+|-
+! Document Status !! Major Versions
+|- 
+|  <span style="color:green;">'''READY'''</span> ||
+* Version 1.8: kang/[[User:JanZerebecki|JanZerebecki]]: default to AES-GCM since AES-CTR also disclose packet length.
+* Version 1.7: kang/[[User:JanZerebecki|JanZerebecki]]: fix HostKeyAlg order typo in modern ([https://wiki.mozilla.org/index.php?title=Security%2FGuidelines%2FOpenSSH&diff=1059156&oldid=1059151 diff])
+* Version 1.6: kang/ulfr: key size, type and login latency. Marked document ready.
+* Version 1.5: kang/ulfr: ordering
+* Version 1.4: kang/michal: Multiple small fixes and additions. Reorganized config doc for readability.
+* Version 1.3: kang/alm: Added information on ssh-agent/ssh-add flags for agent forwarding.
+* Version 1.2: kang: Added MFA server-side configuration.
+* Version 1.1: kang: Added client config, draft status.
+* Version 1: kang: Creation.
+|}
+[[File:OpSec.png|right|300px]]
+</td>
+</tr></table>
+
+{| class="wikitable"
+|-
+! <span style="color:red;">'''ATTENTION'''</span>
+|- 
+|
+'''Only non-default settings are listed in this document'''.
+
+Most default OpenSSH settings that are security-related already provide good security, thus changing them is at your own risk and is not documented here.
+
+See <code>man sshd_config</code>, <code>man ssh_config</code> for more information on specific settings if you nevertheless need to change them.
+|}
+
+= OpenSSH '''server''' =
+== Configuration ==
+Different versions of OpenSSH support different options which are not always compatible.
+This guide show settings for the most commonly deployed OpenSSH versions at Mozilla - however, using the latest version of OpenSSH is recommended.
+
+=== '''Modern''' (OpenSSH 6.7+) ===
+File: <code>/etc/ssh/sshd_config</code>
+
+<source>
+# Supported HostKey algorithms by order of preference.
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+
+KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
+
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+
+# KeyRegenerationInternal is halved from the default as a precaution (optional). 1800 seconds is 30 minutes.
+KeyRegenerationInterval 1800
+
+# Password based logins are disabled - only public key based logins are allowed.
+AuthenticationMethods publickey
+
+# LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
+LogLevel VERBOSE
+
+# Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
+# 
+# On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
+# Additionally, only tools such as systemd and auditd record the process session id.
+# On other OSes, the user session id is not necessarily recorded at all kernel-side.
+# Using regular users in combination with /bin/su or /usr/bin/sudo ensure a clear audit track.
+PermitRootLogin No
+
+# Use kernel sandbox mechanisms where possible in unprivilegied processes
+# Systrace on OpenBSD, Seccomp on Linux, seatbelt on MacOSX/Darwin, rlimit elsewhere. 
+UsePrivilegeSeparation sandbox
+</source>
+
+=== '''Intermediate''' (OpenSSH 5.3) ===
+This is mainly for use by RHEL6, CentOS6, etc. which run older versions of OpenSSH.
+
+File: <code>/etc/ssh/sshd_config</code>
+
+<source>
+# Supported HostKey algorithms by order of preference.
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+
+KexAlgorithms diffie-hellman-group-exchange-sha256
+MACs hmac-sha2-512,hmac-sha2-256
+Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+
+# KeyRegenerationInternal is halved from the default as a precaution (optional). 1800 seconds is 30 minutes.
+KeyRegenerationInterval 1800
+
+# Password based logins are disabled - only public key based logins are allowed.
+RequiredAuthentications2 publickey
+
+# RequiredAuthentications2 not work on official OpenSSH 5.3 portable.
+# In this is your case, use this instead:
+#PubkeyAuthentication yes
+#PasswordAuthentication no
+
+# LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
+LogLevel VERBOSE
+
+# Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
+# 
+# On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
+# Additionally, only tools such as systemd and auditd record the process session id.
+# On other OSes, the user session id is not necessarily recorded at all kernel-side.
+# Using regular users in combination with /bin/su or /usr/bin/sudo ensure a clear audit track.
+PermitRootLogin No
+</source>
+
+=== '''Multi-Factor Authentication''' (OpenSSH 6.3+) ===
+Recent versions of OpenSSH support MFA (Multi-Factor Authentication). Using MFA is recommended where possible.
+
+It requires additional setup, such as using the [http://www.nongnu.org/oath-toolkit/ OATH Toolkit] or [https://www.duosecurity.com DuoSecurity].
+
+{| class="wikitable"
+|-
+! <span style="color:red;">'''ATTENTION'''</span>
+|- 
+| In order to allow using one time passwords (OTPs) and any other text input, Keyboard-interactive is enabled in OpenSSH. This ''MAY'' allow for password authentication to work. It is therefore very important to check your PAM configuration so that PAM disallow password authentication for OpenSSH.
+|}
+
+File: <code>/etc/ssh/sshd_config</code>
+<source>
+# Allow keyboard-interactive.
+# IMPORTANT: you will have to ensure OpenSSH cannot authenticate with passwords with PAM in /etc/pam.d/sshd
+# "PasswordAuthentication no" is not sufficient!
+RequiredAuthentications2 publickey,keyboard-interactive:skey
+PasswordAuthentication no
+ChallengeResponseAuthentication yes
+# Ensure /bin/login is not used so that it cannot bypass PAM settings for sshd.
+UseLogin no
+</source>
+
+PAM configuration for use with the [http://www.nongnu.org/oath-toolkit/ OATH Toolkit] or [https://www.duosecurity.com DuoSecurity] as second authentication factor.
+
+File: <code>/etc/pam.d/sshd</code>
+<source>
+#%PAM-1.0
+auth       required     pam_sepermit.so
+
+# WARNING: make sure any password authentication module is disabled.
+# Example: pam_unix.so, or "password-auth", "system-auth", etc.
+#auth       include      password-auth
+
+# Options to enable when using OATH toolkit
+#auth       requisite     pam_oath.so usersfile=/etc/users.oath digits=6 window=20
+
+# Options to enable when using DuoSecurity
+#auth    sufficient      /lib64/security/pam_duo.so
+
+account    required     pam_nologin.so
+</source>
+
+== Ciphers and algorithms choice ==
+* When CHACHA20 (OpenSSH 6.5+) is not available, AES-GCM (OpenSSH 6.1+) and any other algorithm using EtM (Encrypt then MAC) [http://blog.djm.net.au/2013/11/chacha20-and-poly1305-in-openssh.html disclose the packet length] - giving some information to the attacker. Only recent OpenSSH servers and client support CHACHA20.
+
+* NIST curves (<code>ecdh-sha2-nistp512,ecdh-sha2-nistp384,ecdh-sha2-nistp256</code>) are listed for compatibility, but the use of <code>curve25519</code> is [http://safecurves.cr.yp.to/ generally preferred].
+
+* SSH protocol 2 supports [https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange DH] and [https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman ECDH] key-exchange as well as [https://en.wikipedia.org/wiki/Forward_secrecy forward secrecy].
+
+The various algorithms supported by a particular OpenSSH version can be listed with the following commands:
+
+<source code="bash">
+$ ssh -Q cipher
+$ ssh -Q cipher-auth
+$ ssh -Q mac
+$ ssh -Q kex
+$ ssh -Q key
+</source>
+
+= OpenSSH '''client''' =
+== Configuration ==
+If you have a file containing known_hosts using RSA or ECDSA host key algorithm and the server now supports ed25519 for example, you will get a warning that the host key has changed and will be unable to connect. This means you will have to verify the new host key.
+
+The following configurations expect a recent OpenSSH client, as updating OpenSSH on the client side is generally not an issue.
+
+=== '''Modern''' ===
+This configuration is less compatible and you may not be able to connect to some servers which use insecure, deprecated algorithms.
+Nevertheless, modern servers will work just fine.
+
+File: <code>~/.ssh/config</code>
+<source>
+# Ensure KnownHosts are unreadable if leaked - it is otherwise easier to know which hosts your keys have access to.
+HashKnownHosts yes
+# Host keys the client accepts - order here is honored by OpenSSH
+HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-ed25519,ssh-rsa,ecdsa-sha2-nistp521-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256
+
+KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp256,ecdh-sha2-nistp384,diffie-hellman-group-exchange-sha256
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+</source>
+
+=== '''Intermediate''' (connects to older servers)  ===
+This configuration can connect to older OpenSSH servers which run old or intermediate configurations.
+
+File: <code>~/.ssh/config</code>
+<source>
+# Ensure KnownHosts are unreadable if leaked - it is otherwise easier to know which hosts your keys have access to.
+HashKnownHosts yes
+# Host keys the client accepts - order here is honored by OpenSSH
+HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-rsa-cert-v00@openssh.com,ssh-ed25519,ssh-rsa,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256
+</source>
+
+== Key generation ==
+Large key sizes are used as SSH keys are not renewed very often (see also [[Security/Key_Management]]).
+
+Don't hesitate to create multiple different keys for different usages.
+
+<source code="bash">
+# ED25519 keys are favored over RSA keys when backward compatibility is not required.
+# This is only compatible with OpenSSH 5.7+ and fixed-size (256 bytes).
+$ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
+
+# RSA keys are favored over ECDSA keys when backward compatibility is required, thus, newly generated keys are always either ED25519 or RSA (NOT ECDSA or DSA).
+$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
+</source>
+
+=== Protection of user keys ===
+* Protected by strong passphrase.
+* Never copied to another system than your own workstation/personal physical disks/tokens.
+* Use SSH forwarding or SSH tunneling if you need to jump between hosts. '''DO NOT''' maintain unnecessary agent forwarding when unused.
+
+=== Protection of machine keys ===
+When SSH keys are necessary for automation between systems, it is reasonable to use passphrase-less keys.
+* The recommended settings are identical to the user keys.
+* The keys must be accessible only by the admin user (root) and/or the system user requiring access.
+* Usage of machine keys should be registered in an inventory (a wiki page, ldap, an inventory database), to allow for rapid auditing of key usage across an infrastructure.
+* The machine keys should be unique per usage. Each new usage (different service, different script called, etc.) should use a new, different key.
+
+== SSH agent forwarding ==
+{| class="wikitable"
+|-
+! <span style="color:red;">'''ATTENTION'''</span>
+|- 
+| SSH Agent forwarding exposes your authentication to the server you're connecting to. By default, an attacker with control of the server (i.e. root access) can communicate with your agent and use your key to authenticate to other servers without any notification (i.e. impersonate you).<br />For this reason, one must be careful when using SSH agent forwarding. Defaulting to always forwarding the agent is strongly discouraged.<br /> Note also that while the attacker can use your key as long as the agent is running and forwarded, he cannot steal/download the key for offline/later use.
+|}
+
+SSH forwarding allows you to jump between hosts while keeping your private key on your local computer. This is accomplished by telling SSH to forward the authentication requests back to the ssh-agent of your local computer. SSH forwarding works between as many hosts as needed, each host forwarding new authentication request to the previous host, until the ssh-agent that holds the private key is reached.
+
+[[File:Ssh forwarding.png]]
+
+On each host, two environment variables are declared for the user enabling ssh-agent:
+* '''$SSH_AUTH_SOCK''' declares the location of the unix socket that can be used to forward an authentication request back to the previous host.(ex: /tmp/ssh-NjPxtt8779/agent.8779). Only present if using SSH agent forwarding.
+* '''$SSH_CONNECTION''' shows the source IP and port of the previous host, as well as the local IP and port. (ex: 10.22.248.74 44727 10.8.75.110 22).
+
+To use ssh-agent, add the flag <code>-A</code> to your ssh commands:
+<source code="bash">
+$ ssh -A user@ssh.mozilla.com
+</source>
+
+You can set the following configuration parameter in your local ssh configuration at ~/.ssh/config.
+<source>
+Host ssh.mozilla.com
+    ForwardAgent yes
+</source>
+
+=== Hardening the Agent forwarder ===
+It is possible to require confirmation every time the agent is used (i.e. when you connect to a server through the SSH agent) by using the <code>-c</code> flag:
+
+<source code="bash">
+# First, remove the key from the agent if it's already loaded:
+$ ssh-add -d ~/.ssh/id_ed25519
+# And re-add it with the -c flag:
+$ ssh-add -c ~/.ssh/id_ed25519
+</source>
+
+It is also possible to lock the key in the agent after a configurable amount of time, this can be done either for all keys when starting the agent, or per key when adding the keys to the agent with the <code>-t</code> flag:
+
+<source code="bash">
+# Keep all keys decrypted/useable in memory for 30 minutes (1800 seconds)
+$ ssh-agent -t 1800
+</source>
+
+<source code="bash">
+# First, remove the key from the agent if it's already loaded:
+$ ssh-add -d ~/.ssh/id_ed25519
+# Re-add it, with the -t flag to keep this specific key decrypted/useable in memory for 30 minutes (1800 seconds)
+$ ssh-add -t 1800 ~/.ssh/id_ed25519
+</source>
+
+{{note|
+There are also some third-party patches for various OpenSSH clients that will notify you visually when the agent is being used.
+
+These are not officially supported and may require you to recompile OpenSSH.
+
+* [https://github.com/gdestuynder/openssh-portable/commits/libnotify OpenSSH Linux]
+* [https://github.com/gdestuynder/putty-pagent-notification/commits/master PuTTY/Pagean]
+* [https://github.com/gdestuynder/gnupg-agent-notification/commit/57697146188d52f5447a50303070371a8cf5c0bb GnuPG Agent Linux]
+* [https://github.com/devinteske/apple/tree/master/OpenSSH-186/openssh OpenSSH MacOS X] (see also http://devinteske.com/)
+}}
+
+=== Safer alternative to SSH agent forwarding ===
+
+It is possible to directly forward ports for single jumps instead of forwarding the agent. This has the advantage of never exposing your agent to the servers you're connecting to.
+
+For example, you can add these lines to your <code>~/.ssh/config</code>
+<source>
+Host *.mozilla.com
+ProxyCommand ssh ssh.mozilla.com -W %h:%p
+</source>
+This will automatically forward the SSH connection over ssh.mozilla.com when you connect to a mozilla.com SSH server.
+
+= Appendixes =
+== Key material handling ==
+Key material identifies the cryptographic secrets that compose a key. All key material must be treated as <span style="color: orange">RESTRICTED</span> data, meaning that:
+* Only individual with specific training and need-to-know should have access to key material.
+* Key material must be encrypted on transmission.
+* Key material can be stored in clear text, but only with proper access control (limited access).
+
+This includes:
+* OpenSSH server keys (<code>/etc/ssh/ssh_host_*key</code>)
+* Client keys (<code>~/.ssh/id_{rsa,dsa,ecdsa,ed25519}</code> and <code>~/.ssh/identity</code>).
+* <code>/etc/ssh/moduli</code> also contains prime numbers and generators for use in the Diffie-Hellman key exchange and must be handled like key material.
+
+== Client key size and login latency ==
+
+In order to figure out the impact on performance of using larger keys - such as RSA 4096 bytes keys - on the client side, we have run a few tests:
+
+On an idle, i7 4500 intel CPU using OpenSSH_6.7p1, OpenSSL 1.0.1l and ed25519 server keys the following command is ran 10 times:
+
+<code>time ssh localhost -i .ssh/id_thekey exit</code>
+
+Results:
+
+{| class="wikitable"
+|-
+! Client key !! Minimum !! Maximum !! Average
+|-
+| RSA 4096 || 120ms || 145ms || 127ms
+|-
+| RSA 2048 || 127ms || 129ms || 120ms
+|-
+| ed25519 || 117ms || 138ms || 120ms
+|}
+
+Keep in mind that these numbers may differ on a slower machine, and that this contains the complete login sequence and therefore is subject to variations.
+However, it seems safe to say that the latency differences are not significant and do not impact performance sufficiently to cause any concern regardless of the type of key used.
+
+== Reference documents ==
+
+* [https://wiki.mozilla.org/Security/Key_Management Key Management]
+* [https://wiki.mozilla.org/Security/Server_Side_TLS Server Side TLS]
+* [http://www.ietf.org/rfc/rfc4418.txt RFC4418 (umac)]
+* [http://www.openssh.com/txt/draft-miller-secsh-umac-01.txt umac draft]
+* [http://safecurves.cr.yp.to/ Safe curves]
+* [http://blog.djm.net.au/2013/11/chacha20-and-poly1305-in-openssh.html DJM blog]
+* [https://stribika.github.io/2015/01/04/secure-secure-shell.html Stribika blog]
+* [http://2013.diac.cr.yp.to/slides/gueron.pdf AES-GCM performance study]
+* [http://googleonlinesecurity.blogspot.nl/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
+* [http://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.9&content-type=text/plain PROTOCOL.certkeys]

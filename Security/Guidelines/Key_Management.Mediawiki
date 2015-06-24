@@ -1,0 +1,131 @@
+The goal of this document is to help operational teams with the handling and management of cryptographic material. All Mozilla sites and deployment should follow the recommendations below.
+The Operations Security (OpSec) team maintains this document as a reference guide for operational teams.
+
+<table><tr>
+<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
+<td valign="top">
+{| class="wikitable"
+|-
+! Document Status !! Major Versions
+|- 
+|  <span style="color:orange;">'''DRAFT'''</span> ||
+* Version 1.1: kang: migrated OpenSSH key handling to [[Security/Guidelines/OpenSSH]]
+* Version 1: kang/ulfr: creation
+|}
+[[File:OpSec.png|right|300px]]
+</td>
+</tr></table>
+
+= Data classification =
+== Key material ==
+Key material identifies the cryptographic secrets that compose a key. All key material must be treated as restricted data, meaning that only individual with specific training and need-to-know should have access to key material.
+Key material must be encrypted on transmission. Key material can be stored in clear text, but with proper access control.
+
+== Public certificates ==
+Public certificates are public and do not require specific access control or encryption.
+
+= Algorithms by security levels =
+This section organizes algorithms and key sizes for a given validity period that represent the level of security provided. While 10 years validity may be a requirement for very static keys, such as Root CAs, we do recommend preferring 2 years keys and implementing reliable key rotation, instead of trying to keep key material for long periods of time.
+
+== 10 years ==
+{| class="wikitable"
+|-
+! Type !! Algorithm and key size !! Bits of security
+|-
+| Asymmetric encryption || RSA 4096 bits || 144 bits
+|-
+| Asymmetric encryption || ECDSA 384 bits || 192 bits
+|-
+| Symmetric encryption || AES-GCM 192 bits || 192 bits
+|- 
+| Hash & HMAC || SHA-384 || 192 bits
+|-
+| Hash & HMAC || SHA3-384 || 192 bits
+|}
+
+== 2 years (default) ==
+{| class="wikitable"
+|-
+! Type !! Algorithm and key size !! Bits of security
+|-
+| Asymmetric keys || RSA 2048 bits || 112 bits
+|-
+| Asymmetric keys || ECDSA 224 or 256 bits || 112 bits
+|-
+| Symmetric encryption || AES-CBC 128 bits || 128 bits
+|-
+| Hash & HMAC || SHA-256 || 128 bits
+|-
+| Hash & HMAC || SHA3-256 || 128 bits
+|}
+
+== Legacy, not recommended ==
+The following algorithms and sizes are still widely used but do not provide sufficient security for modern services and should be deprecated as soon as possible, unless backward compatibility is a strong requirement (even so, a deprecation planning should be setup).
+{| class="wikitable"
+|-
+! Type !! Algorithm and key size !! Bits of security
+|-
+| Asymmetric encryption || RSA 1024 bits and below || 80 bits
+|-
+| Asymmetric encryption || ECDSA 160 bits and below || 80 bits
+|-
+| Symmetric encryption || 3DES || 112 bits
+|-
+| Symmetric encryption || RC4 || 
+|-
+| Hash & HMAC || SHA-1 || 80 bits
+|-
+| Hash & HMAC || MD5 || 64 bits
+|}
+
+= Handling =
+== X509 certificates and keys==
+== SSH ==
+See [[Security/Guidelines/OpenSSH]].
+
+== PGP/GnuPG ==
+<source code="bash">
+$ gpg --gen-key
+(1) RSA and RSA (default)
+[...]
+Your selection? 1
+[...]
+What keysize do you want? (4096)
+[...]
+Key is valid for? (0) 2y
+[...]
+</source>
+
+=== Protection of user keys ===
+* Protected by strong passphrase.
+* Never copied to another system than your own workstation/personal physical disks/tokens. 
+
+=== Protection of machine keys ===
+* Storing the key material in a hardware token or HSM is preferred over simply using a strong passphrase.
+* The keys must be accessible only by the admin user (root) and/or the system user requiring access.
+
+Usage of machine keys should be registered in an inventory (a wiki page, LDAP, an inventory database), to allow for rapid auditing of key usage across an infrastructure. 
+
+=== Expiration of keys ===
+As GnuPG trust model belongs to your master key, some may decide to not expire their master key. This is reasonable if the master key is very well protected, and a separate sub-key (or sub-keys) are used for day to day signing and encryption.
+For example, the master key could be stored offline and never copied or used on an online system.
+
+Note: It is possible to change the expiration of a key, however all clients must fetch updates on a key server or will see your key as expired.
+
+=== GnuPG settings ===
+By default, GnuPG may use deprecated hashing algorithms such as SHA1 when used for signing. These settings ensure a more modern selection of hashing algorithms.
+Using long key ids over the default short key ids is also recommended. If possible, using complete fingerprints is even better.
+
+File: ~/.gnupg/gpg.conf
+<source>
+personal-digest-preferences SHA512 SHA384 SHA256
+cert-digest-algo SHA256
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+keyid-format 0xlong
+</source>
+
+= Definitions =
+== Bits of security ==
+Security Bits estimate the computational steps or operations (not machine instructions) required to solve a cryptographic problem (i.e. crack the key/hash).
+
+For a more detailed definition, see http://en.wikipedia.org/wiki/Key_size and  http://www.cryptopp.com/wiki/Security_Level#Security_Bits.
