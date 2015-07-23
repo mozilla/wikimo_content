@@ -11,7 +11,7 @@ OpSec assists Mozillians in defining and operating security controls to ensure t
 = Contact =
 Email us at '''opsec''' [at] mozilla.com. For confidential information, encrypt your email using our public PGP: [http://gpg.mozilla.org/pks/lookup?op=get&search=0xBC17301B491B3F21 Operations Security (Mozilla Security Assurance)] .
 
-For security incidents, file a bug in Bugzilla under the component [https://bugzilla.mozilla.org/enter_bug.cgi?product=mozilla.org&component=Operations%20Security%20%28OpSec%29%3A%20Investigation Operations Security (OpSec): Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=mozilla.org&component=Operations%20Security%20%28OpSec%29%3A%20Incident Operations Security (OpSec): Incident].
+For security incidents, file a bug in Bugzilla under the product/component [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident].
 
 Our IRC channel is #security at [irc://irc.mozilla.org/security irc.mozilla.org].
 
@@ -35,7 +35,7 @@ The services listed below are available to everyone working on the Mozilla proje
 ; Costs
 : Engineering time, compute resources, AWS archiving
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?assigned_to=jbryner%40mozilla.com&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_severity=normal&bug_status=NEW&cf_blocking_b2g=---&cf_fx_iteration=---&cf_fx_points=---&component=Operations%20Security%20(OpSec)%3A%20MozDef&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&defined_groups=1&flag_type-4=X&flag_type-607=X&flag_type-800=X&flag_type-803=X&form_name=enter_bug&groups=infra&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Linux&priority=--&product=mozilla.org&rep_platform=x86_64&short_desc=MozDef%20Service%20request%20for%20%3Cteam%20name%3E&target_milestone=---&version=other request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=MozDef&assigned_to=jbryner%40mozilla.com request bug]
 
 [[File:MozDefAttackerGlobe.png|right|300px]]
 [[File:MozDefAttackerOgres.png|right|300px]]
@@ -61,7 +61,7 @@ OpSec develops and operates MozDef as a service to assist Mozilla projects in de
 ; Costs
 : traffic interception capabilities, servers for running it, disk space for log storage.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?assigned_to=mpurzynski%40mozilla.com&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_severity=normal&bug_status=NEW&cf_blocking_b2g=---&cf_fx_iteration=---&cf_fx_points=---&component=Operations%20Security%20(OpSec)%3A%20NSM&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&defined_groups=1&flag_type-4=X&flag_type-607=X&flag_type-800=X&flag_type-803=X&form_name=enter_bug&groups=infra&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Linux&priority=--&product=mozilla.org&rep_platform=x86_64&short_desc=NSM%20Service%20request%20for%20%3Cteam%20name%3E&target_milestone=---&version=other request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=NSM&assigned_to=mpurzynski%40mozilla.com request bug]
 
 === Description ===
 
@@ -81,8 +81,7 @@ The goal of the NSM project is to provide useful context information for both th
 : business hours availability. 1 year data retention.
 ; Costs
 : platform supported by OpSec. Subscriber’s handles the cost of provisioning and monitoring the agents on target systems.
-; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?assigned_to=jvehent%40mozilla.com&blocked=896480&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_severity=normal&bug_status=NEW&cf_blocking_b2g=---&cf_fx_iteration=---&cf_fx_points=---&component=Operations%20Security%20(OpSec)%3A%20MIG&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&defined_groups=1&flag_type-4=X&flag_type-607=X&flag_type-800=X&flag_type-803=X&form_name=enter_bug&groups=infra&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Linux&priority=--&product=mozilla.org&rep_platform=x86_64&short_desc=MIG%20Service%20request%20for%20%3Cteam%20name%3E&target_milestone=---&version=other request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=MIG&assigned_to=jvehent%40mozilla.com&blocked=896480 request bug]
 
 === Description ===
 [[File:Mig-console.png|right|300px]]
@@ -104,7 +103,7 @@ OpSec operates a client/server platform to facilitate the investigation of large
 ; Costs
 : platform supported by OpSec. Subscriber’s handles the cost of provisioning and monitoring the agents on target systems.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?assigned_to=jvehent%40mozilla.com&blocked=896480&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_severity=normal&bug_status=NEW&cf_blocking_b2g=---&cf_fx_iteration=---&cf_fx_points=---&component=Operations%20Security%20(OpSec)%3A%20General&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&defined_groups=1&flag_type-4=X&flag_type-607=X&flag_type-800=X&flag_type-803=X&form_name=enter_bug&groups=infra&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Linux&priority=--&product=mozilla.org&rep_platform=x86_64&short_desc=TDS%20Service%20request%20for%20%3Cteam%20name%3E&target_milestone=---&version=other request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=MIG&assigned_to=jvehent%40mozilla.com&blocked=896480 request bug]
 
 === Description ===
 
@@ -122,7 +121,7 @@ Test driven systems security uses bateries of tests ran against a system to eval
 ; Costs
 : 30 minutes meeting with OpSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?component=Operations%20Security%20(OpSec)%3A%20Review&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&defined_groups=1&flag_type-4=X&flag_type-607=X&flag_type-800=X&flag_type-803=X&form_name=enter_bug&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Linux&priority=--&product=mozilla.org&rep_platform=x86_64&short_desc=RRA%20request%20for%20%3Cteam%20name%3E&target_milestone=---&version=other Request RRA]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
 
 === Description ===
 
@@ -142,7 +141,7 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 ; Costs
 : One or more meeting with OpSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=mozilla.org&component=Operation%20Security%20(OpSec)%3A%20Review Open a bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
 
 === Description ===
 
@@ -161,7 +160,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 : ASAP
  
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=mozilla.org&component=Operations%20Security%20(OpSec)%3A%20Incident Open a bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident request bug]
 
 === Description ===
 
