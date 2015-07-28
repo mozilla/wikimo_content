@@ -1,0 +1,46 @@
+The goal of this document is to detail the rationales behind why various technologies and processes are encouraged or discouraged.
+
+<table><tr>
+<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
+<td valign="top">
+{| class="wikitable"
+|-
+! Document Status !! Major Versions
+|- 
+|  <span style="color:orange;">'''DRAFT'''</span> ||
+* Version 1: gene: creation
+|}
+[[File:OpSec.png|right|300px]]
+</td>
+</tr></table>
+
+= Rationales =
+{| class="wikitable"
+!Topic
+!Rationale
+|-
+|<div id="shared-passwords">[[#shared-passwords|§]] Shared passwords</div>
+|Shared passwords are passwords that more than one person knows or has access to. They're discouraged because
+* Use of them makes auditing access difficult because
+** multiple users appear in audit logs as one user and different users actions are difficult to differentiate
+** the number of audit logs that need to be searched increases
+** correlation of events across different systems is impossible if multiple people are creating event records with a single shared account across multiple systems at the same time
+* Revoking access to a subset of the users of a shared password requires a password change that affects all users
+|-
+|<div id="decentralized-user-account-management">[[#decentralized-user-account-management|§]] Decentralized user account management</div>
+|Decentralized user account management refers to user account management which is not driven by the source of truth for the user's account. Examples of this are
+* Manual user account creation by administrators
+* Automated user account creation from scripting or configuration management that creates accounts based on a static list of users
+This practice is discouraged because
+* When a user's access status changes due to leaving the company or changing teams, the associated change in the system which uses decentralized user account management is not automatically made resulting in unintended system access
+* When a user changes an attribute of their account in the centralized account management system, for example their email address or password, that change is not reflected in the systems which use decentralized user account management. Conversely when the user changes an attribute in the systems which use decentralized user account management, that change is not propagated to the centralized account management system.
+|-
+|<div id="mfa">[[#mfa|§]] Multi-factor Authentication</div>
+|Multi-factor authentication (MFA) is a security system that requires more than one method of authentication from independent categories of credentials to verify the user's identity for a login or other transaction. Requiring the use of MFA for internet accessible endpoints is encouraged because by requiring not only something the user knows (a knowledge factor like a memorized password) but also something that the user has (a possession factor like a smartcard, yubikey or mobile phone) the field of threat actors that could compromise the account is reduced to actors with physical access to the user. In cases where the possession factor is digital (a secret stored in your mobile phone) instead of physical (a smartcard or yubikey), the effect of MFA is not to reduce the field of threat actors to only those that have physical access to the user, because a secret can be remotely copied off of a compromised mobile phone. Instead, in this case, the possession factor merely makes it more difficult for the threat actor since they now need to brute force/guess your password '''and''' compromise your mobile phone. This is, however, still possible to do entirely from a remote location.
+|-
+|<div id="nsm">[[#nsm|§]] Network Security Monitoring</div>
+|Network Security Monitoring (NSM) is the practice of monitoring raw network traffic in order to detect intrusions or abnormal behavior. The use of NSM is encouraged because it can
+* identify when a host has been compromised by the network traffic it emits
+* understand the commonalities in a distributed network attack
+* provide incident responders with data needed to quickly diagnose security issues
+|}
