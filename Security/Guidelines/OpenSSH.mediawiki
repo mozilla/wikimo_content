@@ -9,6 +9,7 @@ The Operations Security (OpSec) team maintains this document as a reference guid
 ! Document Status !! Major Versions
 |- 
 |  <span style="color:green;">'''READY'''</span> ||
+* Version 2.0: kang: fix typo, ed25519 requires OpenSSH 6.4+
 * Version 1.9: kang: updates for OpenSSH 7
 * Version 1.8: kang/[[User:JanZerebecki|JanZerebecki]]: default to AES-GCM since AES-CTR also disclose packet length.
 * Version 1.7: kang/[[User:JanZerebecki|JanZerebecki]]: fix HostKeyAlg order typo in modern ([https://wiki.mozilla.org/index.php?title=Security%2FGuidelines%2FOpenSSH&diff=1059156&oldid=1059151 diff])
@@ -216,7 +217,7 @@ Don't hesitate to create multiple different keys for different usages.
 
 <source code="bash">
 # ED25519 keys are favored over RSA keys when backward compatibility is not required.
-# This is only compatible with OpenSSH 5.7+ and fixed-size (256 bytes).
+# This is only compatible with OpenSSH 6.4+ and fixed-size (256 bytes).
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 
 # RSA keys are favored over ECDSA keys when backward compatibility is required, thus, newly generated keys are always either ED25519 or RSA (NOT ECDSA or DSA).
