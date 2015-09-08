@@ -26,16 +26,24 @@ Key material must be encrypted on transmission. Key material can be stored in cl
 Public certificates are public and do not require specific access control or encryption.
 
 = Algorithms by security levels =
-This section organizes algorithms and key sizes for a given validity period that represent the level of security provided. While 10 years validity may be a requirement for very static keys, such as Root CAs, we do recommend preferring 2 years keys and implementing reliable key rotation, instead of trying to keep key material for long periods of time.
+This section organizes algorithms and key sizes by rating (modern, intermediate, old) for a given validity period.
+Regardless of the rating choosen, we do recommend prefering 2 years keys with a reliable key rotation instead of trying
+to keep key material for long periods of time.
+This allow for faster operational reaction time when new algorithm weaknesses are discovered.
 
-== 10 years ==
+== Modern - 10 years (default) ==
+These may be used if expiring within 10 years and should be the default choice unless limited by technological factors
+such as client/server support or performance.
+
+Use of EC is favored over RSA for performances purposes.
+
 {| class="wikitable"
 |-
 ! Type !! Algorithm and key size !! Bits of security
 |-
 | Asymmetric encryption || RSA 4096 bits || 144 bits
 |-
-| Asymmetric encryption || ECDSA 384 bits || 192 bits
+| Asymmetric encryption || ECDSA 512 bits || 256 bits
 |-
 | Symmetric encryption || AES-GCM 256 bits || 256 bits
 |- 
@@ -44,23 +52,25 @@ This section organizes algorithms and key sizes for a given validity period that
 | Hash & HMAC || SHA3-512 || 256 bits
 |}
 
-== 2 years (default) ==
+== Intermediate - 2 years ==
+These maybe be used if expiring within 2 years or up to 2020 whichever comes first.
+
 {| class="wikitable"
 |-
 ! Type !! Algorithm and key size !! Bits of security
 |-
 | Asymmetric keys || RSA 3072 bits || 128 bits
 |-
-| Asymmetric keys || ECDSA 384 bits || 192 bits
+| Asymmetric keys || ECDSA 256 bits || 128 bits
 |-
-| Symmetric encryption || AES-CBC 256 bits || 256 bits
+| Symmetric encryption || AES-CBC 128 bits || 128 bits
 |-
-| Hash & HMAC || SHA-384 || 192 bits
+| Hash & HMAC || SHA-256 || 128 bits
 |-
-| Hash & HMAC || SHA3-384 || 192 bits
+| Hash & HMAC || SHA3-256 || 128 bits
 |}
 
-== Legacy, not recommended ==
+== Old - do not use ==
 The following algorithms and sizes are still widely used but do not provide sufficient security for modern services and should be deprecated as soon as possible.
 
 {| class="wikitable"
