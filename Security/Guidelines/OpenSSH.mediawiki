@@ -34,6 +34,7 @@ The Operations Security (OpSec) team maintains this document as a reference guid
 '''Only non-default settings are listed in this document'''.
 
 Most default OpenSSH settings that are security-related already provide good security, thus changing them is at your own risk and is not documented here.
+For example, these guidelines assume only SSH protocol 2 is configured in the server, and SSH protocol 1 is disabled.
 
 See <code>man sshd_config</code>, <code>man ssh_config</code> for more information on specific settings if you nevertheless need to change them.
 |}
