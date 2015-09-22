@@ -9,7 +9,7 @@ The Operations Security (OpSec) team maintains this document as a reference guid
 ! Document Status !! Major Versions
 |- 
 |  <span style="color:orange;">'''DRAFT'''</span> ||
-* Version 1.2: kang: Bump key requirements see also <https://www.nsa.gov/ia/programs/suiteb_cryptography/index.shtml>, rationale: historically when the NSA has such high requirements they're aware of significant weaknesses with lower requirements.
+* Version 1.2: kang: Bump key requirements see also https://github.com/mozilla/wikimo_opsec/pull/8 for discussion.
 * Version 1.1: kang: migrated OpenSSH key handling to [[Security/Guidelines/OpenSSH]]
 * Version 1: kang/ulfr: creation
 |}
