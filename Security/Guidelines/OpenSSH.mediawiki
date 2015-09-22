@@ -9,6 +9,7 @@ The Operations Security (OpSec) team maintains this document as a reference guid
 ! Document Status !! Major Versions
 |- 
 |  <span style="color:green;">'''READY'''</span> ||
+* Version 2.1: kang: Owen Marshall: Fully remove KeyRegenerationInterval (SSH1/older OpenSSH only)
 * Version 2.0: kang: fix typo, ed25519 requires OpenSSH 6.4+
 * Version 1.9: kang: updates for OpenSSH 7
 * Version 1.8: kang/[[User:JanZerebecki|JanZerebecki]]: default to AES-GCM since AES-CTR also disclose packet length.
@@ -57,9 +58,6 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 
-# KeyRegenerationInternal is halved from the default as a precaution (optional). 1800 seconds is 30 minutes.
-KeyRegenerationInterval 1800
-
 # Password based logins are disabled - only public key based logins are allowed.
 AuthenticationMethods publickey
 
@@ -92,9 +90,6 @@ HostKey /etc/ssh/ssh_host_ecdsa_key
 KexAlgorithms diffie-hellman-group-exchange-sha256
 MACs hmac-sha2-512,hmac-sha2-256
 Ciphers aes256-ctr,aes192-ctr,aes128-ctr
-
-# KeyRegenerationInternal is halved from the default as a precaution (optional). 1800 seconds is 30 minutes.
-KeyRegenerationInterval 1800
 
 # Password based logins are disabled - only public key based logins are allowed.
 RequiredAuthentications2 publickey
