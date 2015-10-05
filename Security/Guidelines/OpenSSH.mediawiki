@@ -341,3 +341,4 @@ However, it seems safe to say that the latency differences are not significant a
 * [http://2013.diac.cr.yp.to/slides/gueron.pdf AES-GCM performance study]
 * [http://googleonlinesecurity.blogspot.nl/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
 * [http://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.9&content-type=text/plain PROTOCOL.certkeys]
+* [http://wiki.gnupg.org/rfc4880bis rfc44880bis from GnuPG]
