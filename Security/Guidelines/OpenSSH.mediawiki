@@ -7,7 +7,7 @@ sites and deployment should follow the recommendations below.  The Enterprise In
 OpSec) team maintains this document as a reference guide for operational teams.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on
-github].
+github]. Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
 
 <span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
     </td>
