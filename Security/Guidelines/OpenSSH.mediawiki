@@ -1,35 +1,23 @@
-The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla sites and deployment should follow the recommendations below.
-The Operations Security (OpSec) team maintains this document as a reference guide for operational teams.
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla
+sites and deployment should follow the recommendations below.  The Enterprise Information Security (Infosec, formerly
+OpSec) team maintains this document as a reference guide for operational teams.
 
-<table><tr>
-<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
-<td valign="top">
-{| class="wikitable"
-|-
-! Document Status !! Major Versions
-|- 
-|  <span style="color:green;">'''READY'''</span> ||
-* Version 2.1: kang: Owen Marshall: Fully remove KeyRegenerationInterval (SSH1/older OpenSSH only)
-* Version 2.0: kang: fix typo, ed25519 requires OpenSSH 6.4+
-* Version 1.9: kang: updates for OpenSSH 7
-* Version 1.8: kang/[[User:JanZerebecki|JanZerebecki]]: default to AES-GCM since AES-CTR also disclose packet length.
-* Version 1.7: kang/[[User:JanZerebecki|JanZerebecki]]: fix HostKeyAlg order typo in modern ([https://wiki.mozilla.org/index.php?title=Security%2FGuidelines%2FOpenSSH&diff=1059156&oldid=1059151 diff])
-* Version 1.6: kang/ulfr: key size, type and login latency. Marked document ready.
-* Version 1.5: kang/ulfr: ordering
-* Version 1.4: kang/michal: Multiple small fixes and additions. Reorganized config doc for readability.
-* Version 1.3: kang/alm: Added information on ssh-agent/ssh-add flags for agent forwarding.
-* Version 1.2: kang: Added MFA server-side configuration.
-* Version 1.1: kang: Added client config, draft status.
-* Version 1: kang: Creation.
-|}
-[[File:OpSec.png|right|300px]]
-</td>
-</tr></table>
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on
+github]. Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
 
 {| class="wikitable"
 |-
 ! <span style="color:red;">'''ATTENTION'''</span>
-|- 
+|-
 |
 '''Only non-default settings are listed in this document'''.
 
@@ -353,3 +341,4 @@ However, it seems safe to say that the latency differences are not significant a
 * [http://2013.diac.cr.yp.to/slides/gueron.pdf AES-GCM performance study]
 * [http://googleonlinesecurity.blogspot.nl/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
 * [http://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.9&content-type=text/plain PROTOCOL.certkeys]
+* [http://wiki.gnupg.org/rfc4880bis rfc44880bis from GnuPG]
