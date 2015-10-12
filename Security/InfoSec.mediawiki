@@ -23,6 +23,7 @@ Our IRC channel is #foxsignal or #security at [irc://irc.mozilla.org/security ir
 * [https://mozillians.org/en-US/u/jbryner/ Jeff Bryner] [:jeff]
 * [https://mozillians.org/en-US/u/gene/ Gene Wood] [:gene]
 * [https://mozillians.org/en-US/u/alm/ Aaron Meihm] [:alm]
+* [https://mozillians.org/en-US/u/jclaudius/ Jonathan Claudius] [:claudijd]
 
 = Service Catalog =
 
@@ -158,7 +159,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 
 ; Support commitment
 : ASAP
- 
+
 ; Service request
 : [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident request bug]
 
