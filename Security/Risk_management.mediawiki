@@ -1,0 +1,198 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: NOT READY'''
+
+The goal of this document is to help understanding how risk is handled by the Enterprise Information Security Team
+(Infosec) at Mozilla. The main goal is to strike a balance between speed and effectiveness while assessing risk for
+decentralized teams and projects.
+The Enterprise Information Security Team (Infosec) maintains this document as a reference guide for security engineers
+and anyone interested in following our risk management processes.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+= Risk Management =
+
+== Preample ==
+
+<span>[[File:rm.png||Risk management workflow diagram]]</span>
+
+=== What is Risk? ===
+
+Risk is the combination of the probable frequency and probable magnitude of future loss.
+It is made of 2 components:
+{| class="wikitable"
+|-
+| '''Impact''' ''(magnitude of future loss)''
+| How does it affect our productivity, how much does it cost us, will negative media tarnish our image, how does it affect users' privacy, etc.?
+|-
+| '''Probability''' ''(frequency of future loss)''
+| How likely is it to happen?
+|-
+|}
+
+Also represented as <code>Risk = Impact * Probability</code>
+
+{{note|
+Often, impact is the primary driver of risk even though the probability may be low. This is because impact is easier to
+quantify and measure.
+
+We usually also call impact the "probable impact". A probable impact is a ''reasonable'' "worst case scenario".
+
+If the situation is so remote we think the probability is already null, then this is not a probable impact.
+}}
+
+=== Standardized Levels ===
+
+We measure risk, impact, probability, etc. based on a simple 4 level scale [Risk_Management:Standard levels]. We
+use this to '''normalize''' risk measurements. Here's a summary on how it applies to risk.
+
+{| class="wikitable"
+|-
+| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| Low is something we don't expect has impact, or is likely to happen. We don't expect much attention there.
+|-
+| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| Medium is where some risk exists and should at least be acknowledged by service owners. Ideally, steps will be taken
+to remedy or mitigate the risk albeit some may instead accept this as residual risk.
+|-
+| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| High means we have a problem that we have to fix. The risk is sufficiently important that we have to plan remediations
+or mitigations soon. We do not expect high risk to be accepted as residual.
+|-
+| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| Maximum means we have a significant problem right now. All hands on deck may be required to remedy or mitigate the
+risk immediately.
+|-
+|}
+
+== Risk Measurement ==
+
+Risk can be measured in two ways:
+
+=== Quantifiable risk ===
+Risk we can precisely measure and record with ''numbers'':
+* How many security controls are present?
+* Is the control strength rated?
+* How many attacks per day do we see?
+* How many times did this happen in the past?
+* How many vulnerabilities exist?
+* etc.
+
+=== Qualifiable risk ===
+Risk we have an idea about but can't accurately measure and is thus subjective.
+* How confident are we with the code-base?
+* Do we think the project has had sufficient review?
+* Do we think this control is efficient?
+* etc.
+
+The more quantifiable data we gather, the more accurate the risk measurement and thus the easier and clearer decisions
+can be for service owners. We call the data we gather ''data points''.
+
+{{note|Recorded risk is always associated to services.}}
+
+=== Risk records (Security controls and capabilities) ===
+
+Risk records are list of security controls a service have or is lacking and their measure of effectiveness for a given
+service. The higher the impact tied to a service, the more effective the security controls have to be. This ensure a
+lower likelihood that the service will ever suffer the impact recorded, and thus lowers the service risk.
+
+Security controls are categorized by capability ("Inventory", "Vulnerability remediation", "Access control", "Data
+recovery", etc.). This allows to also understand which security capabilities a service offers.
+
+=== Impact ''data point'' ===
+
+The [Risk_management:Rapid_Risk_Analysis] is currently the single data point for impact and is fairly reliable and
+accurate for that measurement.
+
+* Quantifiable results: Normalized financial impact, productivity impact.
+* Qualifiable results: Normalized reputation impact.
+* Not recorded: legal impact.
+
+=== Probability ''data points'' ===
+
+{| class="wikitable"
+! style="font-weight: bold;" | Data point
+! style="font-weight: bold;" | Description & comments
+! style="font-weight: bold;" | Storage method
+! style="font-weight: bold;" | Normalized results available
+! style="font-weight: bold;" | Quantifiable results
+! style="font-weight: bold;" | Qualifiable results
+|-
+| '''[Risk_management:Rapid_Risk_Analysis]'''
+| The likelihood recorded by the RRA is a best-effort metric that is gathered by asking standard questions.It generally
+catches high/maximum likelihood scenarios well, but is not accurate for medium/low scenarios.(i.e. an RRA low likelihood
+may in fact be higher than estimated)
+|
+* Google docs, point in time, manual.
+* MozDef, daily refresh from the docs.
+| Yes.
+| None.
+|
+* Financial impact probability.
+* Reputation impact probability.
+* Productivity impact probability.
+|-
+| '''Vulnerability data'''
+| Scanning results from the vulnerability management software. It is difficult to assess exposure through this mean.An
+infrasec system user needs to be present.
+|
+* MozDef, daily refresh via vmintgr.
+| Yes.
+|
+* Number of vulnerabilities per system
+* CVSS scores
+* Standard risk levels
+| None.
+|-
+| '''System policy compliance'''
+| System compliance such as "use SSH keys", etc. is checked and recorded by MIG.
+
+mig-agent must be installed on systems.
+|
+* MozDef, daily refresh from MIG.
+| Yes.
+|
+* Number of failing/successful test for controls or configuration implemented.* Number of systems achieving a certain
+security level.
+| None.
+|-
+| '''Bugzilla service bugs'''
+| Not yet implemented.
+| 
+| 
+| 
+| 
+|-
+| '''Exposure data'''
+| Not yet implemented.
+| 
+| 
+| 
+| 
+|-
+| '''Attacker alerts'''
+| NSM and MozDef issue alerts on service attacks. This includes data from threat-exchange type platforms.
+|
+* MozDef, real-time.
+| No.
+|
+* Number of alerts.
+|
+* Some of the alerts body may be considered a qualifiable result.
+|}
+
+== Reference documents ==
+
+* http://riskmanagementinsight.com/media/documents/FAIR_Introduction.pdf
+* http://www.iso.org/iso/home/standards/iso31000.htm
+* https://en.wikipedia.org/wiki/ISO/IEC_27001
+* http://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/
+* https://www.sans.org/critical-security-controls/controls (version 5)
