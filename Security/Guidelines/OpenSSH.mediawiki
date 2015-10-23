@@ -54,7 +54,7 @@ AuthenticationMethods publickey
 LogLevel VERBOSE
 
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
-# 
+#
 # On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
 # Additionally, only tools such as systemd and auditd record the process session id.
 # On other OSes, the user session id is not necessarily recorded at all kernel-side.
@@ -196,16 +196,21 @@ HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,
 
 == Key generation ==
 Large key sizes are used as SSH keys are not renewed very often (see also [[Security/Key_Management]]).
+{{note|
+DSA and RSA 1024 bit (or lower) keys are considered weak and should be replaced as soon as possible.
+}}
 
-Don't hesitate to create multiple different keys for different usages.
+Don't hesitate to create multiple different keys for different usages. In particular, never mix your personal and
+Mozilla keys.
 
 <source code="bash">
-# ED25519 keys are favored over RSA keys when backward compatibility is not required.
+# RSA keys are favored over ECDSA keys when backward compatibility ''is required'',
+# thus, newly generated keys are always either ED25519 or RSA (NOT ECDSA or DSA).
+$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
+
+# ED25519 keys are favored over RSA keys when backward compatibility ''is not required''.
 # This is only compatible with OpenSSH 6.4+ and fixed-size (256 bytes).
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
-
-# RSA keys are favored over ECDSA keys when backward compatibility is required, thus, newly generated keys are always either ED25519 or RSA (NOT ECDSA or DSA).
-$ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 </source>
 
 === Protection of user keys ===
@@ -219,6 +224,20 @@ When SSH keys are necessary for automation between systems, it is reasonable to 
 * The keys must be accessible only by the admin user (root) and/or the system user requiring access.
 * Usage of machine keys should be registered in an inventory (a wiki page, ldap, an inventory database), to allow for rapid auditing of key usage across an infrastructure.
 * The machine keys should be unique per usage. Each new usage (different service, different script called, etc.) should use a new, different key.
+
+=== Auditing your existing SSH keys ===
+
+Existing keys are generally stored in <code>~/.ssh/</code> (Linux/OSX) or <code>%APPDATA%</code> (Windows).
+Look for <code>id_{rsa,ed25519,ecdsa,dsa}</code>,  or legacy <code>identity</code> files.
+
+==== Display SSH keys information ====
+<source code="bash">
+# You may run this for any key file that you have.
+$ ssh-keygen -lf id_rsa
+2048 bc:4f:46:2b:3d:f1:e2:0f:ac:40:99:49:ed:c9:81:a2 Mozilla key for xyz (RSA)
+^^   ^^^^^^^^^                                       ^^^^                 ^^^
+|__ Size     |__ Fingerprint                             |__ Comment        |__ Type
+</source>
 
 == SSH agent forwarding ==
 {| class="wikitable"
