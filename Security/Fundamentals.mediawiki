@@ -1,19 +1,16 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
 The goal of this document is to detail the rationales behind why various technologies and processes are encouraged or discouraged.
 
-<table><tr>
-<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
-<td valign="top">
-{| class="wikitable"
-|-
-! Document Status !! Major Versions
-|- 
-|  <span style="color:green;">'''READY'''</span> ||
-* Version 1.1: kang: r+
-* Version 1: gene: creation
-|}
-[[File:OpSec.png|right|300px]]
-</td>
-</tr></table>
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
 
 = Rationales =
 {| class="wikitable"
