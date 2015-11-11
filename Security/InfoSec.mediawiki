@@ -13,7 +13,7 @@ Email us at '''opsec''' [at] mozilla.com. For confidential information, encrypt 
 
 For security incidents, file a bug in Bugzilla under the product/component [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident].
 
-Our IRC channel is #foxsignal or #security at [irc://irc.mozilla.org/security irc.mozilla.org].
+Our IRC channel is #infosec or #security at [irc://irc.mozilla.org/security irc.mozilla.org].
 
 = Members =
 [[File:OpSec.png|left|200px]]
