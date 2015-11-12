@@ -24,6 +24,7 @@ Our IRC channel is #infosec or #security at [irc://irc.mozilla.org/security irc.
 * [https://mozillians.org/en-US/u/gene/ Gene Wood] [:gene]
 * [https://mozillians.org/en-US/u/alm/ Aaron Meihm] [:alm]
 * [https://mozillians.org/en-US/u/jclaudius/ Jonathan Claudius] [:claudijd]
+* [https://mozillians.org/en-US/u/amuntner/ Adam Muntner] [:adamm]
 
 = Service Catalog =
 
