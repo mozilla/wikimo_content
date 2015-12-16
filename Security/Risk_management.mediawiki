@@ -2,7 +2,7 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-'''STATUS: NOT READY'''
+'''STATUS: READY'''
 
 The goal of this document is to help understanding how risk is handled by the Enterprise Information Security Team
 (Infosec) at Mozilla. The main goal is to strike a balance between speed and effectiveness while assessing risk for
@@ -51,7 +51,7 @@ If the situation is so remote we think the probability is already null, then thi
 
 === Standardized Levels ===
 
-We measure risk, impact, probability, etc. based on a simple 4 level scale [Risk_Management:Standard levels]. We
+We measure risk, impact, probability, etc. based on a simple 4 levels scale [Risk_Management:Standard levels]. We
 use this to '''normalize''' risk measurements. Here's a summary on how it applies to risk.
 
 {| class="wikitable"
@@ -191,7 +191,7 @@ security level.
 
 == Reference documents ==
 
-* http://riskmanagementinsight.com/media/documents/FAIR_Introduction.pdf
+* http://riskmanagementinsight.com/media/documents/FAIR_Introduction.pdf (Introduction to modern risk analysis)
 * http://www.iso.org/iso/home/standards/iso31000.htm
 * https://en.wikipedia.org/wiki/ISO/IEC_27001
 * http://www.ssi.gouv.fr/guide/ebios-2010-expression-des-besoins-et-identification-des-objectifs-de-securite/
