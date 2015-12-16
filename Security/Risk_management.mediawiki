@@ -103,9 +103,14 @@ can be for service owners. We call the data we gather ''data points''.
 Risk records are list of security controls a service have or is lacking and their measure of effectiveness for a given
 service. The higher the impact tied to a service, the more effective the security controls have to be. This ensure a
 lower likelihood that the service will ever suffer the impact recorded, and thus lowers the service risk.
+It also list the service risk assessed by an RRA, including impact and likelihood to different components.
 
 Security controls are categorized by capability ("Inventory", "Vulnerability remediation", "Access control", "Data
 recovery", etc.). This allows to also understand which security capabilities a service offers.
+
+* Current Capabilities Status: https://docs.google.com/spreadsheets/d/1qnjdWJiOleTLvWyeiW65gwnuElyRlMMIvvlFAnpPy3M/edit#gid=1307966807
+* Open Risk Records: http://mzl.la/1EmxXSU
+* Closed Risk Records: http://mzl.la/1EmxVdY
 
 === Impact ''data point'' ===
 
