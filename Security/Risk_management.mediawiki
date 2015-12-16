@@ -127,8 +127,8 @@ accurate for that measurement.
 ! style="font-weight: bold;" | Qualifiable results
 |-
 | '''[Risk_management:Rapid_Risk_Analysis]'''
-| The likelihood recorded by the RRA is a best-effort metric that is gathered by asking standard questions.It generally
-catches high/maximum likelihood scenarios well, but is not accurate for medium/low scenarios.(i.e. an RRA low likelihood
+| The likelihood recorded by the RRA is a best-effort metric that is gathered by asking standard questions. It generally
+catches high/maximum likelihood scenarios well, but is not accurate for medium/low scenarios. (i.e. an RRA low likelihood
 may in fact be higher than estimated)
 |
 * Google docs, point in time, manual.
@@ -141,8 +141,8 @@ may in fact be higher than estimated)
 * Productivity impact probability.
 |-
 | '''Vulnerability data'''
-| Scanning results from the vulnerability management software. It is difficult to assess exposure through this mean.An
-infrasec system user needs to be present.
+| Scanning results from the vulnerability management software. It is difficult to assess exposure through this mean. An
+infrasec system user needs to be present. This also includes non-system vulnerabilities such as web application vulnerabilities.
 |
 * MozDef, daily refresh via vmintgr.
 | Yes.
