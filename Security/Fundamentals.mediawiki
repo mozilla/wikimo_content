@@ -29,8 +29,7 @@ single shared account across multiple systems at the same time.
 |<div id="decentralized-user-account-management">[[#decentralized-user-account-management|§]] Decentralized user account management</div>
 |Decentralized user account management refers to user account management which is not driven by the source of truth for the user's account. Examples of this are:
 * Manual user account creation by administrators.
-* Automated user account creation from scripting or configuration management that creates accounts based on a static
-* list of users.
+* Automated user account creation from scripting or configuration management that creates accounts based on a static list of users.
 This practice is discouraged because:
 * When a user's access status changes due to leaving the company or changing teams, the associated change in the system
 * which uses decentralized user account management is not automatically made resulting in unintended system access.
