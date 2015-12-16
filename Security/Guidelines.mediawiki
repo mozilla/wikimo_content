@@ -1,5 +1,1 @@
-== List of Mozilla Security Guidelines ==
 
-{{#subpages:Security/Guidelines}}
-<!-- Because ulfr needs his special pages ;-) -->
-* [[Security/Server_Side_TLS]]
