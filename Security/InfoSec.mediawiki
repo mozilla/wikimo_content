@@ -158,6 +158,26 @@ When a threat model or analysis is requested on a large service (ie, larger than
 * Get a quick in-line reply in Bugzilla (responses sec-review flag).
 * Get architectural tips from the security point of view at the project design time.
 
+== Service: Penetration Testing ==
+
+; Support commitment
+: Response within a week
+: Testing timelines vary based on testing scope
+; Costs
+: One or more meeting with InfoSec.
+; Service request
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+
+=== Description ===
+
+An adversarial exercise with the goal of demonstrating risks that could be exploited by a threat actor.  Testing scope is heavily influenced by RRA and Threat Modeling results, which should be completed prior to Penetration Testing.
+
+=== What you can do with this service ===
+
+* Get a detailed report of security controls that were tested and found effective/ineffective
+* Get recommendations on how to remedy ineffective security controls
+* Get proof of concept (PoC) evidence that demonstrates the ineffectiveness of security controls to support development and prioritization efforts
+
 == Security Incident Response ==
 
 ; Support commitment
