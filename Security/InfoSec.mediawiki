@@ -170,7 +170,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 
 === Description ===
 
-An adversarial exercise with an explicit testing scope. Scope is heavily influenced by RRA and Threat Modeling results and the goal is to demonstrate risks that could be exploited by a threat actor.
+An adversarial exercise with the goal of demonstrating risks that could be exploited by a threat actor.  Testing scope is heavily influenced by RRA and Threat Modeling results, which should be completed prior to Penetration Testing.
 
 === What you can do with this service ===
 
