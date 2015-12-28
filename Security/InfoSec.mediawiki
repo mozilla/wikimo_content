@@ -161,7 +161,8 @@ When a threat model or analysis is requested on a large service (ie, larger than
 == Service: Penetration Testing ==
 
 ; Support commitment
-: Response within a week.  Testing timelines vary based on scope.
+: Response within a week
+: Testing timelines vary based on testing scope
 ; Costs
 : One or more meeting with InfoSec.
 ; Service request
@@ -169,8 +170,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 
 === Description ===
 
-An adversarial exercise with an explicit scope influenced by RRA and GSA results that attempt to demonstrate risks that could be exploited by a threat actor.
-Length of review is variable based on scope. An RRA and GSA must always be done prior.
+An adversarial exercise with an explicit testing scope. Scope is heavily influenced by RRA and Threat Modeling results and the goal is to demonstrate risks that could be exploited by a threat actor.
 
 === What you can do with this service ===
 
