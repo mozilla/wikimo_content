@@ -138,6 +138,25 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 * Get your service recorded in a risk heatmap to compare it with other services.
 * Find out if you need a threat model.
 
+== Service: Vulnerability Assessment ==
+
+; Support commitment
+: Response within a week.
+; Costs
+: One or more meetings with InfoSec.
+; Service request
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+
+=== Description ===
+
+A vulnerability assessment is semi-automated point-in-time assessment conducted by Mozilla Security using a vulnerability scanner and other “point and shoot” tools for an explicit set of target(s). May include a validation component, depending on scope and service risk.
+
+=== What you can do with this service ===
+
+* Quickly identify commonly known vulnerabilities/misconfigurations in your application ranked by severity
+* Get a sense of a vendor systems security posture if the vendor is not forthcoming about their security posture but is willing to be scanned
+* Get a manual verification of vulnerabilities/misconfigurations to weed out false positives (optional - based on scope and risk)
+
 == Service: Threat Modeling ==
 
 ; Support commitment
