@@ -154,7 +154,7 @@ A vulnerability assessment is semi-automated point-in-time assessment conducted 
 === What you can do with this service ===
 
 * Quickly identify commonly known vulnerabilities/misconfigurations in your application ranked by severity
-* Get a sense of a vendor systems security posture if the vendor is not forthcoming about their security posture but is willing to be scanned
+* Get a sense of a vendor systems security posture if the vendor is not forthcoming but is willing to be scanned
 * Get a manual verification of vulnerabilities/misconfigurations to weed out false positives (optional - based on scope and risk)
 
 == Service: Threat Modeling ==
