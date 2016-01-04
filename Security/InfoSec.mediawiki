@@ -149,7 +149,7 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 
 === Description ===
 
-A vulnerability assessment is semi-automated point-in-time assessment conducted by Mozilla Security using a vulnerability scanner and other “point and shoot” tools for an explicit set of target(s). May include a validation component, depending on scope and service risk.
+A vulnerability assessment is a semi-automated point-in-time assessment conducted by Mozilla Security using a vulnerability scanner and other “point and shoot” tools for an explicit set of target(s). May include a validation component, depending on scope and service risk.
 
 === What you can do with this service ===
 
