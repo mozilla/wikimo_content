@@ -125,7 +125,7 @@ Test driven systems security uses a battery of tests run against a system to eva
 ; Costs
 : 30 minutes meeting with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Rapid%20Risk%20Analysis request bug]
 
 === Description ===
 
@@ -145,7 +145,7 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 ; Costs
 : One or more meetings with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Vulnerability%20Assessment request bug]
 
 === Description ===
 
@@ -164,7 +164,7 @@ A vulnerability assessment is a semi-automated point-in-time assessment conducte
 ; Costs
 : One or more meeting with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Threat%20Modeling request bug]
 
 === Description ===
 
@@ -185,7 +185,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 ; Costs
 : One or more meeting with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Review request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Penetration%20Test request bug]
 
 === Description ===
 
