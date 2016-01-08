@@ -111,11 +111,11 @@ InfoSec operates a client/server platform to facilitate the investigation of lar
 
 === Description ===
 
-Test driven systems security uses bateries of tests ran against a system to evaluate its conformance with security best practices. The tests can be ran daily, or trigger on-demand, making it easy to implement and review security controls in real time.
+Test driven systems security uses a battery of tests run against a system to evaluate its conformance with security best practices. The tests can be ran daily, or trigger on-demand, making it easy to implement and review security controls in real time.
 
 === What you can do with this service ===
 
-* Obtain a detailled view of the security controls deployed on a system, or across an infrastructure.
+* Obtain a detailed view of the security controls deployed on a system, or across an infrastructure.
 * Fast iterations on the implementation and review of security controls. This is designed to accelerate the feedback loop between operational and security teams. immediate feedback is necessary.
 
 == Service: Rapid Risk (Impact) Assessment (RRA) ==
