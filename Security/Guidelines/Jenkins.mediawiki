@@ -24,9 +24,9 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 === Password Masking ===
 *TODO* - Ensure masking is enabled on all passwords.  In cases where this is not enabled, enable it and consider rotating the credentials.
 === Authentication ===
-*TODO* - LDAP and MFA strategy vs. user/pass
+*TODO* - LDAP and MFA strategy vs. user/pass, don't allow users to sign up, always require auth
 === Authorization ===
-*TODO* - From everyone is admin to matrix based security
+*TODO* - Use a matrix based security (this gives you options)
 == CSRF Protection ==
 *TODO* - enable this out of the box
 
@@ -48,6 +48,8 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 == Maintenance ==
 === Advisory Notification ===
 *TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
+=== Security Updates ===
+*TODO*
 === Job Pruning ===
 *TODO*
 === Job Creep ===
