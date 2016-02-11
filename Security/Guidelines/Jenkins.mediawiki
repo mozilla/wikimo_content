@@ -42,6 +42,8 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 *TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
 === Job Isolation ===
 *TODO* - Don't run anything on the master node, use slaves and containers for better OS isolation and repeatability
+=== Secret Management ===
+*TODO*
 
 == Maintenance ==
 === Advisory Notification ===
