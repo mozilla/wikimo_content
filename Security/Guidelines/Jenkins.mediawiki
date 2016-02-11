@@ -49,7 +49,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 === Advisory Notification ===
 *TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
 === Security Updates ===
-*TODO*
+*TODO* - address core upgrade and plugin upgrades
 === Job Pruning ===
 *TODO*
 === Job Creep ===
