@@ -1,0 +1,62 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+The goal of this *DRAFT* document is to help operational teams with the configuration of Jenkins, a continuous integration/delivery application.
+
+All Mozilla sites and deployment should follow the recommendations below.  The Enterprise Information Security (Infosec, formerly
+OpSec) team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+= Jenkins-CI =
+== HTTP ==
+=== Transport Encryption ===
+*TODO* - Basically, see SSL/TLS guidelines
+=== Sensitive Path Restrictions ===
+*TODO* - Provide a list of sensitive paths and maybe some example configurations on how to restrict paths in different browsers
+=== Password Masking ===
+*TODO* - Ensure masking is enabled on all passwords.  In cases where this is not enabled, enable it and consider rotating the credentials.
+=== Authentication ===
+*TODO* - LDAP and MFA strategy vs. user/pass
+=== Authorization ===
+*TODO* - From everyone is admin to matrix based security
+== CSRF Protection ==
+*TODO* - enable this out of the box
+
+== SSH ==
+=== Transport Encryption ==
+*TODO* - Basically, see OpenSSH guidelines (use key auth)
+=== Tunneling ===
+*TODO* - Have users tunnel their traffic for sensitive paths
+
+== Architecture ==
+*TODO* - Discuss the trust model in Jenkins a bit further
+=== Security Zones ===
+*TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
+=== Job Isolation ===
+*TODO* - Don't run anything on the master node, use slaves and containers for better OS isolation and repeatability
+
+== Maintenance ==
+=== Advisory Notification ===
+*TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
+=== Job Pruning ===
+*TODO*
+=== Job Creep ===
+*TODO*
+
+= Appendixes =
+== Reference documents ==
+
+* [https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+Best+Practices]
+* [https://wiki.jenkins-ci.org/display/JENKINS/Securing+Jenkins]
+* [https://wiki.mozilla.org/Security/Server_Side_TLS Server Side TLS]
+* [https://wiki.mozilla.org/Security/Guidelines/OpenSSH]
+* [https://speakerdeck.com/javuto/security-at-scale-2015-building-open-source-software-for-security]
+* [https://speakerdeck.com/claudijd/attacking-cloud-services-with-source-code]
