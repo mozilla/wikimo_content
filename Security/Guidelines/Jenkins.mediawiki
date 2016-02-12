@@ -78,7 +78,9 @@ It is recommended that you start with the full list of restricted paths and then
 == SSH ==
 
 === Authentication ===
-All remote authentication to a Jenkins SSH service should be restricted to no less than SSH key-based authentication or dual-factor authentication where possible, as defined in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].
+All remote authentication to a Jenkins SSH service should be restricted to no less than SSH key-based authentication or dual-factor authentication where possible, as defined in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].  Access to the root user should be prohibited.
+
+...
 
 === Transport Encryption ===
 Default OpenSSH configurations tend to provide reasonably good transport encryption security.  However, there is still room to further lock down a Jenkins openssh configuration and incentive to do so considering the critical functions and secrets we trust Jenkins with.
@@ -91,7 +93,20 @@ SSH tunneling can be used in a couple different instances to limit attack surfac
 * To provide access to Jenkins installation paths that are bound to a routable IP, which present a limited HTTP attack surface, except to users which have already authenticated to the SSH service.
 * To provide connectivity to Jenkins installations that are bound to the loopback interface on the service, which present no HTTP attack surface, except to users which have already authenticated to the SSH service.
 
+When allowing SSH access to Jenkins users for the purpose of tunneling, you may also need to consider whether those users require full SSH access, or just tunneling configuration.
 
+To enable tunneling in SSH, simply add the following to the sshd_config file"
+
+  AllowTcpForwarding yes
+
+To restrict a user's ability to obtain a shell (if relevant), simply create an account that prevents access to a shell like /sbin/nologin:
+
+  groupadd tunnel_users
+  useradd -g tunnel_users -s /usr/sbin/nologin -m -d /home/jsmith_tunnel jsmith_tunnel
+
+As an SSH client, the user can now tunnel to the localhost bound interface and access the Jenkins interface on 127.0.0.1:8080:
+
+  ssh -L 8080:localhost:8080 jsmith_tunnel@192.168.1.1
 
 == Architecture ==
 *TODO* - Discuss the trust model in Jenkins a bit further
