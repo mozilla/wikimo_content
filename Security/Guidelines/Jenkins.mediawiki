@@ -27,18 +27,18 @@ There are a number of URL paths in Jenkins that expose attack surface on a Jenki
 
 Please note that the following paths are relative to the Jenkins application root.  So if you're Jenkins installation is reachable at /jenkins instead of the default /, you may need to make substitutions accordingly:
 
-- ./script
-- ./view/All/newJob
-- ./asynchPeople
-- ./systemInfo
-- ./api
-- ./restart
-- ./quietDown
-- ./user/jenkins
-- ./jnlpJars
-- ./asynchPeople
-- ./credential-store
-- ./job/[job_name]/[build_number]/injectedEnvVars/
+  ./script
+  ./view/All/newJob
+  ./asynchPeople
+  ./systemInfo
+  ./api
+  ./restart
+  ./quietDown
+  ./user/jenkins
+  ./jnlpJars
+  ./asynchPeople
+  ./credential-store
+  ./job/[job_name]/[build_number]/injectedEnvVars/
 
 Such a restrictions can be implemented in any modern web server technology.  For example, this is how you can perform such path restrictions in nginx using the location directive:
 
@@ -46,7 +46,6 @@ Such a restrictions can be implemented in any modern web server technology.  For
   location ^~ /(api|restart|quietDown|user/jenkins|jnlpJars|script|asynchPeople|credential-store|systemInfo|view/All/newJob) {
     deny    all;
   }
-
   # Restrict access to injectedEnvVars paths
   location ~* ^.+/injectedEnvVars/$ {
     deny    all;
