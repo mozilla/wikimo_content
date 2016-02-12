@@ -114,7 +114,7 @@ recovery", etc.). This allows to also understand which security capabilities a s
 
 === Impact ''data point'' ===
 
-The [Risk_management:Rapid_Risk_Analysis] is currently the single data point for impact and is fairly reliable and
+The [[Security/Risk management/Rapid Risk Assessment|Rapid Risk Assessment]] is currently the single data point for impact and is fairly reliable and
 accurate for that measurement.
 
 * Quantifiable results: Normalized financial impact, productivity impact.
@@ -131,7 +131,7 @@ accurate for that measurement.
 ! style="font-weight: bold;" | Quantifiable results
 ! style="font-weight: bold;" | Qualifiable results
 |-
-| '''[Risk_management:Rapid_Risk_Analysis]'''
+| '''[[Security/Risk management/Rapid Risk Assessment|Rapid Risk Assessment]]'''
 | The likelihood recorded by the RRA is a best-effort metric that is gathered by asking standard questions. It generally
 catches high/maximum likelihood scenarios well, but is not accurate for medium/low scenarios. (i.e. an RRA low likelihood
 may in fact be higher than estimated)
