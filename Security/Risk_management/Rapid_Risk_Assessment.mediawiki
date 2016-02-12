@@ -11,7 +11,7 @@ The Rapid Risk Assessment or Rapid Risk Analysis (RRA) methodology helps formali
 reproducible, consistent and easy to communicate.
 
 This document assumes that the reader is familiar with risk definitions, and the Mozilla risk levels from the
-[Risk_management] documentation (i.e. read it first).
+[[Security/Risk management|Risk Management]] documentation (i.e. read it first).
 
 The Enterprise Information Security Team (Infosec) maintains this document as a reference guide for security engineers
 and anyone interested in following our risk management processes.
