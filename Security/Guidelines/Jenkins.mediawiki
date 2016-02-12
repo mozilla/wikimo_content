@@ -82,7 +82,9 @@ All remote authentication to a Jenkins SSH service should be restricted to no le
 
 Access to the root user should be prohibited.  This can be done via the following addition to sshd_config:
 
-PermitRootLogin no
+  PermitRootLogin no
+
+
 
 === Transport Encryption ===
 Default OpenSSH configurations tend to provide reasonably good transport encryption security.  However, there is still room to further lock down a Jenkins openssh configuration and incentive to do so considering the critical functions and secrets we trust Jenkins with.
@@ -109,6 +111,8 @@ To restrict a user's ability to obtain a shell (if relevant), simply create an a
 As an SSH client, the user can now tunnel to the localhost bound interface and access the Jenkins interface on 127.0.0.1:8080:
 
   ssh -L 8080:localhost:8080 jsmith_tunnel@192.168.1.1
+
+You can also refer to the SSH agent forwarding section in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH#SSH_agent_forwarding Mozilla OpenSSH Guide] for additional hardening guidance on SSH agent tunneling.
 
 == Architecture ==
 *TODO* - Discuss the trust model in Jenkins a bit further
