@@ -3,7 +3,7 @@
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
 '''STATUS: READY'''
-'''RRA Version supported: 2.5.0'''
+'''RRA Version supported: 2.5.x'''
 
 Any team uses a risk based methodology when making any decision.
 The Rapid Risk Assessment or Rapid Risk Analysis (RRA) methodology helps formalize these decisions and ensures that they're
@@ -30,9 +30,11 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 ! <span style="color:red;">'''WARNING'''</span>
 |-
 |
-The Rapid Risk Analysis/Assessment (RRA) is not a security review or a full threat-model. A threat model, review, pen-testing, etc. may
-however follow an RRA.
-The RRA focuses on capturing as much information as possible about the risk posture of a service in a short amount of time, typically 30 minutes.
+A typical Rapid Risk Analysis/Assessment (RRA) lasts about 30 minutes.
+It is not a security review or a full threat-model, peneration test, review, etc. These may however follow an RRA.
+
+The objective of the RRA is to understand the value and impact of a service on a business, project, company - it does not
+focus on quantifying and analyzing security controls.
 '''The RRA process analyze and assess services'''. Analyzing processes, or individual pieces of data is not recommended through the RRA process.
 |}
 
@@ -86,6 +88,9 @@ sub-services belong to different teams, it is a strong indicator that multiple R
 
 Large services that cannot be split up not only lead to a complex assessment, but also may indicate that the service
 itself needs to be re-designed in a more secure fashion.
+
+Representing the risk of a large set of services that are tied together can be done outside the RRA by looking at the
+linked services field of the RRA.
 
 == What to focus on during RRAs? ==
 
@@ -158,6 +163,7 @@ The header has to be filled in first and foremost.
 * Fill in the scope if you know it. Sometimes the scope is clearer at the end of the RRA.
 ** If the scope is obvious (its the whole service) it is OK to leave it blank.
 ** In some cases the scope is critical to the understanding of the RRA.
+* If you know of linked services (for example if it uses SAML authentication, the linked service could be "SAML SSO")
 * Ask the team who owns the service (takes decisions if the service must go down for example), who develops the code and who's operating it.
 ** Generally its a team name and one or more names. Sometimes, it's a third party (SaaS).
 ** You never want to leave the service owner blank, and you always want a Mozilla contact as service owner.
@@ -197,7 +203,7 @@ We want an exhaustive list of data types. While some types may be sometimes miss
 ** Credentials used by the applications (keys, logins, etc.).
 ** Potentially program code/script (such as if the code is stored on a Git repository, downloaded and ran by the service).
 ** Ask again and specify you want to make sure they've listed all sensitive data they can think of.
-* Set the data classification for each data type in the dictionary, such as "PUBLIC", "MOZILLA CONFIDENTIAL", etc. Mozilla uses standard classification levels.
+* Set the data classification for each data type in the dictionary, such as "PUBLIC", "STAFF", etc. Mozilla uses standard classification levels.
 * If some compensating controls are mentioned or there are more details about the data you can fill them in as well.
 ** For example "User attributes, classified INTERNAL, protected by LDAP authentication, used to find out the user
 t-shirt size".
