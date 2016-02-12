@@ -170,11 +170,10 @@ Note that disabling inline JavaScript means that <em>all</em> JavaScript must be
 == Examples ==
 
 <pre># Disable unsafe inline/eval, only allow loading of resources (images, fonts, scripts, etc.) over https (recommended)
-# Also transparently upgrade all http: requests to https:, without generating mixed content warnings
-Content-Security-Policy: default-src https:; upgrade-insecure-requests</pre>
+Content-Security-Policy: default-src https:</pre>
 
 <pre>&lt;-- Do the same thing, but with a <meta> tag --&gt;
-<meta http-equiv="Content-Security-Policy" content="default-src https:; upgrade-insecure-requests"></pre>
+<meta http-equiv="Content-Security-Policy" content="default-src https:"></pre>
 
 <pre># Disable the use of unsafe inline/eval, allow everything else
 Content-Security-Policy: *</pre>
@@ -204,38 +203,40 @@ Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violati
 
 Its existence can greatly speed up the process of bug triage, particularly for smaller websites with just a handful of maintainers. It further assists with helping security researchers find testable of websites and instructs them on where where in Bugzilla to file their bugs against. As such, <tt>contribute.json</tt> is mandatory for all Mozilla websites, and must be maintained as contributors join and depart projects.
 
+Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>participate</tt> (particularly <tt>irc</tt> and <tt>irc-clients</tt>), and <tt>urls</tt>.
+
 == Examples ==
 
-<pre>{
-    "name": "Bedrock",
-    "description": "The app powering www.mozilla.org.",
+<p style="border: 1px solid #ddd; background-color: #f9f9f9; font-family: monospace, Courier; line-height: 1.3em; padding: 1em; white-space: pre;">{
+    "<b>name</b>": "Bedrock",
+    "<b>description</b>": "The app powering www.mozilla.org.",
     "repository": {
-        "url": "https://github.com/mozilla/bedrock",
+        "url": <nowiki>"https://github.com/mozilla/bedrock"</nowiki>,
         "license": "MPL2",
-        "tests": "https://travis-ci.org/mozilla/bedrock/"
+        "tests": <nowiki>"https://travis-ci.org/mozilla/bedrock/"</nowiki>
     },
-    "participate": {
-        "home": "https://wiki.mozilla.org/Webdev/GetInvolved/mozilla.org",
-        "docs": "http://bedrock.readthedocs.org/",
-        "mailing-list": "https://www.mozilla.org/about/forums/#dev-mozilla-org",
-        "irc": "irc://irc.mozilla.org/#www",
-        "irc-contacts": [
+    "<b>participate</b>": {
+        "home": <nowiki>"https://wiki.mozilla.org/Webdev/GetInvolved/mozilla.org"</nowiki>,
+        "docs": <nowiki>"http://bedrock.readthedocs.org/"</nowiki>,
+        "mailing-list": <nowiki>"https://www.mozilla.org/about/forums/#dev-mozilla-org"</nowiki>,
+        "<b>irc</b>": <nowiki>"irc://irc.mozilla.org/#www"</nowiki>,
+        "<b>irc-contacts</b>": [
             "someperson1",
             "someperson2",
             "someperson3"
         ]
     },
-    "bugs": {
-        "list": "https://bugzilla.mozilla.org/describecomponents.cgi?product=www.mozilla.org",
-        "report": "https://bugzilla.mozilla.org/enter_bug.cgi?product=www.mozilla.org",
-        "mentored": "https://bugzilla.mozilla.org/buglist.cgi?f1=bug_mentor&o1=isnotempty
-                       &query_format=advanced&bug_status=NEW&product=www.mozilla.org&list_id=10866041"
+    "<b>bugs</b>": {
+        "list": <nowiki>"https://bugzilla.mozilla.org/describecomponents.cgi?product=www.mozilla.org"</nowiki>,
+        "report": <nowiki>"https://bugzilla.mozilla.org/enter_bug.cgi?product=www.mozilla.org"</nowiki>,
+        "mentored": <nowiki>"https://bugzilla.mozilla.org/buglist.cgi?f1=bug_mentor&o1=isnotempty
+                       &query_format=advanced&bug_status=NEW&product=www.mozilla.org&list_id=10866041"</nowiki>
     },
-    "urls": {
-        "prod": "https://www.mozilla.org",
-        "stage": "https://www.allizom.org",
-        "dev": "https://www-dev.allizom.org",
-        "demo1": "https://www-demo1.allizom.org",
+    "<b>urls</b>": {
+        "prod": <nowiki>"https://www.mozilla.org"</nowiki>,
+        "stage": <nowiki>"https://www.allizom.org"</nowiki>,
+        "dev": <nowiki>"https://www-dev.allizom.org"</nowiki>,
+        "demo1": <nowiki>"https://www-demo1.allizom.org"</nowiki>,
     },
     "keywords": [
         "python",
@@ -244,7 +245,8 @@ Its existence can greatly speed up the process of bug triage, particularly for s
         "html5",
         "jquery"
     ]
-}</pre>
+}
+</p>
 
 == See Also ==
 
@@ -498,10 +500,10 @@ X-XSS-Protection: 1; mode=block</pre>
 |- style="background-color: #9EDB58;"
 | [[#HTTPS|<span style="color: black;">HTTPS</span>]]
 | style="text-align: center;" | P1
-| style="text-align: center;" | Medium
-| style="text-align: center;" | 1
+| style="text-align: center;" | Easy
+| style="text-align: center;" data-sort-value="0" | 
 | Mandatory
-| Use the most secure TLS configuration for your user base
+| Sites should use HTTPS (or other secure protocols) for all communications
 |- style="background-color: #E99696;"
 | style="padding-left: 1.5em;" | [[#HTTP Public Key Pinning|<span style="color: black;">Public Key Pinning</span>]]
 | style="text-align: center;" | P5
@@ -530,6 +532,13 @@ X-XSS-Protection: 1; mode=block</pre>
 | style="text-align: center;" | 4
 | Mandatory for all websites
 | Minimum allowed time period of six months
+|- style="background-color: #9EDB58;"
+| style="padding-left: 1.5em;" | [[#HTTPS|<span style="color: black;">TLS Configuration</span>]]
+| style="text-align: center;" | P1
+| style="text-align: center;" | Easy
+| style="text-align: center;" | 1
+| Mandatory
+| Use the most secure Mozilla TLS configuration for your user base, typically [[Security/Server Side TLS#Intermediate compatibility (default)|Intermediate]]
 |- style="background-color: #E8E27A;"
 | [[#Content Security Policy|<span style="color: black;">Content Security Policy</span>]]
 | style="text-align: center;" | P2
@@ -544,13 +553,13 @@ X-XSS-Protection: 1; mode=block</pre>
 | style="text-align: center;" | 7
 | Mandatory for all new websites<br>Recommended for existing websites
 | All cookies must be set with the Secure flag, and set as restrictively as possible
-|- style="background-color: #E8E27A;"
+|- style="background-color: #D2D2D2;"
 | [[#contribute.json|<span style="color: black;">contribute.json</span>]]
 | style="text-align: center;" | P4
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 9
-| Mandatory for all new websites<br>Recommended for existing sites
-| Websites should serve contribute.json and keep contact information up-to-date
+| Mandatory for all new Mozilla websites<br>Recommended for existing Mozilla sites
+| Mozilla sites should serve contribute.json and keep contact information up-to-date
 |- style="background-color: #9EDB58;"
 | [[#Cross-origin Resource Sharing|<span style="color: black;">Cross-origin Resource Sharing</span>]]
 | style="text-align: center;" | P3
@@ -558,28 +567,28 @@ X-XSS-Protection: 1; mode=block</pre>
 | style="text-align: center;" | 11
 | Mandatory
 | Origin sharing headers and files should not be present, except for specific use cases
-|- style="background-color: #9EDB58;"
+|- style="background-color: #D2D2D2;"
 | [[#CSRF Prevention|<span style="color: black;">Cross-site Request Forgery Tokenization</span>]]
 | style="text-align: center;" | P2
 | style="text-align: center;" | Varies
 | style="text-align: center;" | 6
 | Varies
 | Mandatory for websites that allow destructive changes<br>Unnecessary for all other websites<br>Most application frameworks have built-in CSRF tokenization to ease implementation
-|- style="background-color: #CCCCCC;"
+|- style="background-color: #D2D2D2;"
 | [[#robots.txt|<span style="color: black;">robots.txt</span>]]
 | style="text-align: center;" | P5
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 13
 | Optional
 | Websites that implement robots.txt must use it only for noted purposes
-|- style="background-color: #9EDB58;"
+|- style="background-color: #E8E27A;"
 | [[#Subresource Integrity|<span style="color: black;">Subresource Integrity</span>]]
 | style="text-align: center;" | P5
 | style="text-align: center;" | Moderate
 | style="text-align: center;" | 14
 | Recommended<sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup>
-| <sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup> Only for websites that load JavaScript or stylesheets from non-Mozilla sources
-|- style="background-color: #9EDB58;"
+| <sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup> Only for websites that load JavaScript or stylesheets from foreign origins
+|- style="background-color: #E8E27A;"
 | [[#X-Content-Type-Options|<span style="color: black;">X-Content-Type-Options</span>]]
 | style="text-align: center;" | P3
 | style="text-align: center;" | Easy
