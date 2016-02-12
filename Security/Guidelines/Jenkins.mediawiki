@@ -78,9 +78,11 @@ It is recommended that you start with the full list of restricted paths and then
 == SSH ==
 
 === Authentication ===
-All remote authentication to a Jenkins SSH service should be restricted to no less than SSH key-based authentication or dual-factor authentication where possible, as defined in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].  Access to the root user should be prohibited.
+All remote authentication to a Jenkins SSH service should be restricted to no less than SSH key-based authentication or dual-factor authentication where possible, as defined in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].
 
-...
+Access to the root user should be prohibited.  This can be done via the following addition to sshd_config:
+
+PermitRootLogin no
 
 === Transport Encryption ===
 Default OpenSSH configurations tend to provide reasonably good transport encryption security.  However, there is still room to further lock down a Jenkins openssh configuration and incentive to do so considering the critical functions and secrets we trust Jenkins with.
