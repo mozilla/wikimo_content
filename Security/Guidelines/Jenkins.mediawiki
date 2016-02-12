@@ -73,10 +73,24 @@ See the above section on "Sensitive Path Restrictions" to limit the impact shoul
 
 === Authentication ===
 *TODO* - LDAP and MFA strategy vs. user/pass, don't allow users to sign up, always require auth
+
 === Authorization ===
-*TODO* - Use a matrix based security (this gives you options)
+Jenkins comes with a variety of different authorization strategies, which include the following:
+
+* Anyone can do anything (default)
+* Legacy mode
+* Logged-in users can do anything
+* Matrix-based security
+* Project-based Matrix Authorization Strategy
+
+The default Jenkins authorization strategy ("Anyone can do anything") is designed for setup purposes only as it presents significant risk to the Jenkins installation as it allows any user to administer and view any secrets entrusted to the Jenkins instance as well as remote command execution vulnerabilities via the job configuration interface.
+
+It's imperative at every Jenkins instance use at a minimum the "Logged-in users can do anything" for small groups (< 3 administrator only users) and [https://wiki.jenkins-ci.org/display/JENKINS/Matrix-based+security Matrix-based security] for any instance where users of different privilege-levels need to co-exist (ie. administrators) as it provides the most options for limiting user access to only required roles.
+
+Note: When using configuring matrix-based security, any user that is given "job" permission on a job that runs on the master node will have access to the $JENKINS_HOME directory, which would allow that user to privilege escalate to full administrator.  When giving users "job" permission or above to a job, make sure that that job is run on a slave node and that slave node should build any other jobs for which the user does not already have the "job" permission for to prevent lateral movement on the slave node.
+
 === CSRF Protection ===
-*TODO* - enable this out of the box
+Jenkins does provide a CSRF configuration with in Manage Jenkins => Configure Global Security as a checkbox called "Prevent Cross Site Request Forgery exploits".  Unfortunately, this feature, which is aimed at preventing an attacker from executing CSRF/XSRF exploit, also comes with some short falls including additional work to use the remote api and limited testing/compatibility support with plugins.  It is recommended that this feature be enabled at first, but if it becomes an obstacle and conflicts with one of the above issues, then it can be disabled.
 
 == SSH ==
 
