@@ -59,7 +59,7 @@ It is recommended that you start with the full list of restricted paths and then
 *TODO* - LDAP and MFA strategy vs. user/pass, don't allow users to sign up, always require auth
 === Authorization ===
 *TODO* - Use a matrix based security (this gives you options)
-== CSRF Protection ==
+=== CSRF Protection ===
 *TODO* - enable this out of the box
 
 == SSH ==
