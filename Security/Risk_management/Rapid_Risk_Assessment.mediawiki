@@ -1,0 +1,368 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: READY'''
+'''RRA Version supported: 2.5.x'''
+
+Any team uses a risk based methodology when making any decision.
+The Rapid Risk Assessment or Rapid Risk Analysis (RRA) methodology helps formalize these decisions and ensures that they're
+reproducible, consistent and easy to communicate.
+
+This document assumes that the reader is familiar with risk definitions, and the Mozilla risk levels from the
+[Risk_management] documentation (i.e. read it first).
+
+The Enterprise Information Security Team (Infosec) maintains this document as a reference guide for security engineers
+and anyone interested in following our risk management processes.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+= Rapid Risk Assessment =
+
+{| class="wikitable"
+|-
+! <span style="color:red;">'''WARNING'''</span>
+|-
+|
+A typical Rapid Risk Analysis/Assessment (RRA) lasts about 30 minutes.
+It is not a security review or a full threat-model, peneration test, review, etc. These may however follow an RRA.
+
+The objective of the RRA is to understand the value and impact of a service on a business, project, company - it does not
+focus on quantifying and analyzing security controls.
+'''The RRA process analyze and assess services'''. Analyzing processes, or individual pieces of data is not recommended through the RRA process.
+|}
+
+== Preamble ==
+
+Data is the most important item in risk management. Software, websites, infrastructure, networks and people handle, process, exchange and store data.
+
+The RRA focuses efforts on creating a summary of the risks associated with our data. In particular it aims to be:
+
+* '''Quick!''' About 30 minutes to 60 minutes maximum.
+* '''Very high-level'''. Details are for complete threat models.
+* '''Concise, readable'''. Short table with clear risk levels.
+* '''Easy to update'''. Can be run during the architecture phase, and re-run if the project is re-architected or new high level design decisions are made.
+* '''Informative''' It collects risk impact, an approximate impact likelihood and data dictionary.
+
+This helps to make the following type of risk-based decisions:
+
+* Is the security provided by a given platform appropriate to host a specific type of data?
+* How much should we care about maintenance, etc?
+* Does this service warrant a full security threat-model, peneration test, privacy review?
+* How long should we spend on these tasks?
+* Is there anything obvious I should really look at fixing right now?
+
+{| class="wikitable"
+|-
+! <span style="color:gray;">Sample use case</span>
+|-
+|
+Firefox accounts store user data:
+
+* What happens if that data is exposed to the world? What happens if the systems go down? What happens if that data is disclosed? What if the data is modified?
+* Are we at financial, operational risk? Is our reputation also at risk?
+* What kind of data does Firefox accounts exactly handle? How sensitive is the primary kind of data used by Firefox accounts?
+
+The RRA table facilitate the answer to these questions.
+|}
+
+== When to run RRAs? ==
+
+RRAs are designed to be updated and re-runnable as needed. That being said, it is recommended to run the first RRA
+during the design or architecture phase of new services, when an initial data flow diagram for the service has been created.
+
+== What to run through RRAs? ==
+
+RRAs can only be used for services. Any project belongs to or provides a service. Any component, piece of code or data
+belongs to a service. Find which service it belongs to and RRA that service, not the specific piece of code or data.
+
+Large services should be split into multiple smaller services or sub-services that handle a specific type of data and
+expose a limited set of features. This choice has to be made by the security engineer running the RRA. If the
+sub-services belong to different teams, it is a strong indicator that multiple RRAs should be ran.
+
+Large services that cannot be split up not only lead to a complex assessment, but also may indicate that the service
+itself needs to be re-designed in a more secure fashion.
+
+Representing the risk of a large set of services that are tied together can be done outside the RRA by looking at the
+linked services field of the RRA.
+
+== What to focus on during RRAs? ==
+
+* '''Impact assessment'''. The RRA is the authority for impact levels and these are paramount.
+* '''Rationales'''. Anyone should understand why you've set a specific impact level by reading 
+* Getting '''value for the team'''. The team needs to understand what is most important to protect.
+
+What to '''NOT''' focus on:
+* Gathering security controls, figuring out how effective they are, etc. Don't do that! This information may be recorded if it comes up but do not focus on it.
+* Likelihood, Security provided by service. Don't spent much time there! These are "10, 000 feet approximations" and part of a larger risk calculation mechanism.
+
+== Guided process: Running your RRA in ~30 minutes ==
+
+This is a guided example of how to run an RRA.
+
+{| class="wikitable"
+|-
+! <span style="color:gray;">Time management and control</span>
+|-
+|
+You will be responsible for the time distribution and ensure 30 minutes are not exceeded if possible.
+
+You will sometimes have to cut a discussion short and be assertive.
+We have a tendency to jump directly to discussing security controls during risk discussions. While valuable, this
+is not the purpose of the RRA, and controls can be better discussed once the impacts have been clearly defined.
+
+For example:
+
+* The discussion languishes (>1 minute) around "how to mitigate this very issue" or "we're doing X to ensure this never happens".
+* The discussion focuses on process instead of filling the form.
+* The discussion about how the service works takes forever (>15 minutes) and the owner has to lookup every single detail.
+
+A good tip is to '''reserve 50-60 minutes''' of RRA time in the calendar, and plan to run the RRA for only '''30
+minutes'''.
+This leaves you with some room for error, and handle services that weren't well understood by their owners.
+In any case, always watch your clock!
+|}
+
+=== Getting started (pre-work) ===
+
+* Ensure no previous RRA exist, else re-use the previous RRA.
+* Create a copy of the [https://drive.google.com/open?id=160V89R-VdIe1AEHcT_sX89UToV2gv8mLshhoia2-6mM template] and move it to the correct directory (or your personal Google drive if you're testing the RRA process).
+* Invite 1 or 2 members (product owners, lead engineers, etc.) related to the service with enough technical knowledge, ensure they will bring a diagram of data
+flows and have an understanding of the data being stored or processed by the service. You do not want more than 4 or 5 persons total as this will slow down the RRA. Most RRAs are run 1 on 1 (2 persons total).
+Make sure everyone invited has '''edit''' rights to the document, and has the document opened in front of them when the
+RRA starts.
+* If this is anyone's first RRA, ensure they understand what risk impacts are, and the standard risk levels we are using, as well giving them a short overview of what is going to happen:
+** Filling in header/meta-data information about the service.
+** Getting an idea of how the service is architected.
+** Recording all data the service may process/store and how sensitive it is.
+** Run through the risk table and figure out what happens if the data leak, is modified, is unavailable, etc - while
+assigning the standard risk levels.
+** Write down any recommendation for the service.
+
+{| class="wikitable"
+|-
+! <span style="color:red;">First time?</span>
+|-
+|
+If this is your first RRA, ensure that someone who has run RRAs previously is present to help you.
+It is good to have attended multiple RRAs before starting your own.
+|}
+
+=== Header (5 minutes) ===
+
+The header has to be filled in first and foremost.
+
+* Fill in the service name. It may be the product or generic service name, or even better, both. Try to keep it short and simple.
+* Fill in the description of the service. In order to do that, ask the team to give you a short, one sentence, few words quick description of what this service does, how it does it.
+* Fill in the scope if you know it. Sometimes the scope is clearer at the end of the RRA.
+** If the scope is obvious (its the whole service) it is OK to leave it blank.
+** In some cases the scope is critical to the understanding of the RRA.
+* If you know of linked services (for example if it uses SAML authentication, the linked service could be "SAML SSO")
+* Ask the team who owns the service (takes decisions if the service must go down for example), who develops the code and who's operating it.
+** Generally its a team name and one or more names. Sometimes, it's a third party (SaaS).
+** You never want to leave the service owner blank, and you always want a Mozilla contact as service owner.
+** You always want at least a team name, as people change teams, etc. A team name and a responsible person name is ideal.
+* Other fields will be automatically filled in or filled in at a later time.
+
+=== General notes (5-10 minutes) ===
+
+At this point you want to have a good understanding of the service:
+
+* Where is it running? Which platforms?
+* What is it running, what kind of software or technologies?
+* How is it structured, architected? Do you have your data flow diagram?
+* Do you have some documentation links?
+* Any URL to access the service?
+* How is administration performed?
+* How is authorization (login) performed?
+* What is logged, where?
+
+Anything of interest may go in the RRA general notes. This can be used during the description  of the service as well if you hear interesting details that did not fit in the description.
+
+{| class="wikitable"
+|-
+! <span style="color:red;">WARNING</span>
+|-
+|
+At the end of this exercise, you want to be able to reformulate how the service works, with your own words, and have the
+RRA participants tell you if that understanding is correct. This step is crucial.
+|}
+
+=== Data Dictionary (5-10 minutes) ===
+
+We want an exhaustive list of data types. While some types may be sometimes missing as this is a best-effort type discussion, it is important to ensure we're missing as little as possible.
+
+* Ask the team to help you list which data is handled by the application, such as:
+** Specific configuration data (on disk or in RAM).
+** Credentials used by the applications (keys, logins, etc.).
+** Potentially program code/script (such as if the code is stored on a Git repository, downloaded and ran by the service).
+** Ask again and specify you want to make sure they've listed all sensitive data they can think of.
+* Set the data classification for each data type in the dictionary, such as "PUBLIC", "STAFF", etc. Mozilla uses standard classification levels.
+* If some compensating controls are mentioned or there are more details about the data you can fill them in as well.
+** For example "User attributes, classified INTERNAL, protected by LDAP authentication, used to find out the user
+t-shirt size".
+* Based on this dictionary/catalog of data, figure out which is the main data classification the service is handling. If unsure, ask the team.
+** For example "mock is mainly used to serve package files that are PUBLIC." (public main data classification).
+** Set this in the header section at the top of the RRA template.
+
+=== RRA Risk table (5-10 minutes) ===
+
+This is where the risk impact assessment is done, and where the probability for these impact is roughly estimated.
+The risk impact is using ''probable impact'', that is, worst-case scenario impacts that seem possible.
+
+==== Levels summary ====
+
+===== Reputation =====
+
+{| class="wikitable"
+|-
+| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| Nobody cares.
+|-
+| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| Tweets, forum posts, e-mails are seen.
+|-
+| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| Articles in technical websites such as HN, Ars-Technica, etc. are seen.
+|-
+| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| Scandal. We appear on TV, BBC, etc.
+|-
+|}
+
+===== Productivity =====
+
+{| class="wikitable"
+|-
+| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| SG (Small Group): affected for < 24h. LG (Large Group): affected for minutes.
+|-
+| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| SG: affected for days. LG: affected for hours.
+|-
+| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| SG: affected for weeks. LG: affected for days.
+|-
+| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| SG: affected for a month or more. LG: affected for weeks.
+|-
+|}
+
+===== Finances =====
+
+{| class="wikitable"
+|-
+| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| < 100k USD.
+|-
+| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| < 1M USD.
+|-
+| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| < 10M USD.
+|-
+| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| > 10M USD.
+|-
+|}
+
+Work-force (productivity-derived) financial costs calculations are included in the RRA spreadsheet.
+
+==== Recording risk impacts ====
+
+
+The risk impact is solely sourced from the RRA when risk is calculated. Thus, the RRA risk impact is the most important
+value being recorded and must be as accurate as possible.
+
+* Tell the team you're now going to look at the impact on confidentiality, availability and integrity of the service.
+** Confidentiality is what happens if the data is leaked (all files zipped up and served on a public site).
+** Availability is what happens if the service is no longer available (DDOS or malfunction, service unreachable).
+** Integrity is what happens if the service data is tampered with (records no longer show trustworthy data, site is
+defaced, etc.)
+* For each, we'll look at how it affects Mozilla's reputation, productivity and finances.
+** Reputation is our public image, both internal and external to Mozilla.
+** Productivity is our ability to work. If a team can't do their regular work, their productivity is affected.
+** Finances represent the cost of an impact. For example, abusing an AWS account and running bitcoin-mining instances
+would cost us money.
+* For each row, there is a summary/reference built-in the template that let you know how the level is set.
+
+As you go through each row, ensure that the team understands which level you're selecting as impact and why.
+
+For example:
+
+Confidentiality=>Reputation HIGH impact would mean that Mozilla would get in tech. news (HN, Ars Technica, etc.)
+if the data was leaked.
+Confidentiality=>Productivity MEDIUM impact would mean that some small Mozilla teams (SG) would be affected for more than
+24h, or a large team (LG) for a few hours.
+If the impact on productivity is higher than LOW, it is possible that we occur financial impacts derived from work-force costs.
+
+For each level, add a rationale on why the level was selected. Remember that anyone reading this
+document will rely on your rationale and need to be able to understand why the level is selected. List affected teams
+and their sizes, for how long for example.
+
+
+==== Recording risk likelihood ====
+
+Our likelihood level recorded during the RRA is very qualitative and of lower accuracy than the impact assessment.
+Ensure that you do not spent too much time arguing about the likelihood - this level will change and the final risk
+calculation takes several data sources in addition to the RRA itself.
+
+Questions to ask:
+
+* Is the service code peer-reviewed?
+* Did the service get any kind of security review, modeling, pen-testing in the past?
+* Did the service suffer any security vulnerability in the past?
+** Did any of the vulnerabilities get exploited or the service compromised?
+* How confident are you that this impact may occur during the next year?
+* Are we aware of ongoing attacks on the service? (brute force attempts, DDoS, ...)
+
+The estimated likelihood is then recorded as an estimated occurrence rate per calendar year.
+
+==== Additional tips ====
+
+* Whenever the productivity impact is HIGH or MAXIMUM, there probably also is a financial impact due to the cost of the workforce being impacted.
+* Financial risk is sometimes hard to define, in particular when tied to contracts.
+** If no financial impact is clearly derived, it is OK to set the impact to LOW and rationale to "N/A".
+** If there is still doubt, you may select "unknown" or "undefined" instead.
+* If you have any HIGH or MAXIMUM impact, you will want to propose the team to run a threat model and pen-test, every time.
+* Educate the project owners and/or lead developers of the project about the meaning of these risks and how the RRA can help them make decisions such as which operational environment to select, what technologies to use, or how much effort to put in securing the project.
+
+=== Recommendations (5 minutes) ===
+
+While the RRA is not meant for true security-review type work, recommendations do come up and this is a great time to
+have a quick 5 minutes chat about these.
+
+* Ensure all recommendations that came up (from you or the team) are mentioned there. It's OK to fill this table as you go, too!
+* List the control need (should this be prioritized?)
+* Ensure logging and access control have been mentioned. Can these be improved? Should we alert on events?
+* Does this service have an incident response scenario figured out?
+
+=== Wrapping up ===
+
+* Estimate a security level provided by the service and set it in the RRA header at the top.
+** A service that does not seem safe provides LOW security.
+** A service that seem to follow best-practices provides MEDIUM security.
+** A service that put emphasis on security and uses stronger controls provides a HIGH security.
+** A service that has been well reviewed via threat models, pen-tested, etc. and uses strong controls, privilege and
+data separation provides a MAXIMUM security.
+* Which recommendations do the team think of implementing ''(If no recommendations are implemented, you have very little impact)''
+* Summarize the risk assessment table, the biggest impacts, and ask the team if that sounds like what they expected.
+* Ask the team if there is any security concern that they have, which has not been mentioned.
+* Ensure you left no "red" field blank (these are must-fill-in fields).
+* Tell the team that you'll follow up with a risk-record, thanks them for their time, you're done!
+
+=== Creating a risk record (post-work, 30 minutes) ===
+
+Create a risk record for the service: https://mana.mozilla.org/wiki/display/SECURITY/Risk+Records
+
+== Reference documents ==
+
+* https://binary.protect.io/workcard.pdf
+* http://en.wikipedia.org/wiki/ISO_31000
+* http://www.riskmanagementinsight.com/media/docs/FAIR_introduction.pdf
