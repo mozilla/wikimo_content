@@ -67,7 +67,10 @@ Apache HTTPD Example:
 It is recommended that you start with the full list of restricted paths and then remove restrictions as necessary to fit your desired use case.  Additionally, you may also consider restricting some paths by source IP to provide additional paths for users sourcing from specific source networks, such as those originating from an internal/VPN network.
 
 === Password Masking ===
-*TODO* - Ensure masking is enabled on all passwords.  In cases where this is not enabled, enable it and consider rotating the credentials.
+In the configuration of a Jenkins job, you may have a need to supply a password/api key.  In these cases, it's recommended that under the "Build Environment" section that these environment variables be introduced via the "Inject passwords to the build as environment variables" section and not the "Inject environment variables to the build process".  As part of this subsection of the configuration, there is an additional checkbox called "Mask password parameters", which should be checked to ensure that these values are not leaked (plain-text -or- cipher-text) via the ./job/[job_name]/[build_number]/injectedEnvVars/ path pattern.
+
+See the above section on "Sensitive Path Restrictions" to limit the impact should a Jenkins user accidentally uncheck password masking for any reason.
+
 === Authentication ===
 *TODO* - LDAP and MFA strategy vs. user/pass, don't allow users to sign up, always require auth
 === Authorization ===
@@ -83,8 +86,6 @@ All remote authentication to a Jenkins SSH service should be restricted to no le
 Access to the root user should be prohibited.  This can be done via the following addition to sshd_config:
 
   PermitRootLogin no
-
-
 
 === Transport Encryption ===
 Default OpenSSH configurations tend to provide reasonably good transport encryption security.  However, there is still room to further lock down a Jenkins openssh configuration and incentive to do so considering the critical functions and secrets we trust Jenkins with.
