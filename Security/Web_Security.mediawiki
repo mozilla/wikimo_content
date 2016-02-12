@@ -491,119 +491,119 @@ X-XSS-Protection: 1; mode=block</pre>
 
 {| class="wikitable sortable" style="width: 100%;"
 |-
-! Guideline
+! data-sort-type="number" | Guideline
 ! Impact
 ! Difficulty
 ! data-sort-type="number" | Order<sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&dagger;</sup>
 ! Requirements
 ! Notes
 |- style="background-color: #9EDB58;"
-| [[#HTTPS|<span style="color: black;">HTTPS</span>]]
+| data-sort-value="1" | [[#HTTPS|<span style="color: black;">HTTPS</span>]]
 | style="text-align: center;" | P1
 | style="text-align: center;" | Easy
 | style="text-align: center;" data-sort-value="0" | 
 | Mandatory
 | Sites should use HTTPS (or other secure protocols) for all communications
 |- style="background-color: #E99696;"
-| style="padding-left: 1.5em;" | [[#HTTP Public Key Pinning|<span style="color: black;">Public Key Pinning</span>]]
+| data-sort-value="2" style="padding-left: 1.5em;" | [[#HTTP Public Key Pinning|<span style="color: black;">Public Key Pinning</span>]]
 | style="text-align: center;" | P5
 | style="text-align: center;" | High
 | style="text-align: center;" data-sort-value="99" | --
 | Mandatory for maximum risk sites only
 | Not recommended for most sites
 |- style="background-color: #9EDB58;"
-| style="padding-left: 1.5em;" | [[#HTTP Redirections|<span style="color: black;">Redirections from HTTP</span>]]
+| data-sort-value="3" style="padding-left: 1.5em;" | [[#HTTP Redirections|<span style="color: black;">Redirections from HTTP</span>]]
 | style="text-align: center;" | P1
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 3
 | Mandatory
 | Websites must redirect to HTTPS, API endpoints should disable HTTP entirely
 |- style="background-color: #9EDB58;"
-| style="padding-left: 1.5em;" | [[#Resource Loading|<span style="color: black;">Resource Loading</span>]]
+| data-sort-value="4" style="padding-left: 1.5em;" | [[#Resource Loading|<span style="color: black;">Resource Loading</span>]]
 | style="text-align: center;" | P1
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 2
 | Mandatory for all websites
 | Both passive and active resources should be loaded through protocols using TLS, such as HTTPS
 |- style="background-color: #9EDB58;"
-| style="padding-left: 1.5em;" | [[#HTTP Strict Transport Security|<span style="color: black;">Strict Transport Security</span>]]
+| data-sort-value="5" style="padding-left: 1.5em;" | [[#HTTP Strict Transport Security|<span style="color: black;">Strict Transport Security</span>]]
 | style="text-align: center;" | P1
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 4
 | Mandatory for all websites
 | Minimum allowed time period of six months
 |- style="background-color: #9EDB58;"
-| style="padding-left: 1.5em;" | [[#HTTPS|<span style="color: black;">TLS Configuration</span>]]
+| data-sort-value="6" style="padding-left: 1.5em;" | [[#HTTPS|<span style="color: black;">TLS Configuration</span>]]
 | style="text-align: center;" | P1
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 1
 | Mandatory
 | Use the most secure Mozilla TLS configuration for your user base, typically [[Security/Server Side TLS#Intermediate compatibility (default)|Intermediate]]
 |- style="background-color: #E8E27A;"
-| [[#Content Security Policy|<span style="color: black;">Content Security Policy</span>]]
+| data-sort-value="7" | [[#Content Security Policy|<span style="color: black;">Content Security Policy</span>]]
 | style="text-align: center;" | P2
 | style="text-align: center;" | High
 | style="text-align: center;" | 10
 | Mandatory for new websites<br>Recommended for existing websites
 | Disabling inline script is the greatest concern for CSP implementation
 |- style="background-color: #9EDB58;"
-| [[#Cookies|<span style="color: black;">Cookies</span>]]
+| data-sort-value="8" | [[#Cookies|<span style="color: black;">Cookies</span>]]
 | style="text-align: center;" | P3
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 7
 | Mandatory for all new websites<br>Recommended for existing websites
 | All cookies must be set with the Secure flag, and set as restrictively as possible
 |- style="background-color: #D2D2D2;"
-| [[#contribute.json|<span style="color: black;">contribute.json</span>]]
+| data-sort-value="9" | [[#contribute.json|<span style="color: black;">contribute.json</span>]]
 | style="text-align: center;" | P4
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 9
 | Mandatory for all new Mozilla websites<br>Recommended for existing Mozilla sites
 | Mozilla sites should serve contribute.json and keep contact information up-to-date
 |- style="background-color: #9EDB58;"
-| [[#Cross-origin Resource Sharing|<span style="color: black;">Cross-origin Resource Sharing</span>]]
+| data-sort-value="10" | [[#Cross-origin Resource Sharing|<span style="color: black;">Cross-origin Resource Sharing</span>]]
 | style="text-align: center;" | P3
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 11
 | Mandatory
 | Origin sharing headers and files should not be present, except for specific use cases
 |- style="background-color: #D2D2D2;"
-| [[#CSRF Prevention|<span style="color: black;">Cross-site Request Forgery Tokenization</span>]]
+| data-sort-value="11" | [[#CSRF Prevention|<span style="color: black;">Cross-site Request Forgery Tokenization</span>]]
 | style="text-align: center;" | P2
 | style="text-align: center;" | Varies
 | style="text-align: center;" | 6
 | Varies
 | Mandatory for websites that allow destructive changes<br>Unnecessary for all other websites<br>Most application frameworks have built-in CSRF tokenization to ease implementation
 |- style="background-color: #D2D2D2;"
-| [[#robots.txt|<span style="color: black;">robots.txt</span>]]
+| data-sort-value="12" | [[#robots.txt|<span style="color: black;">robots.txt</span>]]
 | style="text-align: center;" | P5
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 13
 | Optional
 | Websites that implement robots.txt must use it only for noted purposes
 |- style="background-color: #E8E27A;"
-| [[#Subresource Integrity|<span style="color: black;">Subresource Integrity</span>]]
+| data-sort-value="13" | [[#Subresource Integrity|<span style="color: black;">Subresource Integrity</span>]]
 | style="text-align: center;" | P5
 | style="text-align: center;" | Moderate
 | style="text-align: center;" | 14
 | Recommended<sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup>
 | <sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup> Only for websites that load JavaScript or stylesheets from foreign origins
 |- style="background-color: #E8E27A;"
-| [[#X-Content-Type-Options|<span style="color: black;">X-Content-Type-Options</span>]]
+| data-sort-value="14" | [[#X-Content-Type-Options|<span style="color: black;">X-Content-Type-Options</span>]]
 | style="text-align: center;" | P3
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 8
 | Recommended for all websites
 | Websites should verify that they are setting the proper MIME types for all resources
 |- style="background-color: #9EDB58;"
-| [[#X-Frame-Options|<span style="color: black;">X-Frame-Options</span>]]
+| data-sort-value="15" | [[#X-Frame-Options|<span style="color: black;">X-Frame-Options</span>]]
 | style="text-align: center;" | P2
 | style="text-align: center;" | Easy
 | style="text-align: center;" | 5
 | Mandatory for all websites
 | Websites that don't use DENY or SAMEORIGIN must employ clickjacking defenses
 |- style="background-color: #E8E27A;"
-| [[#X-XSS-Protection|<span style="color: black;">X-XSS-Protection</span>]]
+| data-sort-value="16" | [[#X-XSS-Protection|<span style="color: black;">X-XSS-Protection</span>]]
 | style="text-align: center;" | P4
 | style="text-align: center;" | Moderate
 | style="text-align: center;" | 12
