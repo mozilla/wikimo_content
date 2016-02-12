@@ -27,18 +27,18 @@ There are a number of known URL paths that expose attack surface on a Jenkins in
 
 Please note that the following paths are relative to the Jenkins application root.  So if the Jenkins installation is reachable at /jenkins instead of the default /, you may need to make substitutions accordingly:
 
-  ./script
-  ./view/All/newJob
-  ./asynchPeople
-  ./systemInfo
-  ./api
-  ./restart
-  ./quietDown
-  ./user/jenkins
-  ./jnlpJars
-  ./asynchPeople
-  ./credential-store
-  ./job/[job_name]/[build_number]/injectedEnvVars/
+  *./script
+  *./view/All/newJob
+  *./asynchPeople
+  *./systemInfo
+  *./api
+  *./restart
+  *./quietDown
+  *./user/jenkins
+  *./jnlpJars
+  *./asynchPeople
+  *./credential-store
+  *./job/[job_name]/[build_number]/injectedEnvVars/
 
 Such path restrictions can be implemented in any modern web server technology.
 
