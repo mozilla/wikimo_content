@@ -7,8 +7,7 @@
 The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla
 sites and deployment should follow the recommendations below.
 
-The Enterprise Information Security (Infosec, formerly
-OpSec) team maintains this document as a reference guide for operational teams.
+The Enterprise Information Security (Infosec, formerly OpSec) team maintains this document as a reference guide for operational teams.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
