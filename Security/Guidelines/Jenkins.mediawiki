@@ -2,7 +2,7 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-The goal of this *DRAFT* document is to help operational teams with the configuration of Jenkins, a continuous integration/delivery application.
+The goal of this document is to help operational teams with the configuration of Jenkins, a continuous integration/delivery application.
 
 All Mozilla sites and deployment should follow the recommendations below.  The Enterprise Information Security (Infosec, formerly
 OpSec) team maintains this document as a reference guide for operational teams.
@@ -40,7 +40,7 @@ Please note that the following paths are relative to the Jenkins application roo
   ./credential-store
   ./job/[job_name]/[build_number]/injectedEnvVars/
 
-Such a restrictions can be implemented in any modern web server technology.  For example, this is how you can perform such path restrictions in nginx using the location directive:
+Such path restrictions can be implemented in any modern web server technology.  For example, this is how you can perform such path restrictions in nginx using the location directive:
 
   # Restrict access to the following paths
   location ^~ /(api|restart|quietDown|user/jenkins|jnlpJars|script|asynchPeople|credential-store|systemInfo|view/All/newJob) {
@@ -63,7 +63,7 @@ It is recommended that you start with the full list of restricted paths and then
 *TODO* - enable this out of the box
 
 == SSH ==
-=== Transport Encryption ==
+=== Transport Encryption ===
 *TODO* - Basically, see OpenSSH guidelines (use key auth)
 === Tunneling ===
 *TODO* - Have users tunnel their traffic for sensitive paths
