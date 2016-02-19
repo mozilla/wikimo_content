@@ -22,6 +22,8 @@ By default, the Jenkins web administration console is served over HTTP.  This al
 
 Additional configuration is required on the server instance to control the various TLS configuration settings that the Jenkins instance will support.  Any Jenkins installations should implement a MODERN TLS configuration, as defined by the [https://wiki.mozilla.org/Security/Server_Side_TLS Mozilla Server Side TLS guide].  Mozilla also provides an [https://mozilla.github.io/server-side-tls/ssl-config-generator/ SSL configuration generator] to assist you in building of a MODERN configuration for your chosen web server to host Jenkins with.
 
+Additionally, [https://github.com/jvehent/cipherscan cipherscan] can be used to confirm that the TLS configuration settings are set to the correct levels.
+
 === Sensitive Path Restrictions ===
 There are a number of known URL paths that expose attack surface on a Jenkins installation that you may not want, but are not often configurable within the application.  Depending on your specific use case of Jenkins, you may choose to block one or more of these paths to reduce this attack surface, which are commonly used by attackers to exploit configuration flaws and/or gather information that could be later used to assist in other types of attacks.
 
@@ -105,6 +107,8 @@ Access to the root user should be prohibited.  This can be done via the followin
 Default OpenSSH configurations tend to provide reasonably good transport encryption security.  However, there is still room to further lock down a Jenkins openssh configuration and incentive to do so considering the critical functions and secrets we trust Jenkins with.
 
 Any Jenkins installations should implement a MODERN OpenSSH Server configuration, as defined in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].  Additionally, any SSH clients (likely developer workstations) connecting to the SSH server on Jenkins installations should implement a MODERN OpenSSH client configuration, also documented in the [https://wiki.mozilla.org/Security/Guidelines/OpenSSH Mozilla OpenSSH Guide].
+
+Additionally, [https://github.com/claudijd/ssh_scan ssh_scan] can be used to confirm that the SSH configuration settings are set to the correct levels.
 
 === Tunneling ===
 SSH tunneling can be used in a couple different instances to limit attack surface on your Jenkins installation.  This is often done in a couple of scenarios.
