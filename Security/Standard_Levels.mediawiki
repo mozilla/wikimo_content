@@ -165,7 +165,7 @@ Example: Implement a new security design/change product design, etc.
 |}
 
 == RFC2119 handling recommendation levels ==
-See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119].
+See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition.
 
 {| class="wikitable"
 |-
@@ -184,13 +184,13 @@ See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119].
 |
 * See risk level's [[#Risk levels definition and nomenclature | "high"]] rationale.
 |
-* Should is very close to "must". It means something should be done unless there is a strong reason not to. Thus it's highly important.
+* Should is very close to "must do" - however, exceptions may be granted after discussion.
 |-
 ! <span style="padding: 0 32px;background-color:#E77471;">MUST</span>
 |
 * See risk level's [[#Risk levels definition and nomenclature | "maximum"]] rationale.
 |
-* This must be done - there is no exception.
+* This must be done, is required, mandatory - there is no exception.
 |-
 |}
 
