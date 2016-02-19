@@ -51,8 +51,8 @@ We express security risk levels qualitatively (low, medium, high, maximum).
 |-
 ! Risk mitigation
 | Reduce the risk level through a technical or non-technical mean in order to:
-* Change it's impact.
-* Change it's probability.
+* Change its impact.
+* Change its probability.
 |-
 ! Risk remediation
 | Remove the risk by correcting an issue, or removing the issue, or implementing a technical or non-technical solution that removes the risk.
@@ -60,6 +60,7 @@ We express security risk levels qualitatively (low, medium, high, maximum).
 ! Residual risk
 Accepted risk
 | Risk that will not be corrected, removed or reduced. It is instead accepted as-is and will therefore be residual.
+|-
 |}
 
 ''The risk levels are not ISO 31000 compliant, but represent a relatively simplified equivalent. (If you do not know ISO 31000, that's fine!).''
@@ -123,6 +124,7 @@ This concept is also known as ''"trust, but verify"'' - i.e. unknown does not di
 * '''Risk acceptance''': This risk is rarely expected to be accepted as residual risk, must be discussed, and should be mitigated or remediated.
 * '''Exception time''': Recommend fixing immediately.
 |-
+|}
 
 == Effort measurements ==
 When work is required for a remediation, mitigation, additional security control, etc. we rate this effort using our standard levels. This helps managing resources and prioritizing work.
@@ -160,8 +162,11 @@ Example: Implement a new security control, code a new feature, change all compan
 
 Example: Implement a new security design/change product design, etc.
 |-
+|}
 
 == RFC2119 handling recommendation levels ==
+See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119].
+
 {| class="wikitable"
 |-
 ! Level
@@ -171,22 +176,23 @@ Example: Implement a new security design/change product design, etc.
 |-
 ! <span style="padding: 0 32px;background-color:lightgrey;">OPTIONAL</span>
 |
-* See risk level's "low" rationale.
+* See risk level's [[#Risk levels definition and nomenclature | "low"]] rationale.
 |
 * This is up to the reader to choose to follow or not to follow this recommendation.
 |-
 ! <span style="padding: 0 32px;background-color:#FFF380;">SHOULD</span>
 |
-* See risk level's "high" rationale.
+* See risk level's [[#Risk levels definition and nomenclature | "high"]] rationale.
 |
 * Should is very close to "must". It means something should be done unless there is a strong reason not to. Thus it's highly important.
 |-
 ! <span style="padding: 0 32px;background-color:#E77471;">MUST</span>
 |
-* See risk level's "maximum" rationale.
+* See risk level's [[#Risk levels definition and nomenclature | "maximum"]] rationale.
 |
 * This must be done - there is no exception.
 |-
+|}
 
 == Pass/fail tests ==
 Tests are not levels per se. When possible, they either pass or fail. It's similar to a walk/don't walk traffic sign.
@@ -210,6 +216,7 @@ Tests are not levels per se. When possible, they either pass or fail. It's simil
 |
 * Means a test did not pass.
 |-
+|}
 
 == Document Status Codes ==
 These are used in the header of every document to clearly signify its current status.
@@ -232,6 +239,7 @@ These are used in the header of every document to clearly signify its current st
 |
 * Means the document should not be followed right now.
 |-
+|}
 
 == Scoring levels ==
 These levels are used to score general effectiveness. Most commonly, these levels are used to score countermeasure effectiveness (controls) in security reports.
@@ -241,7 +249,6 @@ Four levels are used to align with other security related levels, such as risk l
 {| class="wikitable"
 |-
 ! Level
-! Color coding
 ! Definition & expectations
 |-
 ! <span style="padding: 0 32px;background-color:green;">✯✯✯✯</span> (4)
@@ -273,6 +280,7 @@ Four levels are used to align with other security related levels, such as risk l
 * Immediate attention and action are required.
 * Score likely to block initiative.
 |-
+|}
 
 The values may be scored ordinally, but should be represented visually (using star symbols) for presentation purposes. Where scores are desired to be fed into other metrics (e.g. risk calculations) the scores may be inverted (e.g. a 1 becomes a 4) to represent an impact score (risk datapoint).
 
@@ -309,3 +317,4 @@ This should be used for Mozilla provided or hosted services as well as externall
 * Advanced tools are used to ensure strong and granular data separation (such as system-level RBAC).
 * May be used to support any other service, including <span style="padding: 0 32px;background-color:#E77471;">MAXIMUM</span> risk impact services.
 |-
+|}
