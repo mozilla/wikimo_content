@@ -1,0 +1,320 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: <span style="padding: 0 32px;background-color:green;">READY</span>'''
+
+The goal of this document is to ensure consistency, coherence between security documents. All Mozilla
+security documentation must follow the recommendations below.
+
+'''If a level is not present in this document, it cannot be used.'''
+
+It establishes standard level conventions, in particular:
+
+* Level color coding
+* Name or name schemes
+* Level definition
+
+The Enterprise Information Security (Infosec, formerly OpSec) team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+= Standard Documentation Levels =
+== Different kinds of levels ==
+There are different kind of levels or states we want to express:
+
+* Risk levels
+* Data handling levels
+* Not-strictly-levels tests such as "OK" or "PASS" and "NON-OK/NOK", "FAIL"
+* Scoring levels such as "good", "bad"
+* Requirement levels
+* etc.
+
+While they're used to describe different kind of levels, they all attempt to ''display a hierarchy''. Thus, all levels
+attempt to use the same coherent standard model.
+
+== Risk levels definition and nomenclature ==
+
+These are the base standard levels and are strongly encouraged be used as a foundation for any other level definition.
+
+{| class="wikitable"
+|-
+! Risk Level
+| '''The importance of a risk as defined by its impact and probability.'''
+We express security risk levels qualitatively (low, medium, high, maximum).
+|-
+! Risk mitigation
+| Reduce the risk level through a technical or non-technical mean in order to:
+* Change its impact.
+* Change its probability.
+|-
+! Risk remediation
+| Remove the risk by correcting an issue, or removing the issue, or implementing a technical or non-technical solution that removes the risk.
+|-
+! Residual risk
+Accepted risk
+| Risk that will not be corrected, removed or reduced. It is instead accepted as-is and will therefore be residual.
+|-
+|}
+
+''The risk levels are not ISO 31000 compliant, but represent a relatively simplified equivalent. (If you do not know ISO 31000, that's fine!).''
+
+{| class="wikitable"
+|-
+! Level
+! Coding rationale
+! Definition & expectations
+|-
+! <span style="padding: 0 32px;background-color:lightgrey;">UNKNOWN</span>
+| White represent the emptiness/lack of data.
+| This is '''not a real level''', it is used when there to represent that we do not have enough data to correctly assess risk (i.e. data collection work is required).
+Even when no data is present, it is often possible to estimate the risk (since there is a risk of ''not knowing'').
+
+However, communicating the risk of not knowing is challenging and prone to failure, in particular when once data has been gathered, the risk appears to in fact be low.
+
+This concept is also known as ''"trust, but verify"'' - i.e. unknown does not dist-trust (by assign it a higher risk) the service, user, etc. by default.
+|-
+! <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+|
+* Gray is a low contrast color, which signifies important. It's also less catchy.
+* Green is not used as green means "ok to do", which is not a level.
+|''This is the lowest level, where the risk is reasonably close to zero.''
+
+* '''Attention''': Attention is expected but not required.
+* '''Complexity''': No specific tooling or strategies required. Following security practices with security level low is expected.
+* '''Effort''': If any is necessary - ''best effort'' is expected to mitigate or remediate the risk.
+* '''Risk acceptance''': Risk may often be accepted as residual risk.
+* '''Exception time''': Indefinitely.
+|-
+! <span style="padding: 0 32px;background-color:steelblue;">MEDIUM</span>
+|
+* Blue is calm and neutral.
+|
+* '''Attention''': Get attention from all concerned parties.
+* '''Complexity''': Following security practices with security level medium is expected.
+* '''Effort''': Industry best practices are expected to be followed in all cases.
+* '''Risk acceptance''': Risk should generally be discussed, and at least mitigated.
+* '''Exception time''': Recommend remediation within 90-180 days.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+|
+* Yellow generally signifies "warning". In our case it correlates to "important".
+|
+* '''Attention''': Get full attention from all concerned parties.
+* '''Complexity''': Following practices with security level high is expected. Slightly advanced configuration settings and extra tools may be used.
+* '''Effort''': ''A larger amount of effort'' is expected.
+* '''Risk acceptance''': Risk must  be discussed, and should at least be mitigated.
+* '''Exception time''': Recommend remediation within 30-90 days.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">MAXIMUM</span>
+|
+* Red signifies "most important".
+* Maximum is a level. Critical is not.
+| ''This is the most important level, where the risk is especially great.''
+
+* '''Attention''': Get full attention from all concerned parties
+* '''Complexity''': Following practices with security level maximum is expected. Uses the best and most advanced available remediation or mitigation strategies, tools.
+* '''Effort''': Greatest amount of effort is required to mitigate or remediate the risk.
+* '''Risk acceptance''': This risk is rarely expected to be accepted as residual risk, must be discussed, and should be mitigated or remediated.
+* '''Exception time''': Recommend fixing immediately.
+|-
+|}
+
+== Effort measurements ==
+When work is required for a remediation, mitigation, additional security control, etc. we rate this effort using our standard levels. This helps managing resources and prioritizing work.
+
+{| class="wikitable"
+|-
+! Level
+! Time spent
+|-
+! <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+|
+* Small group: Few hours.
+* Large group: Few minutes.
+
+Example: Flip a configuration switch, change a password, lookup a document, etc.
+|-
+! <span style="padding: 0 32px;background-color:steelblue;">MEDIUM</span>
+|
+* Small group: A few days.
+* Large group: A few hours.
+
+Example: Take a group decision, create standards, lookup complex data, manual upgrades, etc.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+|
+* Small group: A week or two.
+* Large group: A day or two.
+
+Example: Implement a new security control, code a new feature, change all company user passwords, etc.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">MAXIMUM</span>
+|
+* Small group: Weeks, quarterly goals.
+* Large group: Weeks, quarterly goals.
+
+Example: Implement a new security design/change product design, etc.
+|-
+|}
+
+== RFC2119 handling recommendation levels ==
+See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition.
+
+{| class="wikitable"
+|-
+! Level
+! Coding rationale
+! Definition & expectations
+|-
+|-
+! <span style="padding: 0 32px;background-color:lightgrey;">OPTIONAL</span>
+|
+* See risk level's [[#Risk levels definition and nomenclature | "low"]] rationale.
+|
+* This is up to the reader to choose to follow or not to follow this recommendation.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">SHOULD</span>
+|
+* See risk level's [[#Risk levels definition and nomenclature | "high"]] rationale.
+|
+* Should is very close to "must do" - however, exceptions may be granted after discussion.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">MUST</span>
+|
+* See risk level's [[#Risk levels definition and nomenclature | "maximum"]] rationale.
+|
+* This must be done, is required, mandatory - there is no exception.
+|-
+|}
+
+== Pass/fail tests ==
+Tests are not levels per se. When possible, they either pass or fail. It's similar to a walk/don't walk traffic sign.
+
+{| class="wikitable"
+|-
+! Level
+! Coding rationale
+! Definition & expectations
+|-
+! <span style="padding: 0 32px;background-color:green;">PASS</span>
+|
+* Green generally means acceptance, allowance such as the traffic sign "Walk".
+|
+* Means a test successfully passed.
+* There is no "almost passed": test must completely pass.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">FAIL</span>
+|
+* Red generally means refusal, denial, such as the traffic sign "Don't walk".
+|
+* Means a test did not pass.
+|-
+|}
+
+== Document Status Codes ==
+These are used in the header of every document to clearly signify its current status.
+
+{| class="wikitable"
+|-
+! Level
+! Definition & expectations
+|-
+! <span style="padding: 0 32px;background-color:green;">READY</span>
+|
+* Means the document is ready for user consumption and is expected to be followed.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+|
+* Means the document is in progress or does not cover all cases.
+* You may follow this document for guidance, at your own risk.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">NOT READY</span>
+|
+* Means the document should not be followed right now.
+|-
+|}
+
+== Scoring levels ==
+These levels are used to score general effectiveness. Most commonly, these levels are used to score countermeasure effectiveness (controls) in security reports.
+
+Four levels are used to align with other security related levels, such as risk levels. Note these levels do not signify risk, and are more intended to provide a grade for a particular objective.
+
+{| class="wikitable"
+|-
+! Level
+! Definition & expectations
+|-
+! <span style="padding: 0 32px;background-color:green;">✯✯✯✯</span> (4)
+|
+''Highest possible grade.''
+
+* All intentions of objective met.
+* Attention expected but not required.
+|-
+! <span style="padding: 0 32px;background-color:steelblue;">✯✯✯</span> (3)
+|
+* Most intentions of objective met.
+* Some outliers require attention.
+* Immediate action not required.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">✯✯✯</span> (2)
+|
+''Score may moderately contribute to risk.''
+
+* Minimal to moderate intentions of objective met
+* Attention and timely action are required
+* Potential blocker on initiative
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">✯</span> (1)
+|
+''Lowest possible grade, score may greatly contribute to risk.''
+
+* Zero to minimal intentions of objective met.
+* Immediate attention and action are required.
+* Score likely to block initiative.
+|-
+|}
+
+The values may be scored ordinally, but should be represented visually (using star symbols) for presentation purposes. Where scores are desired to be fed into other metrics (e.g. risk calculations) the scores may be inverted (e.g. a 1 becomes a 4) to represent an impact score (risk datapoint).
+
+== Levels of security provided (by service) ==
+This should be used for Mozilla provided or hosted services as well as externally provided services (SaaS, etc.).
+
+{| class="wikitable"
+|-
+! Security level provided (impacts mentioned are from [[Security/Risk management/Rapid Risk Assessment|Rapid Risk Assessment]]
+! Definition & expectations
+|-
+! <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| 
+* This service provides very little security controls and/or practices - it is known as carrying more risk.
+* Is not expected to provide effective security controls.
+* May only be used by <span style="padding: 0 32px;background-color:lightgrey;">LOW</span> risk impact services.
+|-
+! <span style="padding: 0 32px;background-color:steelblue;">MEDIUM</span>
+|
+* This service uses best practices security-wise. Follows all standards and guidelines.
+* May be used with most services that do not require specific security controls, or <span style="padding: 0 32px;background-color:steelblue;">MEDIUM</span> (or lower) risk impact services.
+|-
+! <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+|
+* In addition to the <span style="padding: 0 32px;background-color:steelblue;">MEDIUM</span> level, this service provides:
+** Multiple security layers across the board.
+** Has dedicated security contacts/teams.
+** Gets tested regularly and has a good track record.
+* May be used for services with <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span> (or lower) risk impact.
+|-
+! <span style="padding: 0 32px;background-color:#E77471;">MAXIMUM</span>
+|
+* In addition to the high level, this service does exceptionally well in the security space and is well-known for properly implementing the best controls, processes, etc.
+* Advanced tools are used to ensure strong and granular data separation (such as system-level RBAC).
+* May be used to support any other service, including <span style="padding: 0 32px;background-color:#E77471;">MAXIMUM</span> risk impact services.
+|-
+|}
