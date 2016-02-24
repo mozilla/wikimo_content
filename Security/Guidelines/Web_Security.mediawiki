@@ -10,7 +10,7 @@ __NOTOC__
           </div>
           <ul style="padding-right: 1em;">
             <li>[[#Web Security Cheat Sheet|1 Cheat Sheet]]
-            <li>[[#Transport Layer Security|2 Transport Layer Security]]
+            <li>[[#Transport Layer Security (TLS/SSL)|2 Transport Layer Security (TLS/SSL)]]
             <li>
               <ul>
                 <li>[[#HTTPS|2.1 HTTPS]]</li>
@@ -175,11 +175,12 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 
 
 <div style="max-width: 75em;">
-= Transport Layer Security =
+= Transport Layer Security (TLS/SSL) =
+
+Transport Layer Security provides assurances about the confidentiality, authentication, and integrity of all communications both inside and outside of Mozilla. To protect our users and networked systems, the support and use of encrypted communications using TLS is mandatory for all systems.
+
 
 == HTTPS ==
-
-Transport Layer Security (TLS/SSL) provides assurances about the confidentiality, authentication, and integrity of all communications both inside and outside of Mozilla. To protect our users and networked systems, the support and use of encrypted communications using TLS is mandatory for all systems.
 
 Websites or API endpoints that only communicate with modern browsers and systems should use the [[Security/Server Side TLS#Modern compatibility|Mozilla modern TLS configuration]].
 
