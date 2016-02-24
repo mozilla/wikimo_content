@@ -455,7 +455,7 @@ Set-Cookie: __Host-ACCEPTEDTOS=true; Expires=Fri, 31 Dec 9999 23:59:59 GMT; Path
 
 = Cross-origin Resource Sharing =
 
-<tt>Access-Control-Allow-Origin</tt> is an HTTP header that defines which foreign origins are allowed to access the content of pages on your domain via scripts using methods such as XMLHttpRequest.  <tt>crossorigin.xml</tt> and <tt>clientaccesspolicy.xml</tt> provide similar functionality, but for Flash and Silverlight-based applications, respectively.
+<tt>Access-Control-Allow-Origin</tt> is an HTTP header that defines which foreign origins are allowed to access the content of pages on your domain via scripts using methods such as XMLHttpRequest.  <tt>crossdomain.xml</tt> and <tt>clientaccesspolicy.xml</tt> provide similar functionality, but for Flash and Silverlight-based applications, respectively.
 
 These should not be present unless specifically needed. Use cases include content delivery networks (CDNs) that provide hosting for JavaScript/CSS libraries and public API endpoints. If present, they should be locked down to as few origins and resources as is needed for proper function. For example, if your server provides both a website and an API intended for XMLHttpRequest access on a remote websites, <em>only</em> the API resources should return the <tt>Access-Control-Allow-Origin</tt> header. Failure to do so will allow foreign origins to read the contents of any page on your origin.
 
