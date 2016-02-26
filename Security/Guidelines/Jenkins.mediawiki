@@ -103,7 +103,7 @@ It's imperative that every Jenkins instance use at a minimum the "Logged-in user
 
 Note: When using a Matrix-based security authorization strategy, any user that is given "job" permission on a job that runs on the master node will have access to the $JENKINS_HOME directory, which would allow that user to privilege escalate to full administrator.  When giving users "job" permission or above to a job, make sure that that job is run on a slave node and that slave node should build any other jobs for which the user does not already have the "job" permission for to prevent lateral movement on the slave node.
 
-If you are using GitHub authentication, it also supports an alternative authorization strategy that allows you restrict users and group access.
+If you are using GitHub authentication, it also supports an alternative authorization strategy that allows you provide/restrict GitHub user and group access.
 
 === CSRF Protection ===
 Jenkins does provide a CSRF configuration with in Manage Jenkins => Configure Global Security as a checkbox called "Prevent Cross Site Request Forgery exploits".  Unfortunately, this feature, which is aimed at preventing an attacker from executing CSRF/XSRF exploit, also comes with some short falls including additional work to use the remote api and limited testing/compatibility support with plugins.  It is recommended that this feature be enabled at first, but if it becomes an obstacle and conflicts with one of the above issues, then it can be disabled.
