@@ -76,13 +76,13 @@ See the above section on "Sensitive Path Restrictions" to limit the impact shoul
 === Authentication ===
 By default, Jenkins does not require authentication, which means that anyone with access to the web ui (assuming the default authorization strategy - mentioned below) can fully manage the Jenkins instance.  At a minimum, all Jenkins installations should use at least the Jenkins user database strategy before it's accessible on private or public networks.
 
-For production quality authentication security Jenkins should be integrated into some form centralized authentication system.  The reason for doing so is to mitigate the risk of another Jenkins user learning your authentication credentials, which are stored on the Jenkins master node in an encrypted, but easily reversible format (ie. AES-128 cipher-text with associated key material located in $JENKINS_HOME).
+For production quality authentication security Jenkins should be integrated into some form centralized authentication system.  The reason for doing so is to mitigate the risk of another Jenkins user learning your authentication credentials, which are stored on the Jenkins master node in an encrypted, but easily reversible format (ie. AES-128 cipher-text with associated key material located in $JENKINS_HOME).  The other reason for going with centralized authentication is that it's simply easier to manage the provisioning and de-provisioning of users and their accesses.
 
 The following are recommended methods for centralized authentication with Jenkins:
 
-- LDAP Authentication (https://wiki.jenkins-ci.org/display/JENKINS/LDAP+Plugin)
-- Google Authentication (https://wiki.jenkins-ci.org/display/JENKINS/Google+Login+Plugin)
-- GitHub Authentication (https://wiki.jenkins-ci.org/display/JENKINS/Github+OAuth+Plugin)
+* [https://wiki.jenkins-ci.org/display/JENKINS/LDAP+Plugin LDAP Authentication]
+* [https://wiki.jenkins-ci.org/display/JENKINS/Google+Login+Plugin Google Authentication]
+* [https://wiki.jenkins-ci.org/display/JENKINS/Github+OAuth+Plugin GitHub Authentication]
 
 Details are present in each plugin mechanism for how to configure your preferred mechanism.
 
