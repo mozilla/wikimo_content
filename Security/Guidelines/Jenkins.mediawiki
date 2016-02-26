@@ -86,7 +86,7 @@ The following are recommended methods for centralized authentication with Jenkin
 
 Details are present in each plugin mechanism for how to configure your preferred mechanism.
 
-For added security, some of these plugins support [https://en.wikipedia.org/wiki/Multi-factor_authentication multi-factor authentication], which significantly reduces the risk of compromise in the case of user credential leakage.
+For added security, some of these plugins support [https://en.wikipedia.org/wiki/Multi-factor_authentication multi-factor authentication], which significantly reduces the risk of compromise in the case of user credential leakage.  In cases where the Jenkins instance is producing build artifacts which are meant for consumption or has particularly sensitive secrets (API keys, passwords, signing keys, etc.) being stored location, multi-factor authentication is highly recommended.
 
 === Authorization ===
 Jenkins comes with a variety of stock authorization strategies, which include the following:
