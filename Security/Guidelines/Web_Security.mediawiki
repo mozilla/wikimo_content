@@ -59,7 +59,7 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 |- style="background-color: #9EDB58;"
 | data-sort-value="1" | [[#HTTPS|<span style="color: black;">HTTPS</span>]]
 | data-sort-value="4" style="text-align: center;" | Maximum
-| data-sort-value="1" style="text-align: center;" | Medium
+| data-sort-value="2" style="text-align: center;" | Medium
 | style="text-align: center;" data-sort-value="0" | 
 | Mandatory
 | Sites should use HTTPS (or other secure protocols) for all communications
@@ -94,7 +94,7 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 |- style="background-color: #9EDB58;"
 | data-sort-value="6" style="padding-left: 1.5em;" | [[#HTTPS|<span style="color: black;">TLS Configuration</span>]]
 | data-sort-value="2" style="text-align: center;" | Medium
-| data-sort-value="1" style="text-align: center;" | Medium
+| data-sort-value="2" style="text-align: center;" | Medium
 | style="text-align: center;" | 1
 | Mandatory
 | Use the most secure Mozilla TLS configuration for your user base, typically [[Security/Server Side TLS#Intermediate compatibility (default)|Intermediate]]
@@ -108,7 +108,7 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 |- style="background-color: #9EDB58;"
 | data-sort-value="8" | [[#Cookies|<span style="color: black;">Cookies</span>]]
 | data-sort-value="3" style="text-align: center;" | High
-| data-sort-value="1" style="text-align: center;" | Medium
+| data-sort-value="2" style="text-align: center;" | Medium
 | style="text-align: center;" | 7
 | Mandatory for all new websites<br>Recommended for existing websites
 | All cookies must be set with the Secure flag, and set as restrictively as possible
@@ -201,7 +201,7 @@ Websites that require backwards compatibility with extremely old browsers and op
 | align="center" | Intermediate
 | style="padding-left: .5em;" | Firefox 1, Chrome 1, Internet Explorer 7, Opera 5, Safari 1, Internet Explorer 8 (XP), Android 2.3, Java 7 
 |- style="background-color: #CCCCCC;"
-| align="center" | Backwards
+| align="center" | Backwards Compatible (Old)
 | style="padding-left: .5em;" | Internet Explorer 6 (XP), Java 6 
 |}
 
