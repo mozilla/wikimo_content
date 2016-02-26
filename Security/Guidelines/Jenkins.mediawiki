@@ -74,10 +74,22 @@ In the configuration of a Jenkins job, you may have a need to supply a password/
 See the above section on "Sensitive Path Restrictions" to limit the impact should a Jenkins user accidentally uncheck password masking for any reason.
 
 === Authentication ===
-*TODO* - LDAP and MFA strategy vs. user/pass, don't allow users to sign up, always require auth
+By default, Jenkins does not require authentication, which means that anyone with access to the web ui (assuming the default authorization strategy - mentioned below) can fully manage the Jenkins instance.  At a minimum, all Jenkins installations should use at least the Jenkins user database strategy before it's accessible on private or public networks.
+
+For production quality authentication security Jenkins should be integrated into some form centralized authentication system.  The reason for doing so is to mitigate the risk of another Jenkins user learning your authentication credentials, which are stored on the Jenkins master node in an encrypted, but easily reversible format (ie. AES-128 cipher-text with associated key material located in $JENKINS_HOME).
+
+The following are recommended methods for centralized authentication with Jenkins:
+
+- LDAP Authentication (https://wiki.jenkins-ci.org/display/JENKINS/LDAP+Plugin)
+- Google Authentication (https://wiki.jenkins-ci.org/display/JENKINS/Google+Login+Plugin)
+- GitHub Authentication (https://wiki.jenkins-ci.org/display/JENKINS/Github+OAuth+Plugin)
+
+Details are present in each plugin mechanism for how to configure your preferred mechanism.
+
+For added security, some of these plugins support multi-factor authentication
 
 === Authorization ===
-Jenkins comes with a variety of different authorization strategies, which include the following:
+Jenkins comes with a variety of stock authorization strategies, which include the following:
 
 * Anyone can do anything (default)
 * Legacy mode
@@ -90,6 +102,8 @@ The default Jenkins authorization strategy ("Anyone can do anything") is designe
 It's imperative that every Jenkins instance use at a minimum the "Logged-in users can do anything" for small groups (< 3 administrator only users) and [https://wiki.jenkins-ci.org/display/JENKINS/Matrix-based+security Matrix-based security] for any instance where users of different privilege-levels need to co-exist (ie. administrators and qa personnel) as it provides the most options for limiting user access to only required roles.
 
 Note: When using a Matrix-based security authorization strategy, any user that is given "job" permission on a job that runs on the master node will have access to the $JENKINS_HOME directory, which would allow that user to privilege escalate to full administrator.  When giving users "job" permission or above to a job, make sure that that job is run on a slave node and that slave node should build any other jobs for which the user does not already have the "job" permission for to prevent lateral movement on the slave node.
+
+If you are using GitHub authentication, it also supports an alternative authorization strategy that allows you restrict users and group access.
 
 === CSRF Protection ===
 Jenkins does provide a CSRF configuration with in Manage Jenkins => Configure Global Security as a checkbox called "Prevent Cross Site Request Forgery exploits".  Unfortunately, this feature, which is aimed at preventing an attacker from executing CSRF/XSRF exploit, also comes with some short falls including additional work to use the remote api and limited testing/compatibility support with plugins.  It is recommended that this feature be enabled at first, but if it becomes an obstacle and conflicts with one of the above issues, then it can be disabled.
