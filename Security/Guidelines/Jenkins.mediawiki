@@ -158,14 +158,26 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 
 
 == Maintenance ==
+
 === Advisory Notification ===
 *TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
+
 === Security Updates ===
 *TODO* - address core upgrade and plugin upgrades
-=== Job Pruning ===
-*TODO*
-=== Job Creep ===
-*TODO*
+
+=== Disabled Job Pruning ===
+From time to time, a new job will supersede an old job as you make improvements to the jobs within your Jenkins instance.  It's quite common that during this early transition from old to new the old job will be disabled and not removed.  On a periodic schedule, review all the disabled jobs within your Jenkins instance and determine if they can be removed yet.  The reasons we remove/prune disabled jobs are the following:
+
+* Legacy log retention that include sensitive information (that newer jobs may be protected against)
+* Legacy environment/parameter retention that include sensitive information (that newer jobs may be protected against)
+* Older jobs may have depended on secrets that you no longer need to store locally in your Jenkins installation (perhaps you abstracted them away from Jenkins for security reasons)
+
+=== Job/Security Scope Creep ===
+As Jenkins instances age, it's relatively common that they take on more and more responsibilities.  It's no uncommon that a Jenkins system is setup for testing purposes and the result of the successful test, it becomes a production system.  It's important to be mindful of this to be on the look out for Jenkins instances that started out very low-risk to the business and eventually evolved into the primary build pipeline.  It's important to maintain and inventory of your Jenkins installations and try to confine each instance to a specific group of tasks or project and do regular check-ups for "one offs".
+
+Doing this verification of scope creep on a regular basis (or strictly controlling who can create new jobs) will help ensure the maintenance of the Jenkins installation doesn't get too bloated with various user requirements, plugins, and need for user SSH accesses with varying security requirements.
+
+In cases where you do find a significant change in job scope, it may be worth creating a dedicated Jenkins instance for that function -OR- a re-review of the security requirements for the entire Jenkins instance.
 
 = Appendixes =
 == Reference documents ==
