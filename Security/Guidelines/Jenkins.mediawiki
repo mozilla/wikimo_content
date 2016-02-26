@@ -171,8 +171,18 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 === Advisory Notification ===
 *TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
 
-=== Security Updates ===
-*TODO* - address core upgrade and plugin upgrades
+=== Updates ===
+There are areas where you'll need to manage updates for your Jenkins instances:
+
+- Core (this is the Jenkins instance version itself - version seen in lower right hand corner of web interface)
+- Plugins (these are the add-ons/extensions that are used to enhance/extend the Jenkins experience)
+
+For Jenkins installs deployed via Debian/Ubuntu packaged installs, a simple "apt-get update; apt-get install jenkins" is sufficient to update Jenkins core.  For other installation types, you may have the option to upgrade core via the Manage Jenkins page.  Consider upgrading core as soon as the next release is available (See above for notifications)
+
+Additionally, plugins are upgraded via the plugin manager (./pluginManager/) within the Jenkins UI.  Consider upgrading plugins after every core update.  It's important to recognize that plugins may not get the same level of testing as core for security updates and depending on the plugin maintainer some plugins may fail to work temporarily after an upgrade and require a core revert to keep the plugin functioning.  During these scenarios you may be forced to weigh the trade-offs between an unpatched security vulnerability and an broken plugin.
+
+=== Backups ===
+*TODO - perform regular backups and test restores of Jenkins installations to make sure you can restore if you run into a bad Jenkins upgrade or need to restore in the event of a compromise.
 
 === Disabled Job Pruning ===
 From time to time, a new job will supersede an old job as you make improvements to the jobs within your Jenkins instance.  It's quite common that during this early transition from old to new the old job will be disabled and not removed.  On a periodic schedule, review all the disabled jobs within your Jenkins instance and determine if they can be removed yet.  The reasons we remove/prune disabled jobs are the following:
