@@ -174,8 +174,8 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 === Updates ===
 There are areas where you'll need to manage updates for your Jenkins instances:
 
-- Core (this is the Jenkins instance version itself - version seen in lower right hand corner of web interface)
-- Plugins (these are the add-ons/extensions that are used to enhance/extend the Jenkins experience)
+* Core (this is the Jenkins instance version itself - version seen in lower right hand corner of web interface)
+* Plugins (these are the add-ons/extensions that are used to enhance/extend the Jenkins experience)
 
 For Jenkins installs deployed via Debian/Ubuntu packaged installs, a simple "apt-get update; apt-get install jenkins" is sufficient to update Jenkins core.  For other installation types, you may have the option to upgrade core via the Manage Jenkins page.  Consider upgrading core as soon as the next release is available (See above for notifications)
 
