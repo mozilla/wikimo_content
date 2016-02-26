@@ -109,10 +109,10 @@ If you are using GitHub authentication, it also supports an alternative authoriz
 Jenkins does provide a CSRF configuration with in Manage Jenkins => Configure Global Security as a checkbox called "Prevent Cross Site Request Forgery exploits".  Unfortunately, this feature, which is aimed at preventing an attacker from executing CSRF/XSRF exploit, also comes with some short falls including additional work to use the remote api and limited testing/compatibility support with plugins.  It is recommended that this feature be enabled at first, but if it becomes an obstacle and conflicts with one of the above issues, then it can be disabled.
 
 === JNLP Slave Agents ===
-Jenkins is by default enabled with JNLP slave agent support on port 50000.  This allows slave agents to communicate back to the master Jenkins node.  If you are using JNLP slave agents, disable this feature, which is configurable via http://192.168.99.100:8080/configureSecurity/ when the "Enable security" box is checked.
+Jenkins is by default enabled with JNLP slave agent support on TCP port 50000.  This allows slave agents to communicate back to the master Jenkins node.  If you are using JNLP slave agents, disable this feature, which is configurable via http://192.168.99.100:8080/configureSecurity/ when the "Enable security" box is checked.
 
 === Jenkins CLI ===
-Jenkins supports a [https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI CLI functionality], which allows you to perform a number of administrative actions on Jenkins via the Jenkins CLI client.  It is highly recommended that this service be disabled if it is not being used because at certain versions of Jenkins it allows unauthenticated remote code execution (aka: administrative control) on the Jenkins instance.
+Jenkins supports a [https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI CLI functionality], which allows you to perform a number of administrative actions on Jenkins via TCP port 49187 using the Jenkins CLI client.  It is highly recommended that this service be disabled if it is not being used because at certain versions of Jenkins it allows unauthenticated remote code execution (aka: administrative control) on the Jenkins instance.
 
 
 == SSH ==
@@ -156,6 +156,8 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 
 == Architecture ==
 *TODO* - Discuss the trust model in Jenkins a bit further
+=== Network Access ===
+*TODO* - Discuss a default firewall recommendation for Jenkins (HTTPS and SSH + implicit deny)
 === Security Zones ===
 *TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
 === Job Isolation ===
