@@ -145,7 +145,7 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 ; Costs
 : One or more meetings with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Vulnerability%20Assessment request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Vulnerability%20Assessment&assigned_to=jclaudius%40mozilla.com request bug]
 
 === Description ===
 
@@ -185,7 +185,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 ; Costs
 : One or more meeting with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Penetration%20Test request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Penetration%20Test&assigned_to=jclaudius%40mozilla.com request bug]
 
 === Description ===
 
