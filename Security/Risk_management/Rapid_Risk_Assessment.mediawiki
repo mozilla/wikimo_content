@@ -2,8 +2,7 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-'''STATUS: READY'''
-
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
 '''RRA Version supported: 2.5.x'''
 
 Any team uses a risk based methodology when making any decision.
@@ -223,16 +222,16 @@ The risk impact is using ''probable impact'', that is, worst-case scenario impac
 
 {| class="wikitable"
 |-
-| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW</span>
 | Nobody cares.
 |-
-| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span>
 | Tweets, forum posts, e-mails are seen.
 |-
-| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 | Articles in technical websites such as HN, Ars-Technica, etc. are seen.
 |-
-| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 | Scandal. We appear on TV, BBC, etc.
 |-
 |}
@@ -241,16 +240,16 @@ The risk impact is using ''probable impact'', that is, worst-case scenario impac
 
 {| class="wikitable"
 |-
-| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW</span>
 | SG (Small Group): affected for < 24h. LG (Large Group): affected for minutes.
 |-
-| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span>
 | SG: affected for days. LG: affected for hours.
 |-
-| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 | SG: affected for weeks. LG: affected for days.
 |-
-| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 | SG: affected for a month or more. LG: affected for weeks.
 |-
 |}
@@ -259,16 +258,16 @@ The risk impact is using ''probable impact'', that is, worst-case scenario impac
 
 {| class="wikitable"
 |-
-| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW</span>
 | < 100k USD.
 |-
-| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span>
 | < 1M USD.
 |-
-| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 | < 10M USD.
 |-
-| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 | > 10M USD.
 |-
 |}
