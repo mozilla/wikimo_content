@@ -1,21 +1,22 @@
-The goal of this document is to help operational teams with the handling and management of cryptographic material. All Mozilla sites and deployment should follow the recommendations below.
-The Operations Security (OpSec) team maintains this document as a reference guide for operational teams.
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block;
+font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">READY</span>'''
 
-<table><tr>
-<td><div style="float:left;" class="toclimit-3">__TOC__</div></td>
-<td valign="top">
-{| class="wikitable"
-|-
-! Document Status !! Major Versions
-|- 
-|  <span style="color:orange;">'''DRAFT'''</span> ||
-* Version 1.2: kang: Bump key requirements see also https://github.com/mozilla/wikimo_opsec/pull/8 for discussion.
-* Version 1.1: kang: migrated OpenSSH key handling to [[Security/Guidelines/OpenSSH]]
-* Version 1: kang/ulfr: creation
-|}
-[[File:OpSec.png|right|300px]]
-</td>
-</tr></table>
+The goal of this document is to help operational teams with the handling and management of cryptographic material. All Mozilla sites and deployment should follow the recommendations below.
+
+The Enterprise Information Security (Infosec, formerly OpSec) team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
 
 = Data classification =
 == Key material ==

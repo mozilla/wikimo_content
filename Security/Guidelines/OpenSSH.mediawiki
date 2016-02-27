@@ -2,7 +2,9 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-'''STATUS: READY'''
+'''STATUS: <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block;
+font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">READY</span>'''
 
 The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla
 sites and deployment should follow the recommendations below.
