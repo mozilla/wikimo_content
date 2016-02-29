@@ -1,10 +1,10 @@
 <!-- Levels colors reference for copy pasting -->
 <!--
 Levels
-<span style="background-color: #ffffff; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">UNKNOWN</span>
+<span style="background-color: #ffffff; border: solid 1px #aaaaaa; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">UNKNOWN</span>
 <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW</span>
 <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span>
-<span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 
 Pass/Fail
@@ -13,18 +13,18 @@ Pass/Fail
 
 Document status
 <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
-<span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
 <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">NOT READY</span>
 
 Star rating
 <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯✯✯</span>
 <span style="background-color: #4a6785; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯✯</span>
-<span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯</span>
 <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯</span>
 
 Optional, Should, Must
 <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">OPTIONAL</span>
-<span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
 <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MUST</span>
  -->
 <table>
@@ -100,7 +100,7 @@ Accepted risk
 ! Coding rationale
 ! Definition & expectations
 |-
-! <span style="background-color: #ffffff; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">UNKNOWN</span>
+! <span style="background-color: #ffffff; border: solid 1px #aaaaaa; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">UNKNOWN</span>
 | White represent the emptiness/lack of data.
 | This is '''not a real level''', it is used when there to represent that we do not have enough data to correctly assess risk (i.e. data collection work is required).
 Even when no data is present, it is often possible to estimate the risk (since there is a risk of ''not knowing'').
@@ -131,7 +131,7 @@ This concept is also known as ''"trust, but verify"'' - i.e. unknown does not di
 * '''Risk acceptance''': Risk should generally be discussed, and at least mitigated.
 * '''Exception time''': Recommend remediation within 90-180 days.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 |
 * Yellow generally signifies "warning". In our case it correlates to "important".
 |
@@ -177,7 +177,7 @@ Example: Flip a configuration switch, change a password, lookup a document, etc.
 
 Example: Take a group decision, create standards, lookup complex data, manual upgrades, etc.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 |
 * Small group: A week or two.
 * Large group: A day or two.
@@ -209,7 +209,7 @@ See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition
 |
 * This is up to the reader to choose to follow or not to follow this recommendation.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
 |
 * See risk level's [[#Risk levels definition and nomenclature | "high"]] rationale.
 |
@@ -259,7 +259,7 @@ These are used in the header of every document to clearly signify its current st
 |
 * Means the document is ready for user consumption and is expected to be followed.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
 |
 * Means the document is in progress or does not cover all cases.
 * You may follow this document for guidance, at your own risk.
@@ -294,7 +294,7 @@ Four levels are used to align with other security related levels, such as risk l
 * Some outliers require attention.
 * Immediate action not required.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">✯✯</span>
 |
 ''Score may moderately contribute to risk.''
 
@@ -333,7 +333,7 @@ This should be used for Mozilla provided or hosted services as well as externall
 * This service uses best practices security-wise. Follows all standards and guidelines.
 * May be used with most services that do not require specific security controls, or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span> (or lower) risk impact services.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 |
 * In addition to the <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span> level, this service provides:
 ** Multiple security layers across the board.
