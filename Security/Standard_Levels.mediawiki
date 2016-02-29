@@ -339,7 +339,7 @@ This should be used for Mozilla provided or hosted services as well as externall
 ** Multiple security layers across the board.
 ** Has dedicated security contacts/teams.
 ** Gets tested regularly and has a good track record.
-* May be used for services with <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span> (or lower) risk impact.
+* May be used for services with <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span> (or lower) risk impact.
 |-
 ! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 |
