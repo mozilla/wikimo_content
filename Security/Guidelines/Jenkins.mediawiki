@@ -169,10 +169,13 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 == Maintenance ==
 
 === Advisory Notification ===
-*TODO* - Jenkins provides a mailing list for anyone who's managing a Jenkins instance.  They also provide pre-notification for advisories and you can sign up to receive them here for planning purposes.
+It's good practice to subscribe to the Jenkins advisories mailing list to be kept abreast of security updates for Jenkins.  There are two important types you'll want to keep an eye out; pre-notifications (a warning that at advisory is coming soon) and the actual advisory notification (patch now).  Both of these items will assist with you in planning for and executing upgrades to protect your Jenkins instances.
+
+* [https://wiki.jenkins-ci.org/display/JENKINS/Mailing+Lists Mailing List]
+* [http://feeds.feedburner.com/jenkins-security-advisories RSS Feed]
 
 === Updates ===
-There are areas where you'll need to manage updates for your Jenkins instances:
+There are times when you'll need to manage updates for your Jenkins instances:
 
 * Core (this is the Jenkins instance version itself - version seen in lower right hand corner of web interface)
 * Plugins (these are the add-ons/extensions that are used to enhance/extend the Jenkins experience)
@@ -209,3 +212,6 @@ In cases where you do find a significant change in job scope, it may be worth cr
 * [https://wiki.mozilla.org/Security/Guidelines/OpenSSH]
 * [https://speakerdeck.com/javuto/security-at-scale-2015-building-open-source-software-for-security]
 * [https://speakerdeck.com/claudijd/attacking-cloud-services-with-source-code]
+* [https://cloudbees.zendesk.com/hc/en-us/articles/204987814-How-to-upgrade-Jenkins]
+* [https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI]
+* [https://wiki.jenkins-ci.org/display/JENKINS/Security+Advisories]
