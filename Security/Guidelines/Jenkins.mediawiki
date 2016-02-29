@@ -156,8 +156,20 @@ You can also refer to the SSH agent forwarding section in the [https://wiki.mozi
 
 == Architecture ==
 *TODO* - Discuss the trust model in Jenkins a bit further
+
 === Network Access ===
-*TODO* - Discuss a default firewall recommendation for Jenkins (HTTPS and SSH + implicit deny)
+It's highly recommended you run Jenkins behind some form of Firewall capability whether it be local IPTables rules or some other sophisticated network infrastructure that supports some form of network ACL control.
+
+A good default to start with would include something like this:
+
+* Allow inbound TCP port 443 (assuming HTTPS interface is hosted on default port)
+* Allow inbound TCP port 22 (assuming SSH interface is hosted on default port)
+* Implicitly Deny All other Traffic
+
+This default works quite well as a secondary control to limit exposure of services that the Jenkins server may host either during the course of executing a job or native services to Jenkins itself (CLI Access and JNLP Slave access).  If these services are needed for interoperability purposes, do so explicitly with specific source and destination IP addresses.
+
+Lastly, for installations without a need for a public presence or with higher security needs may also consider requiring either VPN access or SSH access with tunneling before being able to connect to any hosted Jenkins services.  The benefit of doing so significantly reduces the Jenkins attack surface. 
+
 === Security Zones ===
 *TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
 === Job Isolation ===
