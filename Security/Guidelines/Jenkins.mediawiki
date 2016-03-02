@@ -29,27 +29,35 @@ There are a number of known URL paths that expose attack surface on a Jenkins in
 
 Please note that the following paths are relative to the Jenkins application root.  So if the Jenkins installation is reachable at /jenkins instead of the default /, you may need to make substitutions accordingly:
 
-  ./script
-  ./view/All/newJob
-  ./asynchPeople
-  ./systemInfo
   ./api
-  ./restart
-  ./quietDown
-  ./user/jenkins
-  ./jnlpJars
   ./asynchPeople
+  ./cli
   ./credential-store
-  ./job/[job_name]/[build_number]/injectedEnvVars/
+  ./jnlpJars
+  ./job/[JOB_NAME]/[BUILD_NUMBER]/injectedEnvVars/
+  ./quietDown
+  ./restart
+  ./script
+  ./subversion
+  ./systemInfo
+  ./user/jenkins
+  ./view/All/newJob
+  ./whoAmI
 
 Such path restrictions can be implemented in any modern web server technology.
 
 nginx Example:
 
   # Restrict access to the following paths
-  location ^~ /(api|restart|quietDown|user/jenkins|jnlpJars|script|asynchPeople|credential-store|systemInfo|view/All/newJob) {
+  location ^~ /(api|asynchPeople|cli|credential-store|jnlpJars|quietDown|restart|script|systemInfo|subversion|user/jenkins|view/All/newJob|whoAmI) {
     deny    all;
   }
+
+  # Restrict access to all API paths
+  location ~* ^.+/api.+$ {
+    deny    all;
+  }
+
   # Restrict access to injectedEnvVars paths
   location ~* ^.+/injectedEnvVars/$ {
     deny    all;
@@ -58,9 +66,15 @@ nginx Example:
 Apache HTTPD Example:
 
   # Restrict access to the following paths
-  <DirectoryMatch "^/(api|restart|quietDown|user/jenkins|jnlpJars|script|asynchPeople|credential-store|systemInfo|view/All/newJob)">
+  <DirectoryMatch "^/(api|asynchPeople|cli|credential-store|jnlpJars|quietDown|restart|script|systemInfo|subversion|user/jenkins|view/All/newJob|whoAmI)">
     Deny from all
   </DirectoryMatch>
+
+  # Restrict access to all API paths
+  <DirectoryMatch "^.+api.+$">
+    Deny from all
+  </DirectoryMatch>
+
   # Restrict access to injectedEnvVars paths
   <DirectoryMatch "^.+/injectedEnvVars/$">
     Deny from all
