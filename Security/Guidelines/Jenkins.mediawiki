@@ -168,12 +168,18 @@ A good default to start with would include something like this:
 
 This default works quite well as a secondary control to limit exposure of services that the Jenkins server may host either during the course of executing a job or native services to Jenkins itself (CLI Access and JNLP Slave access).  If these services are needed for interoperability purposes, do so explicitly with specific source and destination IP addresses.
 
-Lastly, for installations without a need for a public presence or with higher security needs may also consider requiring either VPN access or SSH access with tunneling before being able to connect to any hosted Jenkins services.  The benefit of doing so significantly reduces the Jenkins attack surface. 
+Lastly, for installations without a need for a public presence or with higher security needs may also consider requiring either VPN access or SSH access with tunneling before being able to connect to any hosted Jenkins services.  The benefit of doing so significantly reduces the Jenkins attack surface.
 
-=== Security Zones ===
-*TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
 === Job Isolation ===
+By default, Jenkins provides no job isolation.  This means that a job running on a default Jenkins installation running on the master node (via the default configuration) has the full ability to escape the job workspace and traverse into other folders accessible to the jenkins user including that of $JENKINS_HOME.  If a malicious user/code where to attain READ access to $JENKINS_HOME, all secrets stored within that node (including administrator usernames/passwords, private keys, API tokens, etc) should be considered compromised.
+
+To achieve proper job isolation, there a lot of options available (docker, VM, AMI's), but they all essentially boil down to running jobs on a unique build target that starts from a immutable environment than cannot be accessed directly or influenced by other jobs.  This no only encourages more stable/reliable builds, but it also prevents lateral movement from Job A to Job B as well as prevents access to $JENKINS_HOME.
+
+
+
 *TODO* - Don't run anything on the master node, use slaves and containers for better OS isolation and repeatability
+*TODO* - Don't run different trust levels on the same build target (ie. test/build/sign/push)
+
 === Secret Management ===
 *TODO*
 
