@@ -362,7 +362,7 @@ Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violati
 
 * [http://www.html5rocks.com/en/tutorials/security/content-security-policy/ An Introduction to Content Security Policy]
 * [http://www.cspplayground.com/ Content Security Policy Playground]
-* [http://www.w3.org/TR/CSP2/ Content Security Policy Level 2 Standard]
+* [https://www.w3.org/TR/CSP2/ Content Security Policy Level 2 Standard]
 
 
 = contribute.json =

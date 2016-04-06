@@ -109,8 +109,8 @@ Security controls are categorized by capability ("Inventory", "Vulnerability rem
 recovery", etc.). This allows to also understand which security capabilities a service offers.
 
 * Current Capabilities Status: https://docs.google.com/spreadsheets/d/1qnjdWJiOleTLvWyeiW65gwnuElyRlMMIvvlFAnpPy3M/edit#gid=1307966807
-* Open Risk Records: http://mzl.la/1EmxXSU
-* Closed Risk Records: http://mzl.la/1EmxVdY
+* Open Risk Records: https://mzl.la/1EmxXSU
+* Closed Risk Records: https://mzl.la/1EmxVdY
 
 === Impact ''data point'' ===
 
