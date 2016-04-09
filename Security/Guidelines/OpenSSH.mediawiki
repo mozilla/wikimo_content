@@ -58,6 +58,9 @@ AuthenticationMethods publickey
 # LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
 LogLevel VERBOSE
 
+# Log sftp level file access (read/write/etc.) that would not be easily logged otherwise.
+Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
+
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
 #
 # On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
@@ -95,6 +98,9 @@ RequiredAuthentications2 publickey
 
 # LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
 LogLevel VERBOSE
+
+# Log sftp level file access (read/write/etc.) that would not be easily logged otherwise.
+Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
 
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
 #
