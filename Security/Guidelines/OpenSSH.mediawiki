@@ -247,6 +247,34 @@ When SSH keys are necessary for automation between systems, it is reasonable to 
 * The machine keys should be unique per usage. Each new usage (different service, different script called, etc.) should use a new, different key.
 * Only used when strictly necessary.
 * Restrict privileges of the account (i.e. no root or "sudoer" machine account).
+* Using a ForceCommand returning only the needed results, or only allowing the machine to perform SSH-related tasks such as tunneling is prefered.
+* Disable sftp if not needed as it exposes more surface and different logging mechanisms than SSH (and thus scp) itself.
+
+File: <code>/etc/ssh/sshd_config</code>
+<source>
+Match User machine_user
+    Subsystem   sftp  /bin/false
+</source>
+
+====  Multi-factor bypass setup for machine keys ====
+Machine keys do not play well with multi-factor authentication as there is no human interaction.
+
+* All logins from machine accounts should be protected by an additional authentication layer (VPN, another machine, etc.).
+* All logins from machine accounts are only allowed within the private IP-space, and if possible, only the relevant machine source IPs should be accessible.
+
+File: <code>/etc/ssh/sshd_config</code> (OpenSSH 6.3+)
+<source>
+Match User machine_user Address 10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
+    PubkeyAuthentication yes
+    KbdInteractiveAuthentication no
+    AuthenticationMethods publickey
+</source>
+
+File: <code>/etc/ssh/sshd_config</code> (OpenSSH 5.3+ w/ RedHat/CentOS patch)
+<source>
+Match User machine_user Address 10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
+    RequiredAuthentications2 publickey
+</source>
 
 === Auditing your existing SSH keys ===
 
