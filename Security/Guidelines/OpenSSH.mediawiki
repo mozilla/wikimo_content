@@ -209,7 +209,7 @@ Mozilla keys.
 $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 
 # ED25519 keys are favored over RSA keys when backward compatibility ''is not required''.
-# This is only compatible with OpenSSH 6.4+ and fixed-size (256 bytes).
+# This is only compatible with OpenSSH 6.5+ and fixed-size (256 bytes).
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 </source>
 
