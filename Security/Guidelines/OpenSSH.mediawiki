@@ -129,7 +129,7 @@ ChallengeResponseAuthentication yes
 UseLogin no
 </source>
 
-PAM configuration for use with the [http://www.nongnu.org/oath-toolkit/ OATH Toolkit] or [https://www.duosecurity.com DuoSecurity] as second authentication factor.
+PAM configuration for use with the [https://www.nongnu.org/oath-toolkit/ OATH Toolkit] or [https://www.duosecurity.com DuoSecurity] as second authentication factor.
 
 File: <code>/etc/pam.d/sshd</code>
 <source>
@@ -152,7 +152,7 @@ account    required     pam_nologin.so
 == Ciphers and algorithms choice ==
 * When CHACHA20 (OpenSSH 6.5+) is not available, AES-GCM (OpenSSH 6.1+) and any other algorithm using EtM (Encrypt then MAC) [http://blog.djm.net.au/2013/11/chacha20-and-poly1305-in-openssh.html disclose the packet length] - giving some information to the attacker. Only recent OpenSSH servers and client support CHACHA20.
 
-* NIST curves (<code>ecdh-sha2-nistp512,ecdh-sha2-nistp384,ecdh-sha2-nistp256</code>) are listed for compatibility, but the use of <code>curve25519</code> is [http://safecurves.cr.yp.to/ generally preferred].
+* NIST curves (<code>ecdh-sha2-nistp512,ecdh-sha2-nistp384,ecdh-sha2-nistp256</code>) are listed for compatibility, but the use of <code>curve25519</code> is [https://safecurves.cr.yp.to/ generally preferred].
 
 * SSH protocol 2 supports [https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange DH] and [https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman ECDH] key-exchange as well as [https://en.wikipedia.org/wiki/Forward_secrecy forward secrecy].
 
@@ -214,7 +214,7 @@ Mozilla keys.
 $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 
 # ED25519 keys are favored over RSA keys when backward compatibility ''is not required''.
-# This is only compatible with OpenSSH 6.4+ and fixed-size (256 bytes).
+# This is only compatible with OpenSSH 6.5+ and fixed-size (256 bytes).
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 </source>
 
@@ -357,12 +357,12 @@ However, it seems safe to say that the latency differences are not significant a
 
 * [https://wiki.mozilla.org/Security/Key_Management Key Management]
 * [https://wiki.mozilla.org/Security/Server_Side_TLS Server Side TLS]
-* [http://www.ietf.org/rfc/rfc4418.txt RFC4418 (umac)]
+* [https://www.ietf.org/rfc/rfc4418.txt RFC4418 (umac)]
 * [http://www.openssh.com/txt/draft-miller-secsh-umac-01.txt umac draft]
-* [http://safecurves.cr.yp.to/ Safe curves]
+* [https://safecurves.cr.yp.to/ Safe curves]
 * [http://blog.djm.net.au/2013/11/chacha20-and-poly1305-in-openssh.html DJM blog]
 * [https://stribika.github.io/2015/01/04/secure-secure-shell.html Stribika blog]
 * [http://2013.diac.cr.yp.to/slides/gueron.pdf AES-GCM performance study]
-* [http://googleonlinesecurity.blogspot.nl/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
+* [https://security.googleblog.com/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
 * [http://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.9&content-type=text/plain PROTOCOL.certkeys]
-* [http://wiki.gnupg.org/rfc4880bis rfc44880bis from GnuPG]
+* [https://wiki.gnupg.org/rfc4880bis rfc44880bis from GnuPG]
