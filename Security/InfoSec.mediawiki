@@ -9,7 +9,7 @@ Infosec assists Mozillians in defining and operating security controls to ensure
 * we provide baseline practices and assist teams in defining their security standards
 
 = Contact =
-Email us at '''opsec''' [at] mozilla.com. For confidential information, encrypt your email using our public PGP: [https://gpg.mozilla.org/pks/lookup?op=get&search=0xBC17301B491B3F21 Operations Security (Mozilla Security Assurance)] .
+Email us at '''infosec''' [at] mozilla.com. For confidential information, encrypt your email using our public PGP: [https://gpg.mozilla.org/pks/lookup?op=get&search=0xBC17301B491B3F21 Operations Security (Mozilla Security Assurance)] .
 
 For security incidents, file a bug in Bugzilla under the product/component [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident].
 
@@ -145,7 +145,7 @@ The Rapid Risk (Impact) Assessment (also called Rapid Risk Analysis) is a 30 min
 ; Costs
 : One or more meetings with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Vulnerability%20Assessment request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Vulnerability%20Assessment&assigned_to=jclaudius%40mozilla.com request bug]
 
 === Description ===
 
@@ -185,7 +185,7 @@ When a threat model or analysis is requested on a large service (ie, larger than
 ; Costs
 : One or more meeting with InfoSec.
 ; Service request
-: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Penetration%20Test request bug]
+: [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Penetration%20Test&assigned_to=jclaudius%40mozilla.com request bug]
 
 === Description ===
 

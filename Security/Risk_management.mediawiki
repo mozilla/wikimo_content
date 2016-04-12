@@ -2,7 +2,9 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-'''STATUS: READY'''
+'''STATUS: <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block;
+font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">READY</span>'''
 
 The goal of this document is to help understanding how risk is handled by the Enterprise Information Security Team
 (Infosec) at Mozilla. The main goal is to strike a balance between speed and effectiveness while assessing risk for
@@ -56,18 +58,18 @@ use this to '''normalize''' risk measurements. Here's a summary on how it applie
 
 {| class="wikitable"
 |-
-| <span style="padding: 0 32px;background-color:lightgrey;">LOW</span>
+| <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW</span>
 | Low is something we don't expect has impact, or is likely to happen. We don't expect much attention there.
 |-
-| <span style="padding: 0 20px; background-color:steelblue;">MEDIUM</span>
+| <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM</span>
 | Medium is where some risk exists and should at least be acknowledged by service owners. Ideally, steps will be taken
 to remedy or mitigate the risk albeit some may instead accept this as residual risk.
 |-
-| <span style="padding: 0 32px;background-color:#FFF380;">HIGH</span>
+| <span style="background-color: #ffd351; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH</span>
 | High means we have a problem that we have to fix. The risk is sufficiently important that we have to plan remediations
 or mitigations soon. We do not expect high risk to be accepted as residual.
 |-
-| <span style="padding: 0 14px; background-color:#E77471;">MAXIMUM</span>
+| <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM</span>
 | Maximum means we have a significant problem right now. All hands on deck may be required to remedy or mitigate the
 risk immediately.
 |-
@@ -114,7 +116,7 @@ recovery", etc.). This allows to also understand which security capabilities a s
 
 === Impact ''data point'' ===
 
-The [Risk_management:Rapid_Risk_Analysis] is currently the single data point for impact and is fairly reliable and
+The [[Security/Risk management/Rapid Risk Assessment|Rapid Risk Assessment]] is currently the single data point for impact and is fairly reliable and
 accurate for that measurement.
 
 * Quantifiable results: Normalized financial impact, productivity impact.
@@ -131,7 +133,7 @@ accurate for that measurement.
 ! style="font-weight: bold;" | Quantifiable results
 ! style="font-weight: bold;" | Qualifiable results
 |-
-| '''[Risk_management:Rapid_Risk_Analysis]'''
+| '''[[Security/Risk management/Rapid Risk Assessment|Rapid Risk Assessment]]'''
 | The likelihood recorded by the RRA is a best-effort metric that is gathered by asking standard questions. It generally
 catches high/maximum likelihood scenarios well, but is not accurate for medium/low scenarios. (i.e. an RRA low likelihood
 may in fact be higher than estimated)

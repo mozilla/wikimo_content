@@ -2,9 +2,14 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block;
+font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">READY</span>'''
+
 The goal of this document is to help operational teams with the configuration of OpenSSH server and client. All Mozilla
-sites and deployment should follow the recommendations below.  The Enterprise Information Security (Infosec, formerly
-OpSec) team maintains this document as a reference guide for operational teams.
+sites and deployment should follow the recommendations below.
+
+The Enterprise Information Security (Infosec, formerly OpSec) team maintains this document as a reference guide for operational teams.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
@@ -62,7 +67,7 @@ LogLevel VERBOSE
 PermitRootLogin No
 
 # Use kernel sandbox mechanisms where possible in unprivilegied processes
-# Systrace on OpenBSD, Seccomp on Linux, seatbelt on MacOSX/Darwin, rlimit elsewhere. 
+# Systrace on OpenBSD, Seccomp on Linux, seatbelt on MacOSX/Darwin, rlimit elsewhere.
 UsePrivilegeSeparation sandbox
 </source>
 
@@ -92,7 +97,7 @@ RequiredAuthentications2 publickey
 LogLevel VERBOSE
 
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
-# 
+#
 # On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
 # Additionally, only tools such as systemd and auditd record the process session id.
 # On other OSes, the user session id is not necessarily recorded at all kernel-side.
@@ -108,7 +113,7 @@ It requires additional setup, such as using the [http://www.nongnu.org/oath-tool
 {| class="wikitable"
 |-
 ! <span style="color:red;">'''ATTENTION'''</span>
-|- 
+|-
 | In order to allow using one time passwords (OTPs) and any other text input, Keyboard-interactive is enabled in OpenSSH. This ''MAY'' allow for password authentication to work. It is therefore very important to check your PAM configuration so that PAM disallow password authentication for OpenSSH.
 |}
 
@@ -243,7 +248,7 @@ $ ssh-keygen -lf id_rsa
 {| class="wikitable"
 |-
 ! <span style="color:red;">'''ATTENTION'''</span>
-|- 
+|-
 | SSH Agent forwarding exposes your authentication to the server you're connecting to. By default, an attacker with control of the server (i.e. root access) can communicate with your agent and use your key to authenticate to other servers without any notification (i.e. impersonate you).<br />For this reason, one must be careful when using SSH agent forwarding. Defaulting to always forwarding the agent is strongly discouraged.<br /> Note also that while the attacker can use your key as long as the agent is running and forwarded, he cannot steal/download the key for offline/later use.
 |}
 
@@ -340,7 +345,7 @@ Results:
 |-
 | RSA 4096 || 120ms || 145ms || 127ms
 |-
-| RSA 2048 || 127ms || 129ms || 120ms
+| RSA 2048 || 120ms || 129ms || 127ms
 |-
 | ed25519 || 117ms || 138ms || 120ms
 |}
