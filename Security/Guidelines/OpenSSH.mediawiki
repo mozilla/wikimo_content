@@ -58,6 +58,9 @@ AuthenticationMethods publickey
 # LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
 LogLevel VERBOSE
 
+# Log sftp level file access (read/write/etc.) that would not be easily logged otherwise.
+Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
+
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
 #
 # On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
@@ -96,6 +99,9 @@ RequiredAuthentications2 publickey
 # LogLevel VERBOSE logs user's key fingerprint on login. Needed to have a clear audit track of which key was using to log in.
 LogLevel VERBOSE
 
+# Log sftp level file access (read/write/etc.) that would not be easily logged otherwise.
+Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
+
 # Root login is not allowed for auditing reasons. This is because it's difficult to track which process belongs to which root user:
 #
 # On Linux, user sessions are tracking using a kernel-side session id, however, this session id is not recorded by OpenSSH.
@@ -117,6 +123,21 @@ It requires additional setup, such as using the [http://www.nongnu.org/oath-tool
 | In order to allow using one time passwords (OTPs) and any other text input, Keyboard-interactive is enabled in OpenSSH. This ''MAY'' allow for password authentication to work. It is therefore very important to check your PAM configuration so that PAM disallow password authentication for OpenSSH.
 |}
 
+==== OpenSSH 6.3+ (default) ====
+File: <code>/etc/ssh/sshd_config</code>
+<source>
+# IMPORTANT: you will have to ensure OpenSSH cannot authenticate with passwords with PAM in /etc/pam.d/sshd
+# "PasswordAuthentication no" is not sufficient!
+PubkeyAuthentication yes
+PasswordAuthentication no
+AuthenticationMethods publickey,keyboard-interactive:pam
+KbdInteractiveAuthentication yes
+UsePAM yes
+# Ensure /bin/login is not used so that it cannot bypass PAM settings for sshd.
+UseLogin no
+</source>
+
+==== OpenSSH 5.3+ w/ RedHat/CentOS patch (old) ====
 File: <code>/etc/ssh/sshd_config</code>
 <source>
 # Allow keyboard-interactive.
@@ -125,6 +146,7 @@ File: <code>/etc/ssh/sshd_config</code>
 RequiredAuthentications2 publickey,keyboard-interactive:skey
 PasswordAuthentication no
 ChallengeResponseAuthentication yes
+UsePAM yes
 # Ensure /bin/login is not used so that it cannot bypass PAM settings for sshd.
 UseLogin no
 </source>
@@ -229,6 +251,36 @@ When SSH keys are necessary for automation between systems, it is reasonable to 
 * The keys must be accessible only by the admin user (root) and/or the system user requiring access.
 * Usage of machine keys should be registered in an inventory (a wiki page, ldap, an inventory database), to allow for rapid auditing of key usage across an infrastructure.
 * The machine keys should be unique per usage. Each new usage (different service, different script called, etc.) should use a new, different key.
+* Only used when strictly necessary.
+* Restrict privileges of the account (i.e. no root or "sudoer" machine account).
+* Using a ForceCommand returning only the needed results, or only allowing the machine to perform SSH-related tasks such as tunneling is prefered.
+* Disable sftp if not needed as it exposes more surface and different logging mechanisms than SSH (and thus scp) itself.
+
+File: <code>/etc/ssh/sshd_config</code>
+<source>
+Match User machine_user
+    Subsystem   sftp  /bin/false
+</source>
+
+====  Multi-factor bypass setup for machine keys ====
+Machine keys do not play well with multi-factor authentication as there is no human interaction.
+
+* All logins from machine accounts should be protected by an additional authentication layer (VPN, another machine, etc.).
+* All logins from machine accounts are only allowed within the private IP-space, and if possible, only the relevant machine source IPs should be accessible.
+
+File: <code>/etc/ssh/sshd_config</code> (OpenSSH 6.3+)
+<source>
+Match User machine_user Address 10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
+    PubkeyAuthentication yes
+    KbdInteractiveAuthentication no
+    AuthenticationMethods publickey
+</source>
+
+File: <code>/etc/ssh/sshd_config</code> (OpenSSH 5.3+ w/ RedHat/CentOS patch)
+<source>
+Match User machine_user Address 10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
+    RequiredAuthentications2 publickey
+</source>
 
 === Auditing your existing SSH keys ===
 
