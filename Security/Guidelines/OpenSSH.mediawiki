@@ -256,10 +256,16 @@ When SSH keys are necessary for automation between systems, it is reasonable to 
 * Using a ForceCommand returning only the needed results, or only allowing the machine to perform SSH-related tasks such as tunneling is prefered.
 * Disable sftp if not needed as it exposes more surface and different logging mechanisms than SSH (and thus scp) itself.
 
-File: <code>/etc/ssh/sshd_config</code>
-<source>
-Match User machine_user
-    Subsystem   sftp  /bin/false
+{{note|
+You may want to use the group "users" instead of "sftpusers" in the example below as this may already exist and include all regular users by
+default.
+}}
+
+<source code="bash">
+    # groupadd sftpusers
+    # usermod -a -g sftpusers <userthat_needs_ftp>
+    # chown :sftpusers /usr/lib/ssh/sftp-server
+    # chmod 0750 /usr/lib/ssh/sftp-server
 </source>
 
 ====  Multi-factor bypass setup for machine keys ====
