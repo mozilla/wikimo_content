@@ -22,9 +22,19 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Use of them makes auditing access difficult:
 ** multiple users appear in audit logs as one user and different users actions are difficult to differentiate.
 ** the number of audit logs that need to be searched increases.
-** correlation of events across different systems is impossible if multiple people are creating event records with a
-single shared account across multiple systems at the same time.
+** correlation of events across different systems is impossible if multiple people are creating event records with a single shared account across multiple systems at the same time.
 * Revoking access to a subset of the users of a shared password requires a password change that affects all users.
+|-
+|<div id="password-reuse">[[#password-reuse|§]] Password reuse</div>
+|Password reuse is the practice of a single user using the same password across multiple different accounts/sites. This is contrasted with creating a different, distinct password for every account/site. Users often employ hybrid forms of password reuse like
+* Using the same password for a class of accounts/sites, for example, using one single password for multiple high value financial accounts, but a different single password for multiple low value forums and wikis.
+* Using a consistent reproducible method of password generation for each site, for example, every account/site has a password which begins with the same characters and ends with name of the site ("rosebud0facebook", "rosebud0linkedin")
+Password reuse is discouraged because:
+* When a site is compromised by an attacker, the attacker can easily take the user's password that has been reused on other sites and gain access to those other sites. For example if a user uses the same password on a car forum website as they use on Facebook, when that car website gets compromised, the attackers can then takeover the user's Facebook account.
+* Unethical administrators of any sites where a password is reused may/can gain access to accounts using the reused password.
+Note that it is dangerous for a user to rely on a site being able to effectively prevent an attacker from obtaining that user's password once an attacker has compromised the site.
+
+Since it's difficult/impossible for a user to memorize a distinct password for every account/site, a common solution is to use a password manager.
 |-
 |<div id="decentralized-user-account-management">[[#decentralized-user-account-management|§]] Decentralized user account management</div>
 |Decentralized user account management refers to user account management which is not driven by the source of truth for the user's account. Examples of this are:
