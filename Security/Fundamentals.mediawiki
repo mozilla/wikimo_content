@@ -30,7 +30,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Using the same password for a class of accounts/sites, for example, using one single password for multiple high value financial accounts, but a different single password for multiple low value forums and wikis.
 * Using a consistent reproducible method of password generation for each site, for example, every account/site has a password which begins with the same characters and ends with name of the site ("rosebud0facebook", "rosebud0linkedin")
 Password reuse is discouraged because:
-* When a site is compromised by an attacker, the attacker can easily take the user's password with has been reused on other sites and gain access to those other sites. For example if a user uses the same password on a car forum website as they use on Facebook, when that car website gets compromised, the attackers can then takeover the user's Facebook account.
+* When a site is compromised by an attacker, the attacker can easily take the user's password that has been reused on other sites and gain access to those other sites. For example if a user uses the same password on a car forum website as they use on Facebook, when that car website gets compromised, the attackers can then takeover the user's Facebook account.
 * For every site that a user has reused a password at, any unethical administrators of any of those sites has the ability to access that user's accounts on other sites where the user has reused the password.
 Note that some of this risk is ameliorated when sites store passwords as [https://en.wikipedia.org/wiki/Salt_%28cryptography%29 salted hashes], but a user depending on this to protect them against the risks of password reuse is dangerous.
 
