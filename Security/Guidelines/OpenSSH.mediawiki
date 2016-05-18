@@ -264,7 +264,7 @@ default.
 <source code="bash">
     # groupadd sftpusers
     # usermod -a -g sftpusers <userthat_needs_ftp>
-    # chown :sftpusers /usr/lib/ssh/sftp-server
+    # chgrp sftpusers /usr/lib/ssh/sftp-server
     # chmod 0750 /usr/lib/ssh/sftp-server
 </source>
 
