@@ -19,7 +19,7 @@ Usage
         <activate your venv>
         $ pip install -r requirements.txt
         $ cp sync.json.inc sync.json
-        <edit sync.jon!>
+        <edit sync.json>
         $ ./sync.py
 
 To sync new changes from git to wikimo:
