@@ -358,12 +358,15 @@ Content-Security-Policy: default-src https: 'unsafe-eval' 'unsafe-inline'</pre>
 <pre># Don't implement the above policy yet; instead just report violations that would have occured
 Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/</pre>
 
+<pre># Disable the loading of any resources and disable framing, recommended for APIs to use
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'</pre>
+
 == See Also ==
 
 * [http://www.html5rocks.com/en/tutorials/security/content-security-policy/ An Introduction to Content Security Policy]
 * [http://www.cspplayground.com/ Content Security Policy Playground]
 * [https://www.w3.org/TR/CSP2/ Content Security Policy Level 2 Standard]
-
+* [[#X-Frame-Options|Using the frame-ancestors directive to prevent framing]]
 
 = contribute.json =
 
@@ -605,9 +608,11 @@ X-Content-Type-Options: nosniff</pre>
 
 = X-Frame-Options =
 
-<tt>X-Frame-Options</tt> is an HTTP header that allows sites control over how your site may be framed within an iframe. Clickjacking is a practical attack that allows malicious sites to trick users into clicking links on your site even though they may appear to be something else entirely. As such, the use of the X-Frame-Options header is mandatory for all new websites, and all existing websites are expected to add support for X-Frame-Options as soon as possible.
+<tt>X-Frame-Options</tt> is an HTTP header that allows sites control over how your site may be framed within an iframe. Clickjacking is a practical attack that allows malicious sites to trick users into clicking links on your site even though they may appear to not be on your site at all. As such, the use of the <tt>X-Frame-Options</tt> header is mandatory for all new websites, and all existing websites are expected to add support for <tt>X-Frame-Options</tt> as soon as possible.
 
-Sites that require the ability to be iframed must either use the <tt>ALLOW-FROM</tt> directive or employ JavaScript defenses to prevent clickjacking from malicious origins.
+Note that <tt>X-Frame-Options</tt> has been superceded by the Content Security Policy's <tt>frame-ancestors</tt> directive, which allows considerably more granular control over the origins allowed to frame a site. As <tt>frame-ancestors</tt> is not yet supported in IE11 and older, Edge, Safari 9.1 (desktop), and Safari 9.2 (iOS), it is recommended that sites employ <tt>X-Frame-Options</tt> in addition to using CSP.
+
+Sites that require the ability to be iframed must either use the <tt>ALLOW-FROM</tt> directive, use Content Security Policy, and/or employ JavaScript defenses to prevent clickjacking from malicious origins.
 
 == Directives ==
 
@@ -617,11 +622,17 @@ Sites that require the ability to be iframed must either use the <tt>ALLOW-FROM<
 
 == Examples ==
 
-<pre># Block site from being iframed
+<pre># Block site from being framed
 X-Frame-Options: DENY</pre>
+
+<pre># Do the same thing, but with Content Security Policy
+Content-Security-Policy: frame-ancestors 'none'</pre>
 
 <pre># Only allow my site to frame itself
 X-Frame-Options: SAMEORIGIN</pre>
+
+<pre># Do the same thing, but with Content Security Policy, and also allow frame-you.mozilla.org to frame the site
+Content-Security-Policy: frame-ancestors 'self' https://frame-you.mozilla.org</pre>
 
 == See Also ==
 
@@ -631,7 +642,9 @@ X-Frame-Options: SAMEORIGIN</pre>
 
 = X-XSS-Protection =
 
-<tt>X-XSS-Protection</tt> is a feature of Internet Explorer and Chrome that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. New sites should use this header, but it is only recommended for existing sites, given the small but possible risk of false positives.
+<tt>X-XSS-Protection</tt> is a feature of Internet Explorer and Chrome that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. Although these protections are largely unnecessary in modern browsers when sites implement a strong Content Security Policy that disables the use of inline JavaScript (<tt>'unsafe-inline'</tt>), they can still provide protections for users of older web browsers that don't yet support CSP.
+
+New websites should use this header, but given the small risk of false positives, it is only recommended for existing sites. This header is unnecessary for APIs, which should instead simply return a restrictive Content Security Policy header.
 
 == Examples ==
 
@@ -644,11 +657,15 @@ X-XSS-Protection: 1; mode=block</pre>
 
 {| class="wikitable" style="width: 100%;"
 |-
-! scope="col" style="width: 6em;" | Version
+! scope="col" style="width: 8em;" | Date
 ! scope="col" style="width: 6em;" | Editor
 ! Changes
 |-
-| align="center" | 1.0
+| style="padding-left: .5em; text-align: left;" | July, 2016
 | align="center" | April
-| Initial document creation
+| style="padding-left: .5em;" | Updates to CSP for APIs, and CSP's deprecation of XFO, and XXSSP
+|-
+| style="padding-left: .5em; text-align: left;" | February, 2016
+| align="center" | April
+| style="padding-left: .5em;" | Initial document creation
 |}
