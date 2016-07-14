@@ -36,6 +36,16 @@ def get_mediawiki_files_from_disk(config):
             docs.append(os.path.join(root, filename).strip('./').rstrip('.mediawiki'))
     return docs
 
+def blist2str(l):
+    assert type(l) is list
+
+    out = []
+    for i in l:
+        if type(i) is bytes:
+            out.append(i.decode('utf-8'))
+        else:
+            out.append(i)
+    return out
 
 def compare_site_and_disk(config, diff, site, docs, push, get):
     ''' Does both compare and push/get since it's quite similar code-wide'''
@@ -44,11 +54,11 @@ def compare_site_and_disk(config, diff, site, docs, push, get):
         m_ondisk = hashlib.new(config['hashalg'])
         with open(full_path) as fd:
             on_disk = fd.read()
-        m_ondisk.update(on_disk)
+        m_ondisk.update(on_disk.encode('utf-8'))
 
         m_onsite = hashlib.new(config['hashalg'])
         page = site.Pages[f]
-        on_site = page.text().encode('utf-8')+'\n'
+        on_site = page.text().encode('utf-8')+'\n'.encode('utf-8')
         m_onsite.update(on_site)
 
         if m_ondisk.digest() != m_onsite.digest():
@@ -56,9 +66,9 @@ def compare_site_and_disk(config, diff, site, docs, push, get):
             if (diff):
                 #Just display diff in the correct order, we default to push-side-diff
                 if get:
-                    mydiff = difflib.unified_diff(on_site.splitlines(1), on_disk.splitlines(1))
+                    mydiff = difflib.unified_diff(blist2str(on_site.splitlines(1)), blist2str(on_disk.splitlines(1)))
                 else:
-                    mydiff = difflib.unified_diff(on_disk.splitlines(1), on_site.splitlines(1))
+                    mydiff = difflib.unified_diff(blist2str(on_disk.splitlines(1)), blist2str(on_site.splitlines(1)))
 
                 sys.stdout.writelines(mydiff)
 
