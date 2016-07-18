@@ -612,13 +612,13 @@ X-Content-Type-Options: nosniff</pre>
 
 Note that <tt>X-Frame-Options</tt> has been superceded by the Content Security Policy's <tt>frame-ancestors</tt> directive, which allows considerably more granular control over the origins allowed to frame a site. As <tt>frame-ancestors</tt> is not yet supported in IE11 and older, Edge, Safari 9.1 (desktop), and Safari 9.2 (iOS), it is recommended that sites employ <tt>X-Frame-Options</tt> in addition to using CSP.
 
-Sites that require the ability to be iframed must either use the <tt>ALLOW-FROM</tt> directive, use Content Security Policy, and/or employ JavaScript defenses to prevent clickjacking from malicious origins.
+Sites that require the ability to be iframed must use either Content Security Policy and/or employ JavaScript defenses to prevent clickjacking from malicious origins.
 
 == Directives ==
 
 * <tt>DENY</tt>: disallow allow attempts to iframe site (recommended)
 * <tt>SAMEORIGIN</tt>: allow the site to iframe itself
-* <tt>ALLOW-FROM <em>uri</em></tt>: allow <em>uri</em> to iframe site (not supported in Chrome and Safari)
+* <tt>ALLOW-FROM <em>uri</em></tt>: deprecated; instead use CSP's <tt>frame-ancestors</tt> directive
 
 == Examples ==
 
