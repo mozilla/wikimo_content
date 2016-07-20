@@ -357,9 +357,10 @@ data separation provides a MAXIMUM security.
 * Ensure you left no "red" field blank (these are must-fill-in fields).
 * Tell the team that you'll follow up with a risk-record, thanks them for their time, you're done!
 
-=== Creating a risk record (post-work, 30 minutes) ===
+=== Post work (30 minutes) ===
 
-Create a risk record for the service: https://mana.mozilla.org/wiki/display/SECURITY/Risk+Records
+* Go back and re-read the rationale fields and the recommendations in the RRA which were filled in and expand on them to ensure they capture the important parts of the discussion and can be understood by a reader of the RRA without the context of the conversation. These fields often initially lack good detail because they're being recorded in real time while the RRA is being run and the conversation is in progress.
+* Create a risk record for the service: https://mana.mozilla.org/wiki/display/SECURITY/Risk+Records
 
 == Reference documents ==
 
