@@ -1,8 +1,10 @@
-Wikimo OpSec documentation
-==========================
+Wikimo Git documentation
+=========================
 
-This repository stores all OpSec documentation for https://wiki.mozilla.org/Security/OpSec and related pages, except
-for: https://wiki.mozilla.org/Security/Server_Side_TLS which is stored at https://github.com/mozilla/server-side-tls.
+This repository stores  documentation for https://wiki.mozilla.org/ and in particular the https://wiki.mozilla.org/Security pages.
+It is possible to both pull existing pages, or changes in made to pages directly back to Git as well as commit changes to Git first then push them to the wiki. In any case, the Git repository has authority and for pages tracked here, it is highly recommended to ensure that your changes are sent via a pull-request.
+
+Please do not change the main repository directly (i.e always fork and send a pull-request, get at least one peer-review and merge).
 
 All documentation is licensed under the MPL (see LICENSE).
 
