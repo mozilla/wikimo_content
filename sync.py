@@ -23,6 +23,7 @@ import hashlib
 import difflib
 import sys
 import getopt
+import subprocess
 
 def connect(config):
     site = mwclient.Site(('https', config['site']), clients_useragent=config['useragent'])
@@ -46,6 +47,12 @@ def blist2str(l):
         else:
             out.append(i)
     return out
+
+def check_repos_is_current(config):
+    ret = subprocess.call(["git", "pull", "--ff-only", config['repos'], "master"])
+    if (ret != 0):
+        print ("Operation cancelled: Failed to update from upstream repository. Check you have the latest version of the wiki checked-out  before attempting to push again.")
+        sys.exit(3)
 
 def compare_site_and_disk(config, diff, site, docs, push, get):
     ''' Does both compare and push/get since it's quite similar code-wide'''
@@ -79,6 +86,7 @@ def compare_site_and_disk(config, diff, site, docs, push, get):
                 with open(full_path, 'w') as fd:
                     fd.write(on_site)
             elif push:
+                check_repos_is_current(config)
                 print("Pushing {} from disk to site.".format(f))
                 page.save(on_disk, summary=u'Automated sync from {}'.format(config['repos']))
 
