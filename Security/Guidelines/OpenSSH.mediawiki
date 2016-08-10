@@ -240,6 +240,22 @@ $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozil
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 </source>
 
+You may then want to add the new key to your SSH agent or your configuration file (or both).
+
+<source code="bash">
+# Add key to ssh-agent
+$ ssh-add ~/.ssh/id_..._mozilla... # <= replace by your key's path
+
+# Add key to ssh-agent while saving key passphrase on MacOSX
+$ ssh-add -K ~/.ssh/id_..._mozilla... # <= replace by your key's path
+</source>
+
+<source>
+# Add configuration to ~/.ssh/config
+host *.mozilla.com
+IdentityFile ~/.ssh/id_...mozilla... # <= replace by your key's path
+</source>
+
 === Protection of user keys ===
 * Protected by strong passphrase.
 * Never copied to another system than your own workstation/personal physical disks/tokens.
@@ -364,9 +380,9 @@ These are not officially supported and may require you to recompile OpenSSH.
 * [https://github.com/devinteske/apple/tree/master/OpenSSH-186/openssh OpenSSH MacOS X] (see also http://devinteske.com/)
 }}
 
-=== Safer alternative to SSH agent forwarding ===
+=== Recommended, safer alternatives to SSH agent forwarding ===
 
-==== OpenSSH >=7.3 (recomended) ====
+==== OpenSSH >=7.3  ====
 
 OpenSSH 7.3 onwards allow users to jump through several hosts in a rather automated fashion. It has fully support for
 scp and sftp commands as well as regular ssh.
@@ -375,8 +391,10 @@ For example to reach an host being a bastion/jumphost:
 <source code="bash">
 # Single jump
 $ ssh -J ssh.mozilla.com myhost.private.scl3.mozilla.com
+
 # Jump through 2 hops
 $ ssh -J ssh.mozilla.com,ec2-instance.aws.net 10.0.0.3
+
 # Copy data from an host
 $ scp -oProxyJump=ssh.mozilla.com myhost.private.scl3.mozilla.com:/home/kang/testfile ./
 </source>
