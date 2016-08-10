@@ -84,7 +84,7 @@ def compare_site_and_disk(config, diff, site, docs, push, get):
             if get:
                 print("Getting {} from site to disk.".format(f))
                 with open(full_path, 'w') as fd:
-                    fd.write(on_site)
+                    fd.write(on_site.decode('utf-8'))
             elif push:
                 check_repos_is_current(config)
                 print("Pushing {} from disk to site.".format(f))
