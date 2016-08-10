@@ -132,7 +132,7 @@ In any case, always watch your clock!
 === Getting started (pre-work) ===
 
 * Ensure no previous RRA exist, else re-use the previous RRA.
-* Create a copy of the [https://drive.google.com/open?id=160V89R-VdIe1AEHcT_sX89UToV2gv8mLshhoia2-6mM template] and move it to the correct directory (or your personal Google drive if you're testing the RRA process).
+* Create a copy of the [https://docs.google.com/spreadsheets/d/1jxUEQUSAC-q1rVdZ29fH5ijKfIRNBKfCCgWMsfHNqvQ template] and move it to the correct directory (or your personal Google drive if you're testing the RRA process).
 * Invite 1 or 2 members (product owners, lead engineers, etc.) related to the service with enough technical knowledge, ensure they will bring a diagram of data
 flows and have an understanding of the data being stored or processed by the service. You do not want more than 4 or 5 people total as this will slow down the RRA. Most RRAs are run 1 on 1 (2 people total).
 Make sure everyone invited has '''edit''' rights to the document, and has the document opened in front of them when the
@@ -329,7 +329,7 @@ The estimated likelihood is then recorded as an estimated occurrence rate per ca
 
 === Recommendations (5 minutes) ===
 
-While the RRA is not meant as a true security-review, recommendations do come up and this is a great time to
+While the RRA is not meant as a complete review, recommendations do come up and this is a great time to
 have a quick 5 minute chat about these.
 
 * Ensure all recommendations that came up (from you or the team) are mentioned here. It's also ok to fill this table as you go!
