@@ -366,6 +366,30 @@ These are not officially supported and may require you to recompile OpenSSH.
 
 === Safer alternative to SSH agent forwarding ===
 
+==== OpenSSH >=7.3 (recomended) ====
+
+OpenSSH 7.3 onwards allow users to jump through several hosts in a rather automated fashion. It has fully support for
+scp and sftp commands as well as regular ssh.
+
+For example to reach an host being a bastion/jumphost:
+<source code="bash">
+# Single jump
+$ ssh -J ssh.mozilla.com myhost.private.scl3.mozilla.com
+# Jump through 2 hops
+$ ssh -J ssh.mozilla.com,ec2-instance.aws.net 10.0.0.3
+# Copy data from an host
+$ scp -oProxyJump=ssh.mozilla.com myhost.private.scl3.mozilla.com:/home/kang/testfile ./
+</source>
+
+You can also add these lines to your <code>~/.ssh/config</code>
+
+<source>
+Host *.mozilla.com
+ProxyJump ssh.mozilla.com
+</source>
+
+==== Older versions of OpenSSH ====
+
 It is possible to directly forward ports for single jumps instead of forwarding the agent. This has the advantage of never exposing your agent to the servers you're connecting to.
 
 For example, you can add these lines to your <code>~/.ssh/config</code>
