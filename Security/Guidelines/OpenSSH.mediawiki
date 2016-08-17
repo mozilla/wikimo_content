@@ -245,9 +245,6 @@ You may then want to add the new key to your SSH agent or your configuration fil
 <source code="bash">
 # Add key to ssh-agent
 $ ssh-add ~/.ssh/id_..._mozilla... # <= replace by your key's path
-
-# Add key to ssh-agent while saving key passphrase on MacOSX
-$ ssh-add -K ~/.ssh/id_..._mozilla... # <= replace by your key's path
 </source>
 
 <source>
@@ -369,6 +366,15 @@ $ ssh-add -d ~/.ssh/id_ed25519
 $ ssh-add -t 1800 ~/.ssh/id_ed25519
 </source>
 
+For MacOSX in particular it's possible to save the passphrase in the Keychain. If you do so it is strongly recommended
+to also change the keychain setting to lock itself when the computer is locked, and/or to timeout and lock the keychain.
+These settings are not controlled by OpenSSH.
+
+<source code="bash">
+# MacOSX only - save the passphrase in the Keychain
+$ ssh-add -K ~/.ssh/id_ed25519
+</source>
+
 {{note|
 There are also some third-party patches for various OpenSSH clients that will notify you visually when the agent is being used.
 
@@ -384,10 +390,10 @@ These are not officially supported and may require you to recompile OpenSSH.
 
 ==== OpenSSH >=7.3  ====
 
-OpenSSH 7.3 onwards allow users to jump through several hosts in a rather automated fashion. It has fully support for
+OpenSSH 7.3 onwards allow users to jump through several hosts in a rather automated fashion. It has full support for
 scp and sftp commands as well as regular ssh.
 
-For example to reach an host being a bastion/jumphost:
+For example to reach a host behind a bastion/jumphost:
 <source code="bash">
 # Single jump
 $ ssh -J ssh.mozilla.com myhost.private.scl3.mozilla.com
@@ -395,7 +401,7 @@ $ ssh -J ssh.mozilla.com myhost.private.scl3.mozilla.com
 # Jump through 2 hops
 $ ssh -J ssh.mozilla.com,ec2-instance.aws.net 10.0.0.3
 
-# Copy data from an host
+# Copy data from a host
 $ scp -oProxyJump=ssh.mozilla.com myhost.private.scl3.mozilla.com:/home/kang/testfile ./
 </source>
 
