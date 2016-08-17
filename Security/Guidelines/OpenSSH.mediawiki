@@ -240,6 +240,19 @@ $ ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_mozilla_$(date +%Y-%m-%d) -C "Mozil
 $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_mozilla_$(date +%Y-%m-%d) -C "Mozilla key for xyz"
 </source>
 
+You may then want to add the new key to your SSH agent or your configuration file (or both).
+
+<source code="bash">
+# Add key to ssh-agent
+$ ssh-add ~/.ssh/id_..._mozilla... # <= replace by your key's path
+</source>
+
+<source>
+# Add configuration to ~/.ssh/config
+host *.mozilla.com
+IdentityFile ~/.ssh/id_...mozilla... # <= replace by your key's path
+</source>
+
 === Protection of user keys ===
 * Protected by strong passphrase.
 * Never copied to another system than your own workstation/personal physical disks/tokens.
@@ -353,6 +366,15 @@ $ ssh-add -d ~/.ssh/id_ed25519
 $ ssh-add -t 1800 ~/.ssh/id_ed25519
 </source>
 
+For MacOSX in particular it's possible to save the passphrase in the Keychain. If you do so it is strongly recommended
+to also change the keychain setting to lock itself when the computer is locked, and/or to timeout and lock the keychain.
+These settings are not controlled by OpenSSH.
+
+<source code="bash">
+# MacOSX only - save the passphrase in the Keychain
+$ ssh-add -K ~/.ssh/id_ed25519
+</source>
+
 {{note|
 There are also some third-party patches for various OpenSSH clients that will notify you visually when the agent is being used.
 
@@ -364,7 +386,33 @@ These are not officially supported and may require you to recompile OpenSSH.
 * [https://github.com/devinteske/apple/tree/master/OpenSSH-186/openssh OpenSSH MacOS X] (see also http://devinteske.com/)
 }}
 
-=== Safer alternative to SSH agent forwarding ===
+=== Recommended, safer alternatives to SSH agent forwarding ===
+
+==== OpenSSH >=7.3  ====
+
+OpenSSH 7.3 onwards allow users to jump through several hosts in a rather automated fashion. It has full support for
+scp and sftp commands as well as regular ssh.
+
+For example to reach a host behind a bastion/jumphost:
+<source code="bash">
+# Single jump
+$ ssh -J ssh.mozilla.com myhost.private.scl3.mozilla.com
+
+# Jump through 2 hops
+$ ssh -J ssh.mozilla.com,ec2-instance.aws.net 10.0.0.3
+
+# Copy data from a host
+$ scp -oProxyJump=ssh.mozilla.com myhost.private.scl3.mozilla.com:/home/kang/testfile ./
+</source>
+
+You can also add these lines to your <code>~/.ssh/config</code>
+
+<source>
+Host *.mozilla.com
+ProxyJump ssh.mozilla.com
+</source>
+
+==== Older versions of OpenSSH ====
 
 It is possible to directly forward ports for single jumps instead of forwarding the agent. This has the advantage of never exposing your agent to the servers you're connecting to.
 
