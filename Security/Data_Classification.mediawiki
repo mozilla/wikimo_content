@@ -1,0 +1,36 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+
+The data classification is intended to allow Mozilla to operate effectively in the open while protecting sensitive information.
+
+The Enterprise Information Security team maintains this document.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+    </td>
+  </tr>
+</table>
+
+= Mozilla Data Classification =
+
+{| class="wikitable"
+|-
+! Label
+! Definition
+|-
+! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
+| Data that can be shared with the world.
+|-
+! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
+| Data that can be shared with all of Mozilla staff and NDA’d contributors.
+|-
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
+| Data that can be shared with a specific group of people, like a team.
+|-
+! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
+| Data that can be shared only with specific individuals who have been granted access by the data owner.
+|-
+|}
