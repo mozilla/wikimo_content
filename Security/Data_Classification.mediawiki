@@ -2,7 +2,8 @@
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
-<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
 
 The data classification is intended to allow Mozilla to operate effectively in the open while protecting sensitive information.
 
