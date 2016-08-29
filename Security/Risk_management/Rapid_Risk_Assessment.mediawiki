@@ -209,7 +209,7 @@ We want an exhaustive list of data types. While some types may be sometimes miss
 ** For example "mock is mainly used to serve package files that are PUBLIC." (public main data classification).
 ** Set this in the header section at the top of the RRA template.
 
-=== RRA Risk table (5-10 minutes) ===
+=== Risk table (5-10 minutes) ===
 
 This is where the risk impact assessment is done, and where the probability for these impacts is roughly estimated.
 The risk impact is using ''probable impact'', that is, worst-case scenario impacts that seem possible.
