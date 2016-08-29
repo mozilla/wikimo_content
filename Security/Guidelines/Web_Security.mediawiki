@@ -374,7 +374,7 @@ Content-Security-Policy: default-src 'none'; frame-ancestors 'none'</pre>
 
 Its existence can greatly speed up the process of bug triage, particularly for smaller websites with just a handful of maintainers. It further assists with helping security researchers find testable of websites and instructs them on where where in Bugzilla to file their bugs against. As such, <tt>contribute.json</tt> is mandatory for all Mozilla websites, and must be maintained as contributors join and depart projects.
 
-Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>participate</tt> (particularly <tt>irc</tt> and <tt>irc-clients</tt>), and <tt>urls</tt>.
+Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>participate</tt> (particularly <tt>irc</tt> and <tt>irc-contacts</tt>), and <tt>urls</tt>.
 
 == Examples ==
 
