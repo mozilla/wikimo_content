@@ -374,7 +374,7 @@ Content-Security-Policy: default-src 'none'; frame-ancestors 'none'</pre>
 
 Its existence can greatly speed up the process of bug triage, particularly for smaller websites with just a handful of maintainers. It further assists with helping security researchers find testable of websites and instructs them on where where in Bugzilla to file their bugs against. As such, <tt>contribute.json</tt> is mandatory for all Mozilla websites, and must be maintained as contributors join and depart projects.
 
-Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>participate</tt> (particularly <tt>irc</tt> and <tt>irc-clients</tt>), and <tt>urls</tt>.
+Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>participate</tt> (particularly <tt>irc</tt> and <tt>irc-contacts</tt>), and <tt>urls</tt>.
 
 == Examples ==
 
@@ -422,7 +422,6 @@ Require subkeys include <tt>name</tt>, <tt>description</tt>, <tt>bugs</tt>, <tt>
 == See Also ==
 
 * [https://www.contributejson.org/ The contribute.json Standard]
-
 
 = Cookies =
 
@@ -594,17 +593,16 @@ r1y8TJcloKTvouxnYsi4PJAx+nHNr90ibsEn3zznzDzWBN9X3o3kbHLSgcIPtzAp</pre>
 
 = X-Content-Type-Options =
 
-<tt>X-Content-Type-Options</tt> is a header supported by Internet Explorer and Chrome that tells it not to load scripts and stylesheets unless the server indicates the correct MIME type. Without this header, these browsers can incorrectly detect files as scripts and stylesheets, leading to XSS attacks. As such, all sites must set the <tt>X-Content-Type-Options</tt> header and the appropriate MIME types for files that they serve.
+<tt>X-Content-Type-Options</tt> is a header supported by Internet Explorer, Chrome and Firefox 50+ that tells it not to load scripts and stylesheets unless the server indicates the correct MIME type. Without this header, these browsers can incorrectly detect files as scripts and stylesheets, leading to XSS attacks. As such, all sites must set the <tt>X-Content-Type-Options</tt> header and the appropriate MIME types for files that they serve.
 
 == Examples ==
 
-<pre># Prevent IE and Chrome from incorrectly detecting non-scripts as scripts
+<pre># Prevent browsers from incorrectly detecting non-scripts as scripts
 X-Content-Type-Options: nosniff</pre>
 
 == See Also ==
 
 * [https://msdn.microsoft.com/en-us/library/gg622941%28v=vs.85%29.aspx Microsoft on Reducing MIME Type Security Risks]
-
 
 = X-Frame-Options =
 
