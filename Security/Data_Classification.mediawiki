@@ -7,6 +7,10 @@ margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; 
 
 The data classification is intended to allow Mozilla to operate effectively in the open while protecting sensitive information.
 
+If you think there is information that is improperly classified, we encourage you to work with the document owner, using
+this mana page as a reference. If you are unable to resolve this directly, we encourage you to complete the form at
+http://mzl.la/reclassify
+
 The Enterprise Information Security team maintains this document.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
@@ -19,10 +23,22 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 {| class="wikitable"
 |-
+! <span style="color:Gray;">'''Sharing data'''</span>
+|-
+|
+When sharing or distributing data, documents, etc. you are responsible for setting and changing a classification label.
+It is strongly advised that you use them with any tools and communications systems where Mozillians may share
+information (e.g.: Google docs, text documents, presentations, attachments to emails, IRC topics, and other digital media documents).
+|}
+
+{| class="wikitable"
+|-
 ! Label
 ! Definition
 |-
 ! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
+
+'''(Default)'''
 | Data that can be shared with the world.
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
