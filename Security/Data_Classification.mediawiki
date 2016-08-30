@@ -40,14 +40,20 @@ information (e.g.: Google docs, text documents, presentations, attachments to em
 
 '''(Default)'''
 | Data that can be shared with the world.
+The information would have no negative effect if made public (Low risk data).
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
 | Data that can be shared with all of Mozilla staff and NDA’d contributors.
+This information is potentially sensitive and could have a negative impact on Mozilla if made public (Medium risk data).
 |-
 ! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
-| Data that can be shared with a specific group of people, like a team.
+| Data that can be shared with a specific group of people, like a specific team.
+This information, if disclosed beyond the group, would expose information that is not  necessary and/or should not be
+available to the rest of the company (e.g. "employee salary info") (High risk data).
 |-
 ! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
 | Data that can be shared only with specific individuals who have been granted access by the data owner.
+This information, if disclosed beyond the individuals, would have a significant negative effect on Mozilla or its users
+(Maximum risk data).
 |-
 |}
