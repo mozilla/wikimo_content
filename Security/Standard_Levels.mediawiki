@@ -48,7 +48,7 @@ For this reason, the risk levels are the most important levels and '''must''' al
 ! <span style="color:Gray;">'''Scoring, pass/fail, RFC2119, etc.'''</span>
 |-
 |
-If you are looking for scoring, pass/fail, document readiness, etc. labels and levels, please check [[User:Security/Scoring_and_other_levels|Scoring and other levels]] instead.
+If you are looking for scoring, pass/fail, document readiness, etc. labels and levels, please check [[Security/Scoring_and_other_levels|Scoring and other levels]] instead.
 
 Do note that all document '''must''' also express risk.
 |}
