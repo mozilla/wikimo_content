@@ -360,3 +360,10 @@ have a quick 5 minute chat about these.
 * https://binary.protect.io/workcard.pdf
 * http://en.wikipedia.org/wiki/ISO_31000
 * http://www.riskmanagementinsight.com/media/docs/FAIR_introduction.pdf
+
+== RRA Links ==
+
+* [https://mzl.la/2c4a09F Open RRA requests]
+* [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Rapid%20Risk%20Analysis New RRA request]
+* [http://mzl.la/1EmxXSU Open risk records]
+* [http://mzl.la/1mJ1ldQ New risk record]
