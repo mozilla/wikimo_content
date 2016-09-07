@@ -57,3 +57,44 @@ This information, if disclosed beyond the individuals, would have a significant 
 (Maximum risk data).
 |-
 |}
+
+= Examples of data classification =
+
+<span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold;
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
+
+* Firefox source code.
+* Public brown bags on AirMozilla.
+* Bugzilla bugs without any security/restricted flags.
+* Documentation on a wiki or the MDN page.
+* Test or expired credentials.
+* Information shared in the weekly MoCo/MoFo project meeting.
+
+<span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
+Confidential - Staff and NDA'd Mozillians Only</span>
+
+* Information shared in the monthly MoCo/MoFo internal meeting.
+* Bugzilla bugs with the "Moco confidential" or "infrastructure" flags.
+* Mozilla's employe phonebook.
+* Aggregate survey data about Mozilla employees.
+
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
+Confidential - Specific Work Groups Only</span>
+
+* Employee's street address, SSNs, performance data.
+* Service passwords/credentials.
+* Bugzilla bugs with security or restricted flags.
+* Proprietary or protected information, code, libraries from Mozilla partners.
+* Contracts or legal documents.
+* Unannounced communication materials (dates, visuals, plans) for campaigns, product launches, etc.
+
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
+Confidential - Specific Individuals Only</span>
+
+* Firefox release signing keys.
+* Specify partner conversations.
+* Employee bank account information.
+* User/personal passwords/credentials.
