@@ -11,10 +11,11 @@ If you think there is information that is improperly classified, we encourage yo
 this mana page as a reference. If you are unable to resolve this directly, we encourage you to complete the form at
 http://mzl.la/reclassify
 
-The Enterprise Information Security team maintains this document.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+The Enterprise Information Security team maintains this document.
     </td>
   </tr>
 </table>
@@ -42,11 +43,13 @@ information (e.g.: Google docs, text documents, presentations, attachments to em
 | Data that can be shared with the world.
 The information would have no negative effect if made public (Low risk data).
 |-
-! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
+! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Staff Confidential</span>
 | Data that can be shared with all of Mozilla staff and NDA’d contributors.
 This information is potentially sensitive and could have a negative impact on Mozilla if made public (Medium risk data).
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span><br /> or <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Workgroup confidential</span>
 | Data that can be shared with a specific group of people, like a specific team.
 This information, if disclosed beyond the group, would expose information that is not  necessary and/or should not be
 available to the rest of the company (e.g. "employee salary info") (High risk data).
@@ -60,8 +63,9 @@ This information, if disclosed beyond the individuals, would have a significant 
 
 = Examples of data classification =
 
-<span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold;
-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
+''The list of examples is not an  exhaustive list.''
+
+<span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
 
 * Firefox source code.
 * Public brown bags on AirMozilla.
@@ -70,18 +74,14 @@ margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; 
 * Test or expired credentials.
 * Information shared in the weekly MoCo/MoFo project meeting.
 
-<span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
-Confidential - Staff and NDA'd Mozillians Only</span>
+<span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
 
 * Information shared in the monthly MoCo/MoFo internal meeting.
 * Bugzilla bugs with the "Moco confidential" or "infrastructure" flags.
 * Mozilla's employe phonebook.
 * Aggregate survey data about Mozilla employees.
 
-<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;
-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
-Confidential - Specific Work Groups Only</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
 
 * Employee's street address, SSNs, performance data.
 * Service passwords/credentials.
@@ -90,11 +90,70 @@ Confidential - Specific Work Groups Only</span>
 * Contracts or legal documents.
 * Unannounced communication materials (dates, visuals, plans) for campaigns, product launches, etc.
 
-<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla
-Confidential - Specific Individuals Only</span>
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
 
 * Firefox release signing keys.
 * Specify partner conversations.
 * Employee bank account information.
 * User/personal passwords/credentials.
+
+= Help to label data in emails, gdocs, presentations, wiki, code, videos, etc. =
+
+''The list of example to label data is not an exhaustive list and serves an an indication on how to ensure the data classification labels are clearly communicated.''
+
+There are always two people involved with exchanging Confidential information:
+
+* The '''Discloser''' is the person who provides the information to the Recipient.
+* The '''Recipient''' is the person who receives the information.
+
+== Keynote/Powerpoints, box.com, etc. ==
+
+'''Label''' every document with its appropriate classification at the top of the document. When possible, we recommend
+using the header feature of the document.
+
+== Google Apps ==
+
+'''Label''' every document (Docs, Spreadsheet, Slides, Drawings, etc.) with its appropriate classification at the top of
+the document.
+* For Docs, we recommend including the label in the header of the document.
+* For Slides, we recommend including the label in the master slide so that it shows on all slides.
+* When setting sharing options in the Google documents:
+** <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block;font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span> documents should be set so that "''anyone at Mozilla ''" have access.
+** <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span> documents should be set so that only "''specific people''" have access.
+** <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span> documents should be set so that only "''specific people''" have access and only the owner can add people.
+
+== Wikimo (mediawiki), Etherpad lite ==
+
+* All documentation is by default <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display:inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span> on https://wiki.mozilla.org
+* No confidential information may be hosted on the wiki.
+
+== Email subject lines ==
+
+* <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block;
+* font-weight:bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+* center;">Mozilla Confidential - Specific Individuals Only</span> information '''must''' be labeled in the subject line and should not be forwarded without the original senders express permission.
+* For other emails, optionally label subjects with the appropriate classification. This one is up to you, but we encourage you to label emails when the subject is sensitive and it is important to alert recipients.
+
+== IRC ==
+
+Set your IRC channel topic to start with the classification label. This is also recommended for public channels.
+
+Also ensure that non-public channels are protected by password or channel access control.
+
+Remember that <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block;font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">Mozilla Confidential - Specific Work Groups Only</span> and <span style="background-color: #d04437;border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding:
+.05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span> '''may not''' be shared on IRC.
+
+Ex: "PUBLIC | This is a channel to discuss anything you like about Firefox".
+
+== Vidyo, Hello, Hangouts, Skype and other video conference tools ==
+
+* When using video conferencing, if this is not a public call - ensure that only the people who need to know the information have access to the video conference and chat.
+* Verify the list of participants and verbally announce if you're going to share any non-public information.
+
+== Code and configuration deployments ==
+
+When committing or deploying code that handles credentials:
+
+* Ensure that the credentials are stored in a separate file (if possible encrypted).
+* Optionally label the file with a comment mentioning it's data classification label (either inside the file or as a file attribute, or even in the file name if it makes sense)
