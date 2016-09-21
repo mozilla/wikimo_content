@@ -44,7 +44,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 == Scoring and other levels ==
 
-These levels should be used when possible.
+These levels can optionally be used.
 
 === RFC2119 handling recommendation levels ===
 See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition.
@@ -55,15 +55,15 @@ See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition
 ! Expectations
 |-
 |-
-! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">OPTIONAL</span>
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">OPTIONAL</span>
 |
 * This is up to the reader to choose to follow or not to follow this recommendation.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
 |
 * Should is very close to "must do" - however, exceptions may be granted after discussion.
 |-
-! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MUST</span>
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MUST</span>
 |
 * This must be done, is required, mandatory - there is no exception.
 |-
@@ -78,19 +78,19 @@ These are used to match recommended configuration states. It describes set of do
 ! Level
 ! Expectations
 |-
-! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Modern</span>
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Modern</span>
 |
 * State of the art configuration from a security point of view.
 * Generally better for security sensitive services.
 * Fewer server/clients may be compatible.
 |-
-! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Intermediate</span>
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Intermediate</span>
 |
 * Usually the default configuration we recommend.
 * Reasonable configuration that we recommend while covering the largest amount of clients.
 * Fewer server/clients may be compatible, though the majority should be compatible with this configuration.
 |-
-! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Old</span>
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Old</span>
 |
 * Configuration that you may only use if other configurations cannot be followed for technical reasons
 * Relatively safe - but must be moved to the ''intermediate'' configuration above when possible.
