@@ -64,6 +64,7 @@ These levels are also used to display risk impact, risk probability and any risk
 ! Rationale
 |-
 ! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MAXIMUM Risk</span>
+<span style="color: #ccc; font-size: 0.5em; font-style: italic">HTML Color code #d04437</span>
 | ''This is the most important level, where the risk is especially great.''
 
 * '''Attention''':  Full attention from all concerned parties required.
@@ -76,6 +77,7 @@ These levels are also used to display risk impact, risk probability and any risk
 * Maximum is a level. Critical is not.
 |-
 ! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">HIGH Risk</span>
+<span style="color: #ccc; font-size: 0.5em; font-style: italic">HTML Color code #ffd351</span>
 |
 * '''Attention''': Full attention from all concerned parties required.
 * '''Impact''': Medium, high or maximum impact.
@@ -86,6 +88,7 @@ These levels are also used to display risk impact, risk probability and any risk
 * Yellow generally signifies "warning". In our case it correlates to "important".
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MEDIUM Risk</span>
+<span style="color: #ccc; font-size: 0.5em; font-style: italic">HTML Color code #4a6785</span>
 |
 * '''Attention''': Attention from all concerned parties.
 * '''Impact''': Low, medium or high impact.
@@ -96,6 +99,7 @@ These levels are also used to display risk impact, risk probability and any risk
 * Blue is calm and neutral.
 |-
 ! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">LOW Risk</span>
+<span style="color: #ccc; font-size: 0.5em; font-style: italic">HTML Color code #cccccc</span>
 |
 * '''Attention''': Expected but not required.
 * '''Impact''': Low or medium impact.
@@ -107,6 +111,7 @@ These levels are also used to display risk impact, risk probability and any risk
 * Green is not used as green means "ok to do", which is not a level.
 |-
 ! <span style="background-color: #ffffff; border: solid 1px #aaaaaa; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">UNKNOWN Risk</span>
+<span style="color: #ccc; font-size: 0.5em; font-style: italic">HTML Color code #ffffff</span>
 |
 * Data collection is expected.
 * This level is expected to change to one of the other levels.
