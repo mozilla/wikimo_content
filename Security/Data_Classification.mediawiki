@@ -1,3 +1,9 @@
+<!--
+Search keywords:
+confidentiality
+mozilla confidential
+data classification
+-->
 <table>
   <tr>
     <td style="min-width: 25em;">__TOC__</td>
