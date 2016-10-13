@@ -329,9 +329,9 @@ Note that disabling inline JavaScript means that <em>all</em> JavaScript must be
 
 * Aiming for <tt>default-src: https:</tt> is a great first goal, as it disables inline code and requires https.
 * For existing websites with large codebases that would require too much work to disable inline scripts, <tt>default-src: https: 'unsafe-inline'</tt> is still helpful, as it keeps resources from being accidentally loaded over http. However, it does not provide any XSS protection.
-* It recommended to start with a reasonably locked down policy such as <tt>default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'</tt> and then add in sources as revealed during testing.
+* It is recommended to start with a reasonably locked down policy such as <tt>default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'</tt> and then add in sources as revealed during testing.
 * In lieu of the preferred HTTP header, pages can instead include a <tt>&lt;meta http-equiv="Content-Security-Policy" content="&hellip;"&gt;</tt> tag. If they do, it should be the first <tt>&lt;meta&gt;</tt> tag that appears inside <tt>&lt;head&gt;</tt>.
-* Care needs to be taken with <tt>data:</tt> URIs, as these as unsafe inside <tt>script-src</tt> and <tt>object-src</tt> (or inherited from <tt>default-src</tt>).
+* Care needs to be taken with <tt>data:</tt> URIs, as these are unsafe inside <tt>script-src</tt> and <tt>object-src</tt> (or inherited from <tt>default-src</tt>).
 * Similarly, the use of <tt>script-src 'self'</tt> can be unsafe for sites with JSONP endpoints. These sites should use a <tt>script-src</tt> that includes the path to their JavaScript source folder(s).
 * Unless sites need the ability to execute plugins such as Flash or Silverlight, they should disable their execution with <tt>object-src 'none'</tt>.
 * Sites should ideally use the <tt>report-uri</tt> directive, which POSTs JSON reports about CSP violations that do occur. This allows CSP violations to be caught and repaired quickly.
@@ -353,12 +353,12 @@ Content-Security-Policy: default-src *; object-src 'none'</pre>
 # Also disables the execution of plugins
 Content-Security-Policy: default-src 'self'; img-src 'self' https://i.imgur.com; object-src 'none'</pre>
 
-<pre># Disable unsafe inline/eval, only load scripts and stylesheets from same origin, fonts from google, and images from
-# same origin and imgur. Sites should aim for policies like this.
+<pre># Disable unsafe inline/eval and plugins, only load scripts and stylesheets from same origin, fonts from google,
+# and images from same origin and imgur. Sites should aim for policies like this.
 Content-Security-Policy: default-src 'none'; font-src 'https://fonts.googleapis.com';
                              img-src 'self' https://i.imgur.com; object-src 'none'; script-src 'self'; style-src 'self'</pre>
 
-<pre># Pre-existing site uses too much inline code to fix,
+<pre># Pre-existing site that uses too much inline code to fix
 # but wants to ensure resources are loaded only over https and disable plugins
 Content-Security-Policy: default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'</pre>
 
