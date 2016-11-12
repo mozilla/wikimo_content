@@ -5,14 +5,14 @@
 <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
 -margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
 
-The goal of this document is to help you understand the basics to securely implement
-[https://en.wikipedia.org/wiki/OpenID_Connect OpenID Connect (OIDC)] when doing custom integrations.
-Mozilla provides OIDC support for Mozilla properties,
-[https://mozilla.service-now.com/sp?id=sc_cat_item&sys_id=1e9746c20f76aa0087591d2be1050ecb access can be requested here].
+The goal of this document is to help you understand the basics of how to securely implement
+[https://en.wikipedia.org/wiki/OpenID_Connect OpenID Connect (OIDC)] when authenticating users.
+
+'''Mozilla provides OIDC support for Mozilla properties and [https://mana.mozilla.org/wiki/display/SECURITY/SSO+Request+Form access can be requested by following documentation here].'''
+
 The Enterprise Information Security team maintains this document as a reference guide for operational teams.
 
-Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_content/ source repository on
-github].
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_content/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/master commit history].
 
 <span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
@@ -20,7 +20,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/m
   </tr>
 </table>
 
-== How does OpenID Connect (OIDC) works? ==
+== How does OpenID Connect (OIDC) work (at Mozilla)? ==
 === Common abbreviations & definitions ===
 
 {| class="wikitable"
@@ -34,141 +34,133 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/m
 |-
 ! Authorization
 | ''role, groups, attributes, access control list, scopes''
-| The act of granting access to specific resources to an authenticated user.
+| The act of granting access to specific resources (to an authenticated user, or bearer of a secret).
 |-
 ! OIDC
 | OpenID Connect
-| It is a standardized identity layer for authentication that uses OAuth2 (not to confuse with OpenID which only does
-authentication, or pure Oauth2 which only does authorization). While OIDC uses OAuth2 for authorization, it also
+| A standardized identity layer for authentication that uses OAuth2 (not to be confused with OpenID which only provides
+authentication, or pure Oauth2 which only provides authorization). While OIDC uses OAuth2 for authorization, it also
 leverages (some would say, ''abuses'') OAuth2 authorization to perform authentication tasks.
 |-
 ! OAuth2
 | Open standard for access delegation.
-| It is a protocol that lets you consent to authorize a resource to access data from another resource (such as website A
-being authorized to access data from website B as the user consented to it by delegating some of his access permissions,
-i.e. scopes).
+| A protocol that enables a user or system to authorize one resource to access data from another resource (ex: a user delegates some of their access permissions to website A, so that website A can access data from website B on behalf of the user).
 |-
 ! RP
 | Relying Party, ''client, web application, web property''
-| Generally a web application that wants to authenticate and get authorization for users (see OP below).
+| Generally a web application that wants to authenticate and eventually authorize access to data.
 |-
 ! OP
 | OIDC Provider, ''IdP, authorization server''
-| Provides authentication and authorization for relying parties (RPs, see above). It may rely on itself, another OP or
-another IdP (for example if the OP provides a front-end for LDAP, WS-Federation or SAML).
+| Provides authentication and authorization for relying parties (RPs). It may rely on itself, another OIDC Provider (OP) or another Identity Provider (IdP) (ex: the OP provides a front-end for LDAP, WS-Federation or SAML).
 |-
 ! Scopes
 | ''role, groups, attributes, access control list, scopes''
-| Access control information, groups, roles, attributes, etc. that are used by the RP (see above) to grant specific
-authorization/access permissions to a user (see Authorization above).
+| Access control information, groups, roles, attributes, etc. that are used by the relying party (RP) to grant specific authorization/access permissions to a user.
 |-
 ! SSO
 | Single Sign On
-| An OP and set of RPs (see definitions above) that provide a unique sign-on panel for users, and that coherently handle
-session information for the user.
+| An OIDC Provider (OP) and set of relying parties (RPs) that provide a unique sign-on panel for users, and that coherently handle session information for the user.
 |-
 ! JWT
-| JSON Web Tokens, ''access token, refresh token''
-| Base64 encoded, small and self-contained JSON documents that represent a possibly signed JSON message. It is used for
-authorization.
+| JSON Web Tokens, ''id token''
+| Base64 encoded, optionally signed, small and self-contained JSON documents that represent a possibly signed JSON message.
 The JSON message contains the issuer of the token, the subject (usually owner/user of the token), how the user
-authenticated, whom the token is intended to (audience).
+authenticated, and for whom the token is intended to (audience).
+|-
+! Tokens
+| API keys, ''access token'', ''refresh token''
+| An opaque, unique secret string that is used to access protected resources.
 |-
 ! SCIM
 | System for Cross-domain Identity Management
-| A standardized schema and API for querying, managing user identities (attributes, etc.)
+| A standardized schema and API for querying and managing user identities (attributes, etc.)
 |-
 |}
 
 === OIDC in a nutshell ===
 
-'''Authorization vs Authentication:'''
+[[File:Screenshot_20161023_213226.png|700px]]
 
-OIDC uses Oauth2 which solely delegates '''authorization''' ('access to data'). This is important, because OIDC bolts
-'''authentication''' ('I verified I am X') on top of it and uses Oauth tokens.
+OpenID Connect (OIDC) is a protocol that allow web applications (also called relying parties, or RP) to authenticate users with an external server called the OpenID Connect Provider (OP).
+This server typically gets user information from an identity provider (IdP), which is a database of user credentials and attribute information.
 
-Authorization is interesting when you need to request data from another system (website for example). Your authorization
-tokens will show to the other system that you are allowed to get the data, and you must present that token for every request.
-In contrast, authentication is unfrequent and the user session is then kept alive through a separate mean (such as
-a session cookie). This means the user identity (authentication) is not being re-checked for every request.
+The communication with the OpenID Connect Provider (OP) is done using tokens.
+An ID token is provided to the web application (RP) by the Open ID Connect Provider (OP). It contains a JSON document which informs the web application (RP) about how, when the user has authenticated, various attributes, and for how long the user session can be trusted. This token can be re-newed as often as necessary by the web application (RP) to ensure that the user and it's attributes are both valid and up to date.
 
-OIDC uses the same authorization tokens for authentication, so this can be confusing initially, since you're not
-re-authenticating the user for each request made. It means you have to manually handle session expiration (by pooling an
-API for example) or re-login the user fairly often. Often, a combination is used (session expires after "24h" but the
-system also checks if it should expire sooner "every 5min" by pooling an API).
+Other tokens can be used, though these do not pertain directly to authentication. These are also often called OAuth2 tokens. This is because OIDC is based on OAuth2 and thus also provides full OAuth2 support. The OAuth2 tokens (Access Token and Refresh Tokens) enable their bearer to access information from other websites and resources (including additional user attributes that may not be passed by the ID token) - but are not required to perform user authentication.
 
-These guideliens focus on OIDC (authentication) flows and do not specifically Oauth2 authorization use-cases. Typical
-websites that do not share data back, or do not offer an API to share data generally do not need to deal with Oauth2
-authorization use-cases.
+==== OIDC tokens reference table ====
+{| class="wikitable"
+! Token
+! Format
+! Description
+|-
+! '''Access token'''
+| A string containing a unique secret token (like an API key).
+| The Access token has specific permissions and is used to get data from an API. It expire quickly, typically within 24 hours.
+|-
+! '''Refresh token'''
+| A string containing a unique secret token (like an API key).
+| The Refresh token enables it's bearer to request and obtain new Access tokens. These newly obtained access tokens have a subset of the permissions that the Refresh token has. The Refresh token never expires.
+|-
+! '''ID token'''
+| Base64-encoded JSON document ([https://jwt.io/ JWT])
+| The ID token contains information about how and when the user authenticated along with various attributes. ID tokens are created and signed by OpenID Connect Providers (OP) and consumed, verified by web applications authenticating users (RPs).
+|-
+|}
 
-'''OIDC provides:'''
-* Over-http protocol flow.
-* User identity authentication (via id tokens - there are issued during authentication and contain user attributes).
-* Access delegation (via access tokens - allows access to data).
-* Access revocation and expiration (the id and access token expire).
-* SSO / Reduction of password sharing and transactions (or any other credentials, though this is particularly important
-* with passwords) by providing JWT access tokens to relying parties, which also certify that the user identity has been
-* authenticated.
+==== Detailed OIDC authentication flow ====
 
-'''OIDC tokens:'''
-* '''Access token''': token used to talk with an API. It's an opaque string/"key". Grants access to specific resources. They expire quickly, often, 24 hours.
-* '''Refresh token''': token used by the relying party to get new access tokens. It's an opaque string/"key". Selects a set of scopes the access token will be granting access to. They never expire and are handled like user credentials.
-* '''(JWT) ID token''': token used to indicate to the relying party how the user authenticated, when he has authenticated, and various attributes. It's a base64-encoded JSON document. This is easier and nicer than querying the APIs, since the attributes are contained in the token itself.
+This sequence diagram is useful if you want to understand how OIDC works, or need to modify or implement your own OIDC library.
 
-==== OIDC User identity authentication flow ====
+[[File:Authentication_Sequence_with_OpenID_Connect(1).png|1100px]]
 
-'''High level OIDC authentication flow'''
-
-[[File:Screenshot_20161023_213226.png]]
-
-== Implement OpenID Connect (OIDC) for my web application (RP) ==
+== Implement authentication with OpenID Connect (OIDC) securely in my web applications (RP) ==
 
 === Session handling ===
 
-The OpenID Connect Provider (OP) normally use a session cookie so that it does not need to re-ask the user for their
-credentials too often across web applications (RP). The expiration of the session depends on the OP setup and may be forced to expire sooner than the
-cookie indicates on the user's browser. This allows for logging out the user from an OP point of view for example. It
-will not log them out on RP's though.
+The OpenID Connect Provider (OP) typically creates a user session cookie so that it does not need to re-ask the user for their
+credentials too often across different web applications (RP).
+The expiration of the session depends on the OP setup the session and may be forced to expire by the OpenID Connect Provider (OP) sooner than the cookie indicates on the user's browser.
+This allows the OP to forcibly log the user out from the OP point of view. This premature termination of the user’s session with the OP will not, however, end the user’s session on the web application's (RP's) which they’ve logged into.
 
-For that reason, it is important the the relying party (RP, web application) own handling of session respects a set of
-rules:
+For that reason, it is important that the web application (RP) respect the following set of rules in regards to session handling:
 
 
-* '''Should''' provide a 'logout' URL, which the OP will ping to indicate if a user has logged out (so that your RP logs the user out as well).
-* '''Must''' expire the user session when the ID token expires or sooner (the expiration time is generally a UNIX time stamp attribute named 'exp').
-* If the session is longer than 15 minutes, '''Must''' re-check/introspect the ID token every 15 minutes or next user request (whichever comes first), to ensure that the user is still valid and has correct permissions.
-** This ensures that access is revoked within 15 minutes.
+* '''Must''' expire the user session when the ID token expires or sooner (the expiration time is generally a UNIX timestamp attribute named <code>exp</code>).
+* If the user's session is longer than '''15 minutes''', '''must''' re-check/introspect the ID token every ''15 minutes'' or next user request (whichever comes first), to ensure that the user is still valid and has correct permissions.
+** This ensures that access is revoked within ''15 minutes'' in the event that the user's account is disabled by the OpenID Connect Provider (OP).
 ** This issues a new ID token, which new attributes if they have changed.
 ** This usually also renews the ID token, which will update it's expiration time to a later date.
+* '''Optionally''' provide a <code>logout</code> URL, which the OpenID Connect Provider (OP) can call to indicate if a user has logged out (so that the web application immediately know when to log the user out as well).
 
 === Other important security considerations ===
 
 '''ID Token''':
 
 * '''Always''' verify the id token signature.
-* '''Always''' expire your user session when the id token expires.
-* '''Should''' introspect the contents of the id token by querying the OP regularly, before the id token expires.
+* '''Always''' expire the user session when the associated ID token expires.
+* '''Should''' introspect the contents of the id token by querying the OP regularly, before the ID token expires.
 
 '''Authorization Code Grant''':
 
 * '''Always''' use authorization code grant.
-* '''Never''' use implicit grants for websites. Authorization code grant ensures that the relying party is getting the
-* access tokens, and that these cannot be intercepted within the user's browser  for example. 
+* '''Never''' use implicit grants for websites. Authorization code grant ensures that the relying party is getting the access tokens, and that these cannot be intercepted within the user's browser.
 
 '''State parameter''':
 
 When requesting authentication from the OpenID Connect provider, '''always''' use the state parameter.
 
 This is a defense against [https://en.wikipedia.org/wiki/Cross-site_request_forgery CSRF] attacks as the attacker needs
-to know the state code/contents (similarly to a [https://en.wikipedia.org/wiki/Cross-site_request_forgery#Prevention
-CSRF synchronizer token] used on websites)
+to know the state code/contents (similar to the [https://en.wikipedia.org/wiki/Cross-site_request_forgery#Prevention CSRF synchronizer token] used on websites)
 
 '''Refresh token''':
 
-Avoid using or storing a refresh token, specially on websites. Refresh tokens never expire and thus are very powerful.
+Avoid using or storing  refresh tokens, especially for relying parties (RP) which are websites. Refresh tokens never expire and thus are very powerful.
 These are usually not needed for an authentication flow, though they may be needed for specific authorization flows.
 
-== Other references ==
+== Additional references ==
 
 * https://tools.ietf.org/html/rfc7636 (Proof Key for Code Exchange by OAuth Public Clients)
 * https://tools.ietf.org/html/rfc6749 (Oauth2 Authorization framework)
@@ -177,13 +169,9 @@ These are usually not needed for an authentication flow, though they may be need
 * https://jwt.io/ (JWT token decoder)
 * [http://www.simplecloud.info/ SCIM: System for Cross domain Identity management]
 * http://openid.net/ (Official documentation)
-* http://openid.net/developers/libraries/ (More OIDC integration libraries for different programming languages and
-* tools)
+* http://openid.net/developers/libraries/ (More OIDC integration libraries for different programming languages and tools)
 * https://auth0.com/docs/protocols (Auth0 documentation)
 * http://developer.okta.com/docs/api/resources/oidc (Okta documentation)
-* [http://stackoverflow.com/questions/7522831/what-is-the-purpose-of-the-implicit-grant-authorization-type-in-oauth-2
-* Authorization code grant vs Implicit grant]
-* [http://security.stackexchange.com/questions/44611/difference-between-oauth-openid-and-openid-connect-in-very-simple-term
-* OIDC vs OpenID vs OAuth2]
+* [http://stackoverflow.com/questions/7522831/what-is-the-purpose-of-the-implicit-grant-authorization-type-in-oauth-2 Authorization code grant vs Implicit grant]
+* [http://security.stackexchange.com/questions/44611/difference-between-oauth-openid-and-openid-connect-in-very-simple-term OIDC vs OpenID vs OAuth2]
 * http://nordicapis.com/api-security-oauth-openid-connect-depth/
-
