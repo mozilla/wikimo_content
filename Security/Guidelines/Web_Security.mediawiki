@@ -25,12 +25,13 @@ __NOTOC__
             <li>[[#Cookies|5 Cookies]]</li>
             <li>[[#Cross-origin Resource Sharing|6 Cross-origin Resource Sharing]]</li>
             <li>[[#CSRF Prevention|7 CSRF Prevention]]</li>
-            <li>[[#robots.txt|8 robots.txt]]</li>
-            <li>[[#Subresource Integrity|9 Subresource Integrity]]</li>
-            <li>[[#X-Content-Type-Options|10 X-Content-Type-Options]]</li>
-            <li>[[#X-Frame-Options|11 X-Frame-Options]]</li>
-            <li>[[#X-XSS-Protection|12 X-XSS-Protection]]</li>
-            <li>[[#Version History|13 Version History]]</li>
+            <li>[[#Referrer Policy|8 Referrer Policy]]</li>
+            <li>[[#robots.txt|9 robots.txt]]</li>
+            <li>[[#Subresource Integrity|10 Subresource Integrity]]</li>
+            <li>[[#X-Content-Type-Options|11 X-Content-Type-Options]]</li>
+            <li>[[#X-Frame-Options|12 X-Frame-Options]]</li>
+            <li>[[#X-XSS-Protection|13 X-XSS-Protection]]</li>
+            <li>[[#Version History|14 Version History]]</li>
           </ul>
         </div>
       </td>
@@ -138,17 +139,24 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 | Varies
 | Mandatory for websites that allow destructive changes<br>Unnecessary for all other websites<br>Most application frameworks have built-in CSRF tokenization to ease implementation
 |- style="background-color: #ffffff;"
+| data-sort-value="11" | [[#Referrer Policy|<span style="color: black;">Referrer Policy</span>]]
+| data-sort-value="1" style="text-align: center;" | <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Low</span>
+| data-sort-value="1" style="text-align: center;" | <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Low</span>
+| style="text-align: center;" | 12
+| Recommended for all websites
+| Improves privacy for users, prevents the leaking of internal URLs via <tt>Referer</tt> header
+|- style="background-color: #ffffff;"
 | data-sort-value="12" | [[#robots.txt|<span style="color: black;">robots.txt</span>]]
 | data-sort-value="1" style="text-align: center;" | <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Low</span>
 | data-sort-value="1" style="text-align: center;" | <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Low</span>
-| style="text-align: center;" | 13
+| style="text-align: center;" | 14
 | Optional
 | Websites that implement robots.txt must use it only for noted purposes
 |- style="background-color: #ffffff;"
 | data-sort-value="13" | [[#Subresource Integrity|<span style="color: black;">Subresource Integrity</span>]]
 | data-sort-value="2" style="text-align: center;" | <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Medium</span>
 | data-sort-value="2" style="text-align: center;" | <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Medium</span>
-| style="text-align: center;" | 14
+| style="text-align: center;" | 15
 | Recommended<sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup>
 | <sup style="font-size: .8em; position: relative; top: -.4em; vertical-align: baseline;">&Dagger;</sup> Only for websites that load JavaScript or stylesheets from foreign origins
 |- style="background-color: #ffffff;"
@@ -169,7 +177,7 @@ Updates to this page should be submitted to the [https://github.com/mozilla/wiki
 | data-sort-value="16" | [[#X-XSS-Protection|<span style="color: black;">X-XSS-Protection</span>]]
 | data-sort-value="1" style="text-align: center;" | <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Low</span>
 | data-sort-value="2" style="text-align: center;" | <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Medium</span>
-| style="text-align: center;" | 12
+| style="text-align: center;" | 13
 | Mandatory for all new websites<br>Recommended for existing websites
 | Manual testing should be done for existing websites, prior to implementation
 |}
@@ -293,7 +301,6 @@ Public-Key-Pins: max-age=1296000; includeSubDomains; pin-sha256="WoiWRyIOVNa9iha
 
 * [https://noncombatant.org/2015/05/01/about-http-public-key-pinning/ About Public Key Pinning]
 * [https://scotthelme.co.uk/hpkp-toolset/ The HPKP Toolset] - helpful tools for generating key pins
-
 
 == Resource Loading ==
 
@@ -537,6 +544,52 @@ httpRequest.setRequestHeader('X-CSRF-Token', token); // add it as an X-CSRF-Toke
 * [https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet OWASP CSRF Prevention Cheat Sheet]
 
 
+= Referrer Policy =
+
+When a user navigates to a site via a hyperlink or a website loads an external resource, browsers inform the destination site of the origin of the requests through the use of the HTTP <tt>Referer</tt> (sic) header. Although this can be useful for a variety of purposes, it can also place the privacy of users at risk.  HTTP Referrer Policy allows sites to have fine-grained control over how and when browsers transmit the HTTP <tt>Referer</tt> header.
+
+In normal operation, if a page at https://example.com/page.html contains <tt><nowiki>&lt;img src="https://not.example.com/image.jpg"&gt;</nowiki></tt>, then the browser will send a request like this:
+
+<pre>GET /image.jpg HTTP/1.1
+Host: not.example.com
+Referer: https://example.com/page.html</pre>
+
+In addition to the privacy risks that this entails, the browser may also transmit internal-use-only URLs that it may not have intended to reveal. If you as the site operator want to limit the exposure of this information, you can use HTTP Referrer Policy to either eliminate the <tt>Referer</tt> header or reduce the amount of information that it contains.
+
+== Directives ==
+
+* <tt>no-referrer</tt>: never send the <tt>Referer</tt> header
+* <tt>same-origin</tt>: send referrer, but only on requests to the same origin
+* <tt>strict-origin</tt>: send referrer to all origins, but only the URL sans path (e.g. https://example.com/)
+* <tt>strict-origin-when-cross-origin</tt>: send full referrer on same origin, URL sans path on foreign origin
+
+== Notes ==
+
+Although there are other options for referrer policies, they do not protect user privacy and limit exposure in the same way as the options above.
+
+<tt>no-referrer-when-downgrade</tt> is the default behavior for all current browsers, and can be used when sites are concerned about breaking existing systems that rely on the full Referrer header for their operation.
+
+Please note that support for Referrer Policy is still in its infancy. Chrome currently only supports <tt>no-referrer</tt> from the directives above, and Firefox awaits full support with Firefox 52.
+
+== Examples ==
+
+<pre># On example.com, only send the Referer header when loading or linking to other example.com resources
+Referrer-Policy: same-origin
+
+# Only send the shortened referrer to a foreign origin, full referrer to a local host
+Referrer-Policy: strict-origin-when-cross-origin
+
+# Do the same, but with a meta tag
+&lt;meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"&gt;
+
+# Do the same, but only for a single link
+&lt;a href="https://mozilla.org/" referrerpolicy="strict-origin-when-cross-origin"&gt;</pre>
+
+== See Also ==
+* [https://w3c.github.io/webappsec-referrer-policy/#referrer-policy-same-origin Referrer Policy standard]
+* [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy MDN on Referrer Policy]
+
+
 = robots.txt =
 
 <tt>robots.txt</tt> is a text file placed within the root directory of a site that tells robots (such as indexers employed by search engines) how to behave, by instructing them not to index certain paths on the website. This is particularly useful for reducing load on your website, though disabling the indexing of automatically generated content. It can also be helpful for preventing the pollution of search results, for resources that don't benefit from being searchable.
@@ -665,6 +718,10 @@ X-XSS-Protection: 1; mode=block</pre>
 ! scope="col" style="width: 8em;" | Date
 ! scope="col" style="width: 6em;" | Editor
 ! Changes
+|-
+| style="padding-left: .5em; text-align: left;" | November, 2016
+| align="center" | April
+| style="padding-left: .5em;" | Added Referrer Policy
 |-
 | style="padding-left: .5em; text-align: left;" | October, 2016
 | align="center" | April
