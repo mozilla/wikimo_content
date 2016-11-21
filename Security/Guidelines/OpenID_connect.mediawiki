@@ -86,9 +86,9 @@ OpenID Connect (OIDC) is a protocol that allow web applications (also called rel
 This server typically gets user information from an identity provider (IdP), which is a database of user credentials and attribute information.
 
 The communication with the OpenID Connect Provider (OP) is done using tokens.
-An ID token is provided to the web application (RP) by the Open ID Connect Provider (OP). It contains a JSON document which informs the web application (RP) about how, when the user has authenticated, various attributes, and for how long the user session can be trusted. This token can be re-newed as often as necessary by the web application (RP) to ensure that the user and it's attributes are both valid and up to date.
+An ID token is provided to the web application (RP) by the Open ID Connect Provider (OP) once the user has authenticated. It contains a JSON document which informs the web application (RP) about how, when the user has authenticated, various attributes, and for how long the user session can be trusted. This token can be re-newed as often as necessary by the web application (RP) to ensure that the user and it's attributes are both valid and up to date.
 
-Other tokens can be used, though these do not pertain directly to authentication. These are also often called OAuth2 tokens. This is because OIDC is based on OAuth2 and thus also provides full OAuth2 support. The OAuth2 tokens (Access Token and Refresh Tokens) enable their bearer to access information from other websites and resources (including additional user attributes that may not be passed by the ID token) - but are not required to perform user authentication.
+Other tokens can be used, though these do not pertain directly to authentication. These are also often called OAuth2 tokens. This is because OIDC is based on OAuth2 and thus also provides full OAuth2 support. These two types of OAuth2 tokens (Access Token and Refresh Tokens) enable their bearer to access information from other websites and resources (including additional user attributes that may not be passed by the ID token) - but are not required to perform user authentication.
 
 ==== OIDC tokens reference table ====
 {| class="wikitable"
@@ -98,7 +98,7 @@ Other tokens can be used, though these do not pertain directly to authentication
 |-
 ! '''Access token'''
 | A string containing a unique secret token (like an API key).
-| The Access token has specific permissions and is used to get data from an API. It expire quickly, typically within 24 hours.
+| The Access token has specific permissions and is used to get data from an API. It expires quickly, typically within 24 hours.
 |-
 ! '''Refresh token'''
 | A string containing a unique secret token (like an API key).
@@ -106,13 +106,13 @@ Other tokens can be used, though these do not pertain directly to authentication
 |-
 ! '''ID token'''
 | Base64-encoded JSON document ([https://jwt.io/ JWT])
-| The ID token contains information about how and when the user authenticated along with various attributes. ID tokens are created and signed by OpenID Connect Providers (OP) and consumed, verified by web applications authenticating users (RPs).
+| ID tokens are created and signed by OpenID Connect Providers (OP) and consumed, verified by web applications authenticating users (RPs). The ID token contains information about how and when the user authenticated along with various attributes.
 |-
 |}
 
 ==== Detailed OIDC authentication flow ====
 
-This sequence diagram is useful if you want to understand how OIDC works, or need to modify or implement your own OIDC library.
+This sequence diagram is useful if you want to understand how OIDC works, or need to modify an OIDC library.
 
 [[File:Authentication_Sequence_with_OpenID_Connect(1).png|1100px]]
 
@@ -122,26 +122,26 @@ This sequence diagram is useful if you want to understand how OIDC works, or nee
 
 The OpenID Connect Provider (OP) typically creates a user session cookie so that it does not need to re-ask the user for their
 credentials too often across different web applications (RP).
-The expiration of the session depends on the OP setup the session and may be forced to expire by the OpenID Connect Provider (OP) sooner than the cookie indicates on the user's browser.
+The expiration of the session depends on how the OP setup the session and the session may be forced to expire by the OpenID Connect Provider (OP) sooner than the cookie indicates on the user's browser.
 This allows the OP to forcibly log the user out from the OP point of view. This premature termination of the user’s session with the OP will not, however, end the user’s session on the web application's (RP's) which they’ve logged into.
 
-For that reason, it is important that the web application (RP) respect the following set of rules in regards to session handling:
+For that reason, it is important that the web application (RP) respects the following set of rules in regards to session handling:
 
 
-* '''Must''' expire the user session when the ID token expires or sooner (the expiration time is generally a UNIX timestamp attribute named <code>exp</code>).
-* If the user's session is longer than '''15 minutes''', '''must''' re-check/introspect the ID token every ''15 minutes'' or next user request (whichever comes first), to ensure that the user is still valid and has correct permissions.
+* The web application (RP) '''must''' invalidate the user session when the ID token reaches expiration or sooner (the expiration time is generally a UNIX timestamp attribute named <code>exp</code>).
+* If the user's complete session duration is longer than '''15 minutes''', '''must''' re-check/update the ID token every ''15 minutes'' or next user request (whichever comes first), to ensure that the user is still valid and has correct permissions.
 ** This ensures that access is revoked within ''15 minutes'' in the event that the user's account is disabled by the OpenID Connect Provider (OP).
-** This issues a new ID token, which new attributes if they have changed.
-** This usually also renews the ID token, which will update it's expiration time to a later date.
-* '''Optionally''' provide a <code>logout</code> URL, which the OpenID Connect Provider (OP) can call to indicate if a user has logged out (so that the web application immediately know when to log the user out as well).
+** This issues a new ID token, with new attributes if they have changed.
+** This may also renew the ID token expiration time.
+* The web application (R) can '''optionally''' provide a <code>logout</code> URL, which the OpenID Connect Provider (OP) can call to indicate if a user has logged out (so that the web application immediately know when to log the user out as well).
 
 === Other important security considerations ===
 
 '''ID Token''':
 
 * '''Always''' verify the id token signature.
-* '''Always''' expire the user session when the associated ID token expires.
-* '''Should''' introspect the contents of the id token by querying the OP regularly, before the ID token expires.
+* '''Always''' invalidate the user session when the associated ID token expires.
+* '''Should''' update the contents of the id token by querying the OP regularly, before the ID token expires.
 
 '''Authorization Code Grant''':
 
@@ -150,14 +150,13 @@ For that reason, it is important that the web application (RP) respect the follo
 
 '''State parameter''':
 
-When requesting authentication from the OpenID Connect provider, '''always''' use the state parameter.
+When requesting authentication from the OpenID Connect provider (OP), '''always''' provide the state parameter.
 
-This is a defense against [https://en.wikipedia.org/wiki/Cross-site_request_forgery CSRF] attacks as the attacker needs
-to know the state code/contents (similar to the [https://en.wikipedia.org/wiki/Cross-site_request_forgery#Prevention CSRF synchronizer token] used on websites)
+This is a defense against [https://en.wikipedia.org/wiki/Cross-site_request_forgery CSRF] attacks as an attacker would need to know the state code/contents (similar to the [https://en.wikipedia.org/wiki/Cross-site_request_forgery#Prevention CSRF synchronizer token] used on websites)
 
 '''Refresh token''':
 
-Avoid using or storing  refresh tokens, especially for relying parties (RP) which are websites. Refresh tokens never expire and thus are very powerful.
+Avoid using or storing  refresh tokens. This is especially important for relying parties (RP) which are websites (as opposed to mobile apps for example, which may not always have network access). Refresh tokens never expire and thus are very powerful.
 These are usually not needed for an authentication flow, though they may be needed for specific authorization flows.
 
 == Additional references ==
