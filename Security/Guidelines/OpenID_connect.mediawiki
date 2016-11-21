@@ -8,8 +8,6 @@
 The goal of this document is to help you understand the basics of how to securely implement
 [https://en.wikipedia.org/wiki/OpenID_Connect OpenID Connect (OIDC)] when authenticating users.
 
-'''Mozilla provides OIDC support for Mozilla properties and [https://mana.mozilla.org/wiki/display/SECURITY/SSO+Request+Form access can be requested by following documentation here].'''
-
 The Enterprise Information Security team maintains this document as a reference guide for operational teams.
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_content/ source repository on github].
@@ -19,6 +17,16 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/m
     </td>
   </tr>
 </table>
+
+{| class="wikitable"
+|-
+! <span style="color:red;">'''ATTENTION'''</span>
+|-
+|
+'''Just looking for code?''' Reference configuration and code for implementing OIDC as described below is available at https://github.com/mozilla-iam/testrp.security.allizom.org
+
+Additionally, Mozilla provides OIDC single sign on support for Mozilla properties and [https://mana.mozilla.org/wiki/display/SECURITY/SSO+Request+Form access can be requested by following documentation here].
+|}
 
 == How does OpenID Connect (OIDC) work (at Mozilla)? ==
 === Common abbreviations & definitions ===
