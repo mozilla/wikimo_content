@@ -579,11 +579,15 @@ Referrer-Policy: same-origin
 # Only send the shortened referrer to a foreign origin, full referrer to a local host
 Referrer-Policy: strict-origin-when-cross-origin
 
+# Disable referrers for browsers that don't support strict-origin-when-cross-origin
+# Uses strict-origin-when-cross-origin for browsers that do
+Referrer-Policy: no-referrer, strict-origin-when-cross-origin
+
 # Do the same, but with a meta tag
-&lt;meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"&gt;
+&lt;meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin"&gt;
 
 # Do the same, but only for a single link
-&lt;a href="https://mozilla.org/" referrerpolicy="strict-origin-when-cross-origin"&gt;</pre>
+&lt;a href="https://mozilla.org/" referrerpolicy="no-referrer, strict-origin-when-cross-origin"&gt;</pre>
 
 == See Also ==
 * [https://w3c.github.io/webappsec-referrer-policy/#referrer-policy-same-origin Referrer Policy standard]
@@ -680,21 +684,23 @@ Sites that require the ability to be iframed must use either Content Security Po
 
 == Examples ==
 
-<pre># Block site from being framed
+<pre># Block site from being framed with X-Frame-Options and CSP
+Content-Security-Policy: frame-ancestors 'none'
 X-Frame-Options: DENY</pre>
 
-<pre># Do the same thing, but with Content Security Policy
-Content-Security-Policy: frame-ancestors 'none'</pre>
-
 <pre># Only allow my site to frame itself
+Content-Security-Policy: frame-ancestors 'self'
 X-Frame-Options: SAMEORIGIN</pre>
 
-<pre># Do the same thing, but with Content Security Policy, and also allow frame-you.mozilla.org to frame the site
-Content-Security-Policy: frame-ancestors 'self' https://frame-you.mozilla.org</pre>
+<pre># Allow only framer.mozilla.org to frame site
+# Note that this blocks framing from browsers that don't support CSP2+
+Content-Security-Policy: frame-ancestors https://framer.mozilla.org
+X-Frame-Options: DENY</pre>
 
 == See Also ==
 
 * [https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options MDN on X-Frame-Options]
+* [https://www.w3.org/TR/CSP2/#directive-frame-ancestors CSP standard on 'frame-ancestors']
 * [https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet OWASP Clickjacking Defense Cheat Sheet]
 
 
@@ -721,7 +727,7 @@ X-XSS-Protection: 1; mode=block</pre>
 |-
 | style="padding-left: .5em; text-align: left;" | November, 2016
 | align="center" | April
-| style="padding-left: .5em;" | Added Referrer Policy
+| style="padding-left: .5em;" | Added Referrer Policy, tidied up XFO examples
 |-
 | style="padding-left: .5em; text-align: left;" | October, 2016
 | align="center" | April
