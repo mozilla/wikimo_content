@@ -339,11 +339,7 @@ have a quick 5 minute chat about these.
 
 === Wrapping up ===
 
-* Estimate a security level provided by the service and set it in the RRA header at the top.
-** A service that does not seem safe provides LOW security.
-** A service that seem to follow best-practices provides MEDIUM security.
-** A service that puts an emphasis on security and uses stronger controls provides HIGH security.
-** A service that has been well reviewed via threat modeling and penetration testing, uses strong security controls, and has good privilege and data separation provides MAXIMUM security.
+* Fill out the "Service Data classification" field with the data classification of the most sensitive data type in the service. Exclude credentials for service access.
 * Which recommendations are the team thinking of implementing ''(If no recommendations are implemented, you have very little impact)''
 * Summarize the risk assessment table, the biggest impacts, and ask the team if the summary is what they expected.
 * Ask the team if there are any security concerns that they have, which have not been mentioned.
