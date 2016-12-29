@@ -1,10 +1,10 @@
- “Individuals’ security and privacy on the Internet are 
+ “Individuals’ security and privacy on the Internet are
  fundamental and must not be treated as optional.”
    - [http://www.mozilla.org/en-US/about/manifesto/ Mozilla Manifesto Principle 4]
 
 '''The Mozilla Security community provides leadership in security by building security features, testing software and systems, and leading industry standards to ensure that individuals retain the ability to make meaningful choices about security and privacy on the Internet. '''
 
-This page documents the security-related activities where Mozilla active, and how to join us.
+This page documents the security-related activities for Mozilla and how to join us.
 
 __TOC__
 
@@ -17,7 +17,7 @@ Details on the way we classify security bugs can be [[Security Severity Ratings|
 === Who are we? ===
 Security at Mozilla is distributed among the following teams:
 * [[SecurityEngineering|Security Engineering]]: Development of Firefox & underlying platform security features.
-* [[Security/InfoSec|Enterprise Information Security]]: Defines and operates security controls across the organization. 
+* [[Security/InfoSec|Enterprise Information Security]]: Defines and operates security controls across the organization.
 * [[Security/CloudSec|Cloud Services Security]]: Securing core Firefox services.
 
 === Contacting Us ===
@@ -56,7 +56,7 @@ There are a range of ways to contribute to security engineering at Mozilla.
 === Security Testers ===
 * Test Firefox or Mozilla Websites as part of our bug bounty programs
 
-=== Community === 
+=== Community ===
 * Test & provide feedback on new security features
 * Improve security documentation
 
