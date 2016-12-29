@@ -1,0 +1,192 @@
+<!--
+Levels you can copy paste in HTML and other documents
+
+Pass/Fail
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">PASS</span>
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">FAIL</span>
+
+Document status
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">NOT READY</span>
+
+
+Optional, Should, Must
+<span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">OPTIONAL</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MUST</span>
+
+Scoring A-F
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">A+, A</span>
+<span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">B</span>
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">C</span>
+<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">F</span>
+-->
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+<span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
+-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
+
+The goal of this document is to ensure consistency, coherence between security documents. All Mozilla
+security documentation should follow the recommendations below.
+
+The Enterprise Information Security (Infosec, formerly OpSec) team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+== Scoring and other levels ==
+
+These levels can optionally be used.
+
+=== RFC2119 handling recommendation levels ===
+See also [https://www.ietf.org/rfc/rfc2119.txt RFC 2119] for a formal definition.
+
+{| class="wikitable"
+|-
+! Level
+! Expectations
+|-
+|-
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">OPTIONAL</span>
+|
+* This is up to the reader to choose to follow or not to follow this recommendation.
+|-
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">SHOULD</span>
+|
+* Should is very close to "must do" - however, exceptions may be granted after discussion.
+|-
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">MUST</span>
+|
+* This must be done, is required, mandatory - there is no exception.
+|-
+|}
+
+=== Recommended configuration states ===
+These are used to match recommended configuration states. It describes set of documentation configuration state that we recommend using, depending on your use-case.
+
+
+{| class="wikitable"
+|-
+! Level
+! Expectations
+|-
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Modern</span>
+|
+* State of the art configuration from a security point of view.
+* Generally better for security sensitive services.
+* Fewer server/clients may be compatible.
+|-
+! <span style="border-radius: .25em; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Intermediate</span>
+|
+* Usually the default configuration we recommend.
+* Reasonable configuration that we recommend while covering the largest amount of clients.
+* Fewer server/clients may be compatible, though the majority should be compatible with this configuration.
+|-
+! <span style="border-radius: .25em;display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Old</span>
+|
+* Configuration that you may only use if other configurations cannot be followed for technical reasons
+* Relatively safe - but must be moved to the ''intermediate'' configuration above when possible.
+* Generally supports the largest amount of servers/clients.
+|-
+|}
+
+=== Document Status Codes ===
+These are used in the header of every document to clearly signify its current status.
+
+{| class="wikitable"
+|-
+! Level
+! Expectations
+|-
+! <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
+|
+* Means the document is ready for user consumption and is expected to be followed.
+|-
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+|
+* Means the document is in progress or does not cover all cases.
+* You may follow this document for guidance, at your own risk.
+|-
+! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">NOT READY</span>
+|
+* Means the document should not be followed right now.
+|-
+|}
+
+=== Pass/fail tests ===
+Tests are not levels per se. When possible, they either pass or fail. It's similar to a walk/don't walk traffic sign.
+
+{| class="wikitable"
+|-
+! Level
+! Coding rationale
+! Expectations
+|-
+! <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">PASS</span>
+|
+* Green generally means acceptance, allowance such as the traffic sign "Walk".
+|
+* Means a test successfully passed.
+* There is no "almost passed": test must completely pass.
+|-
+! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">FAIL</span>
+|
+* Red generally means refusal, denial, such as the traffic sign "Don't walk".
+|
+* Means a test did not pass.
+|-
+|}
+
+=== Scoring levels  ===
+
+Scores are used to gamify usage of security controls and features.
+Note these levels do not directly signify risk, and are instead intended to provide a grade for a particular objective. The mapping to objective can be used as a base to create a mapping to [[Security/Standard_Levels]].
+
+The letter '''E''' is not used in the grades in order to keep scores concise and voluntarily less granular (see expectations for each grade below).
+The use of '''+''' and '''-''' modifiers is allowed if necessary. These are added to represent going slightly above or below expectations.
+
+{| class="wikitable"
+|-
+! Level
+! Expectations
+|-
+! <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">A+, A, A-</span>
+|
+''Highest possible grade''.
+
+* Support all features and controls.
+* All intentions of objective met.
+|-
+! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">B+, B, B-</span>
+|
+* Supports most important features and controls.
+* Some outliers need attention.
+* Most intentions of objective met.
+|-
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">C+, C, C-</span>
+
+<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">D+, D, D-</span>
+|
+''Score may moderately contribute to risk''.
+
+* Potential service blocker.
+* Needs attention and features need to be enabled/controls added.
+* Minimal to moderation intentions of objective met.
+|-
+! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">F</span>
+|
+''Lowest possible grade, score may greatly contribute to risk''.
+
+* Zero to minimal intentions of objective met.
+* Immediate attention and action are required.
+* Score likely to block the service.
+|-
+|}

@@ -1,0 +1,68 @@
+ “Individuals’ security and privacy on the Internet are 
+ fundamental and must not be treated as optional.”
+   - [http://www.mozilla.org/en-US/about/manifesto/ Mozilla Manifesto Principle 4]
+
+'''The Mozilla Security community provides leadership in security by building security features, testing software and systems, and leading industry standards to ensure that individuals retain the ability to make meaningful choices about security and privacy on the Internet. '''
+
+This page documents the security-related activities where Mozilla active, and how to join us.
+
+__TOC__
+
+== Reporting Security Issues ==
+Mozilla relies on the security community to help secure our products and websites by reporting security issues. Our preference is to receive '''[[Security/Fileabug|bug reports]]''' via our bug tracking system Bugzilla, however [https://www.mozilla.org/security/#For_Developers emailing security@mozilla.org ] (preferably encrypted) is also an option.
+
+Details on the way we classify security bugs can be [[Security Severity Ratings|found here]].
+
+== Security at Mozilla ==
+=== Who are we? ===
+Security at Mozilla is distributed among the following teams:
+* [[SecurityEngineering|Security Engineering]]: Development of Firefox & underlying platform security features.
+* [[Security/InfoSec|Enterprise Information Security]]: Defines and operates security controls across the organization. 
+* [[Security/CloudSec|Cloud Services Security]]: Securing core Firefox services.
+
+=== Contacting Us ===
+The Mozilla security team is available via a number of channels:
+* Via email
+** security@mozilla.org: to contact us privately or [https://www.mozilla.org/security/#For_Developers reporting security bugs]
+** dev-security@lists.mozilla.org: this is the best place to ask security questions that don't need to be private. You might also try searching this list for answers to your questions
+** You can also find us on a number of security related mailing lists including W3C WebAppSec
+* Via Mozilla [[IRC]]
+** #security - general security discussions
+** #contentsecurity - browser security engineering, DOM, CSP, Origins, content blocking etc
+** #infosec - general infosec discussions
+* Join our [[security/meetings]] public meetings
+* Attend a [[Security/Talks | Security Talk]] given by one of the security team
+
+
+== Information for developers ==
+===Security Bug Processes ===
+* [[Security/Bug_Approval_Process|Approval for Landing Security Bugs]]
+* [[Security/Web_Bug_Rotation|Web Bug Verification Rotation]]
+
+===Request a Security or Privacy Review ===
+* Complete the questions at the following page to provide the basic info to kickstart a security or privacy review
+* We'll create and link the corresponding wiki page within the [[Security/Radar|Security Radar]]
+* [[Security/Reviews/Review Request Form | Security & Privacy Review Request Form]]
+
+
+== Contributing to the security of Mozilla products ==
+There are a range of ways to contribute to security engineering at Mozilla.
+
+=== Developers ===
+* Implement security features
+* Fix outstanding security bugs
+* Contribute to security feature development
+
+=== Security Testers ===
+* Test Firefox or Mozilla Websites as part of our bug bounty programs
+
+=== Community === 
+* Test & provide feedback on new security features
+* Improve security documentation
+
+== Mozilla Official Sites ==
+* [http://www.mozilla.org/security Mozilla Security Center]
+* [http://developer.mozilla.org/en/Security Mozilla security developer docs]
+* [[CA|Mozilla CA Root Program]]
+* [http://blog.mozilla.com/security Mozilla Security blog]
+* [[Security/Guidelines/|Security Guidelines]]
