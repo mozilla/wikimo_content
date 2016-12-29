@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+<span style="background-color: #14892c; border-radius: .25em; color: yellow; display: inline-block; font-weight: bold;
+-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+
+The goal of this document is to help you understand the basics of how to securely implement
+[http://kubernetes.io/docs/ Kubernetes] at Mozilla.
+
+The Enterprise Information Security team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_content/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+{| class="wikitable"
+|-
+! <span style="color:red;">'''ATTENTION'''</span>
+|-
+|
+'''Just looking for code?''' Reference configuration and code for implementing k8s as described below is available...
+
+
+|}
+
+
+== Additional references ==
+
+* https://kubernetes.io/ (Main site for kubernetes)
