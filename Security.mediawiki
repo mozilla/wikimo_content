@@ -30,8 +30,6 @@ The Mozilla security team is available via a number of channels:
 ** #security - general security discussions
 ** #contentsecurity - browser security engineering, DOM, CSP, Origins, content blocking etc
 ** #infosec - general infosec discussions
-* Join our [[security/meetings]] public meetings
-* Attend a [[Security/Talks | Security Talk]] given by one of the security team
 
 
 == Information for developers ==
