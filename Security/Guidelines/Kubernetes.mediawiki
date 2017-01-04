@@ -1,0 +1,37 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+<span style="background-color: #14892c; border-radius: .25em; color: yellow; display: inline-block; font-weight: bold;
+-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">DRAFT</span>
+
+The goal of this document is to help you understand the basics of how to securely implement
+[http://kubernetes.io/docs/ Kubernetes] at Mozilla.
+
+The Enterprise Information Security team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_content/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_content/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+== Why Kubernetes? ==
+=== Container-Based Approach ===
+Kubernetes is a platform used to deploy containers to cloud environments. Mozilla has been using containers to develop and deploy applications for over a year, most notably powering http://www.mozilla.org/
+
+=== Efficiencies of Clusters Over AMI Per Application Model ===
+Because Kubernetes hosts containers on clusters of machines, all deployed applications inherit the clusters security best practices, alerting, logging and monitoring. These are implemented once and developers only need to develop alerting/monitoring specific to their application.
+
+=== Platform Agnostic ===
+A Kubernetes cluster can run on AWS, Rackspace, Google Compute or bare metal. This is not what one would describe as turn-key (at the moment) but with Kubernetes this is at least possible and mitigates vendor lock in risk. Additionally you can run Kubernetes on your laptop, something that is not possible with Amazon centric solutions.
+
+=== Mature / Robust ===
+Kubernetes is a large, mature open-source project under active development. Mozilla does not have to invest resources in feature development, bug fixes, maintaining documentation and training materials or other similar tasks.
+
+
+== Additional references ==
+
+* https://kubernetes.io/ (Main site for kubernetes)
