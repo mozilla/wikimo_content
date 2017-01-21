@@ -31,7 +31,37 @@ A Kubernetes cluster can run on AWS, Rackspace, Google Compute or bare metal. Th
 === Mature / Robust ===
 Kubernetes is a large, mature open-source project under active development. Mozilla does not have to invest resources in feature development, bug fixes, maintaining documentation and training materials or other similar tasks.
 
+== General Security Guidelines ==
+=== AWS Security ===
+If deploying to AWS, Mozilla AWS security standards apply: https://mana.mozilla.org/wiki/display/POLICIES/Standard%3A+AWS+Security
+
+=== TLS ===
+When implementing TLS, follow Mozilla's Server Side TLS configuration guide: https://wiki.mozilla.org/Security/Server_Side_TLS
+Digicert or Let's Encrypt certificates can be installed for public facing services. Kubernetes API & workers use self-signed temporary certs by default for their internal communications.
+
+=== SSH ===
+When implementing SSH, follow Mozilla's OpenSSH guidelines: https://wiki.mozilla.org/Security/Guidelines/OpenSSH
+If using Deis, deploy ssh keys per user as described here: https://deis.com/docs/workflow/users/ssh-keys/
+
+=== Open VPN ===
+If using Open VPN to tunnel kubectl traffic, implement VPN with MFA using: https://github.com/mozilla-it/duo_openvpn
+
+=== Deis User Registration ===
+As noted here: https://deis.com/docs/workflow/users/registration/#controlling-registration-modes the default for Deis is to allow user registration from anyone. This must be changed to admin_only as described in the link by either:
+<pre>
+    Patch the deployment:
+    kubectl --namespace=deis patch deployments deis-controller -p '{"spec":{"template":{"spec":{"containers":[{"name":"deis-controller","env":[{"name":"REGISTRATION_MODE","value":"disabled"}]}]}}}}'
+</pre>
+<pre>
+    Edit the deployment directly:
+    kubectl --namespace=deis edit deployments deis-controller
+</pre>
+
+=== Deis Controller Whitelists ===
+If using Deis, consider enforcing controller whitelists for IP ranges expected to interact with the deis-controller service: https://deis.com/docs/workflow/managing-workflow/security-considerations/#ip-whitelist
 
 == Additional references ==
 
 * https://kubernetes.io/ (Main site for kubernetes)
+* https://deis.com/docs/workflow/quickstart/ (Deis Workflow quick start for k8s/helm/app deployment)
+* http://2016.video.sector.ca/video/189177390 (SecTor 2016 Introductory Presentation on Kubernetes security)
