@@ -49,7 +49,7 @@ If using Open VPN to tunnel kubectl traffic, implement VPN with MFA using: https
 === Deis User Registration ===
 As noted here: https://deis.com/docs/workflow/users/registration/#controlling-registration-modes the default for Deis is to allow user registration from anyone. This must be changed to admin_only as described in the link by either:
 <pre>
-    patch the deployment:
+    Patch the deployment:
     kubectl --namespace=deis patch deployments deis-controller -p '{"spec":{"template":{"spec":{"containers":[{"name":"deis-controller","env":[{"name":"REGISTRATION_MODE","value":"disabled"}]}]}}}}'
 </pre>
 <pre>
