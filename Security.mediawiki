@@ -37,11 +37,6 @@ The Mozilla security team is available via a number of channels:
 * [[Security/Bug_Approval_Process|Approval for Landing Security Bugs]]
 * [[Security/Web_Bug_Rotation|Web Bug Verification Rotation]]
 
-===Request a Security or Privacy Review ===
-* Complete the questions at the following page to provide the basic info to kickstart a security or privacy review
-* We'll create and link the corresponding wiki page within the [[Security/Radar|Security Radar]]
-* [[Security/Reviews/Review Request Form | Security & Privacy Review Request Form]]
-
 
 == Contributing to the security of Mozilla products ==
 There are a range of ways to contribute to security engineering at Mozilla.
