@@ -380,6 +380,7 @@ Content-Security-Policy: default-src 'none'; frame-ancestors 'none'</pre>
 * [http://www.html5rocks.com/en/tutorials/security/content-security-policy/ An Introduction to Content Security Policy]
 * [http://www.cspplayground.com/ Content Security Policy Playground]
 * [https://www.w3.org/TR/CSP2/ Content Security Policy Level 2 Standard]
+* [https://csp-evaluator.withgoogle.com/ Google CSP Evaluator]
 * [[#X-Frame-Options|Using the frame-ancestors directive to prevent framing]]
 
 = contribute.json =
