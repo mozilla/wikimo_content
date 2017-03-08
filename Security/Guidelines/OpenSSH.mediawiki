@@ -69,7 +69,7 @@ Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
 # Using regular users in combination with /bin/su or /usr/bin/sudo ensure a clear audit track.
 PermitRootLogin No
 
-# Use kernel sandbox mechanisms where possible in unprivilegied processes
+# Use kernel sandbox mechanisms where possible in unprivileged processes
 # Systrace on OpenBSD, Seccomp on Linux, seatbelt on MacOSX/Darwin, rlimit elsewhere.
 UsePrivilegeSeparation sandbox
 </source>
