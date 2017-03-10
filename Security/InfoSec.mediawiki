@@ -26,6 +26,7 @@ Our IRC channel is #infosec or #security at [irc://irc.mozilla.org/security irc.
 * [https://mozillians.org/en-US/u/jclaudius/ Jonathan Claudius] [:claudijd]
 * [https://mozillians.org/en-US/u/april/ April King] [:April]
 * [https://mozillians.org/en-US/u/phrozyn/ Alicia Smith] [:phrozyn]
+* [https://mozillians.org/en-US/u/akrug/ Andrew Krug] [:andrew]
 
 = Service Catalog =
 
