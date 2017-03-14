@@ -83,7 +83,11 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Encrypt data at rest when not actively used by the system.
 * Use full-disk encryption where available.
 * Encrypt credentials storage databases (Ansible Vault, CredStash, etc.)
-* Encrypt traffic in transit (TLS)
+* Encrypt traffic in transit (TLS).
+
+''Do not'''
+* Terminate TLS for all services in one location, then transmit the information in clear-text in the rest of the network.
+* Use STARTTLS without also disabling clear-text connections.
 
 = Know Thy System =
 == Audit and Logging ==
@@ -109,6 +113,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Keep an automatic inventory of machines, services, responsible parties.
+* Keep an IP-based inventory, in particular when using IPv6 (which cannot realisticly be scanned).
 
 == KISS - Keep It Simple and thus Secure ==
 ''KISS comes from [https://en.wikipedia.org/wiki/KISS_principle 'Keep It Simple, Stupid']. You can only secure a system that you can completely understand.''
@@ -126,7 +131,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Enable service-specific MFA (GitHub, Google, etc.)
-* Add MFA to your applications, or use an SSO (Single Sign On) solution with MFA.
+* Add MFA to all your applications, or use an SSO (Single Sign On) solution with MFA.
 
 == No direct handling of user credentials ==
 ''The act of never processing the user's password, keys, etc. directly by a service other than the authentication provider. For example, a wiki would never be able to see the user's password, it would only be told that the user is successfully identified.''
@@ -169,3 +174,4 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Trust traffic from a certain network address.
 * Use IP ACLs to control access to systems.
 * Trust the office network for access to devices.
+* Use [https://en.wikipedia.org/wiki/TCP_Wrapper TCP Wrapper] for access control.
