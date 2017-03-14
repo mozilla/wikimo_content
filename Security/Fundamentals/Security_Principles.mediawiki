@@ -169,3 +169,4 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Trust traffic from a certain network address.
 * Use IP ACLs to control access to systems.
 * Trust the office network for access to devices.
+* Use [https://en.wikipedia.org/wiki/TCP_Wrapper TCP Wrapper] for access control.
