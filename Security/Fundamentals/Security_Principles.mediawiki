@@ -113,6 +113,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Keep an automatic inventory of machines, services, responsible parties.
+* Keep an IP-based inventory, in particular when using IPv6 (which cannot realisticly be scanned).
 
 == KISS - Keep It Simple and thus Secure ==
 ''KISS comes from [https://en.wikipedia.org/wiki/KISS_principle 'Keep It Simple, Stupid']. You can only secure a system that you can completely understand.''
@@ -130,7 +131,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Enable service-specific MFA (GitHub, Google, etc.)
-* Add MFA to your applications, or use an SSO (Single Sign On) solution with MFA.
+* Add MFA to all your applications, or use an SSO (Single Sign On) solution with MFA.
 
 == No direct handling of user credentials ==
 ''The act of never processing the user's password, keys, etc. directly by a service other than the authentication provider. For example, a wiki would never be able to see the user's password, it would only be told that the user is successfully identified.''
