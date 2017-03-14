@@ -18,7 +18,7 @@ Details on the way we classify security bugs can be [[Security Severity Ratings|
 Security at Mozilla is distributed among the following teams:
 * [[SecurityEngineering|Security Engineering]]: Development of Firefox & underlying platform security features.
 * [[Security/InfoSec|Enterprise Information Security]]: Defines and operates security controls across the organization.
-* [[Security/CloudSec|Cloud Services Security]]: Securing core Firefox services.
+* [[Security/FoxSec|Firefox Services Security]]: Securing core Firefox services.
 
 === Contacting Us ===
 The Mozilla security team is available via a number of channels:
