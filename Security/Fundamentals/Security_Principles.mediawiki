@@ -1,0 +1,171 @@
+<table>
+  <tr>
+    <td style="min-width: 25em;float:left;">__TOC__</td>
+    <td style="vertical-align: top; padding-left: 1em;">
+'''STATUS: <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block;
+font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
+center;">READY</span>'''
+
+The goal of this document is to help operational teams agree on a basic set of principles to set expectations and give overall guidance to secure a service.
+
+The Enterprise Information Security team maintains this document as a reference guide for operational teams.
+
+Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
+Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
+
+<span style="float: right; padding-top: 3em;">[[File:OpSec.png|300px]]</span>
+    </td>
+  </tr>
+</table>
+
+= Least Privilege =
+== Do not present unnecessary services ==
+''The act of limiting the amount of reachable or usable services to the strict minimum.''
+
+'''Do'''
+* List all services presented to the network (Internet and Intranets). Justify the presence of each port or service.
+
+'''Do not'''
+* OpenSSH Server (sshd) is running but is never used.
+* A DNS resolution caching server (dnsmasqd) is running locally but only upstream DNS nameservers are used by clients.
+* A file sharing server (samba/smbd) is running but no files are stored or exchanged on the server.
+* A web-application propose an administration service that you can login to through the website, but it is not being used.
+* A database server (SQL) allows connections from any machine in the same VLAN, even thus only a single machine needs to connect to it.
+* The administration login panel of the network switch for the office network is accessible by regular office users.
+
+== Do not grant or retain permissions if they're not actively used ==
+''The act of expiring user access to data or services when these are not being used by said user.''
+
+'''Do'''
+* Use role-based access control (allows for easy granular escalation of privileges, only when necessary)
+* Expire access automatically when unused.
+* Use different accounts for different role types (admin, developer, user, etc.) when no good role-based access control is available.
+'''Do not'''
+* Allow root access (e.g. via 'sudo') to all systems for all operation engineers, regardless of the actual services they maintain.
+* Give access "just in case".
+* Never revisit access rules for users.
+
+= Defense in Depth =
+== Do not allow lateral movement ==
+''Make it difficult or impossible for an attacker to move from one host in the network to another host.''
+
+'''Do'''
+* Use host-based firewall rules that self-protect the system regardless of the rules from the network equipment, or the location of the system.
+* Avoid usage of firewall rules that allow any inbound connection to connect to a listening port (such as OpenSSH, RDP).
+* Clearly enforce which team has access to which set of systems.
+* Clearly assign administrative roles of different authentication & authorization services to different people.
+
+'''Do not'''
+* Have system administrators with access to every system/every service.
+* Share administrative user access to authentication & authorization systems.
+* Allow OpenSSH, RDP connections from any host on any network.
+* Allow tools remotely executing code on every system from a centralized location (single Puppet Master, Ansible Tower, Nagios, etc. instance).
+
+== Patch Systems ==
+''The act of updating software, in particular in order to deploy fixes to security vulnerabilities that are found in software over time.''
+
+'''Do'''
+* Establish regular patching time windows.
+* Ensure systems can be turned off and back on without affecting availability.
+* Turn on automatic patching where possible.
+
+== Meet Web Standards ==
+''The act of following the Mozilla Web Standard, which consist of HTTP headers, specific web-server setup, specific [https://www.w3.org/ W3C] security features, etc.''
+
+'''Do'''
+* Achieve B+ or higher on [https://observatory.mozilla.org Mozilla's Observatory]
+* Follow the [[Security/Guidelines/Web_Security]] recommendations.
+
+== Encrypt sensitive data ==
+''The process of converting information or data into a code, especially to prevent unauthorized access.''
+
+'''Do'''
+* Encrypt data at rest when not actively used by the system.
+* Use full-disk encryption where available.
+* Encrypt credentials storage databases (Ansible Vault, CredStash, etc.)
+* Encrypt traffic in transit (TLS)
+
+= Know Thy System =
+== Audit and Logging ==
+''Recording system events in order to alert on suspicious behavior, or to retrace actions after the fact.''
+
+'''Do'''
+* Send logs to a centralized service (MozDef, Papertrail, S3, etc.)
+* Audit processes at the system level (Auditd, Windows Audit)
+* Run [https://mig.ninja MIG]
+
+== Are you at risk? ==
+''Assessing how exposed you are to danger, harm or loss.''
+
+'''Do'''
+* Run rapid risk assessments [[Security/Risk management/Rapid Risk Assessment]] for your services.
+* Estimate what would happen if your service was compromised.
+
+'''Do not'''
+* Think it will never happen to you.
+
+== Inventory ==
+''An inventory is an accurate, maintained catalog, or system of records for all assets representing service.''
+
+'''Do'''
+* Keep an automatic inventory of machines, services, responsible parties.
+
+== KISS - Keep It Simple and thus Secure ==
+''KISS comes from [https://en.wikipedia.org/wiki/KISS_principle 'Keep It Simple, Stupid']. You can only secure a system that you can completely understand.''
+
+'''Do'''
+* Keep things simple. Privilege simplicity over complex-satisfies-obscure-requirements architecture.
+* Ensure others understand your design.
+* Use standardized tooling that others already know how to use.
+* Draw high-level data flow diagrams.
+
+= Authentication and authorization =
+== No authentication that isn't MFA/2FA ==
+''MFA (multi-factor authentication, also called 2FA for two-factors) is method of confirming a user's claimed identity by utilizing a combination of two different components such as something you know (password) and something you have (phone).''
+<br/>''See also why: [[Security/Fundamentals#mfa]].''
+
+'''Do'''
+* Enable service-specific MFA (GitHub, Google, etc.)
+* Add MFA to your applications, or use an SSO (Single Sign On) solution with MFA.
+
+== No direct handling of user credentials ==
+''The act of never processing the user's password, keys, etc. directly by a service other than the authentication provider. For example, a wiki would never be able to see the user's password, it would only be told that the user is successfully identified.''
+
+'''Do'''
+* Use an SSO (Single Sign On) solution that authenticate users on your behalf.
+
+'''Do not'''
+* Process, transmit or store user credentials (passwords, OTPs, keys, etc.) Let the authentication server directly handle it.
+* Use direct LDAP authentication for users.
+
+== Centralize authentication and authorization ==
+''The usage of a single, external source of truth for authentication and authorization.''
+<br/>''See also why: [[Security/Fundamentals#decentralized-user-account-management]].''
+
+'''Do'''
+* Use an SSO (Single Sign On) solution that authenticate users on your behalf.
+* Use the same SSO to pass on authorization rules.
+
+== No reuse or sharing of credentials ==
+''The avoidance to use the same or similar password for different services, or to send/share that password across different individuals.''
+<br/>''See also why: [[Security/Fundamentals#shared-passwords]], [[Security/Fundamentals#password-reuse]].''
+
+'''Do'''
+* Use password managers.
+* Use purpose-build credential sharing mechanisms when sharing is required (1password for teams, LastPass, etc.)
+
+'''Do not'''
+* Send your password to others.
+* Send shared passwords over email or other communication mediums.
+* Use the same password for several services.
+
+== Network identity is not authentication ==
+''The usage of network properties, IP addresses to grant identity or access to services.''
+
+'''Do'''
+* Use credentials-based authentication and user session management where the session information is passed by the user (https://research.google.com/pubs/pub44860.html)
+
+'''Do not'''
+* Trust traffic from a certain network address.
+* Use IP ACLs to control access to systems.
+* Trust the office network for access to devices.
