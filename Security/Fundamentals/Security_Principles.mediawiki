@@ -43,7 +43,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 '''Do not'''
 * Allow root access (e.g. via 'sudo') to all systems for all operation engineers, regardless of the actual services they maintain.
 * Give access "just in case".
-* Never revisit access rules for users.
+* Keep adding access rights to users without revisiting if the users still use previously granted access rights.
 
 = Defense in Depth =
 == Do not allow lateral movement ==
@@ -51,15 +51,17 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Use host-based firewall rules that self-protect the system regardless of the rules from the network equipment, or the location of the system.
-* Avoid usage of firewall rules that allow any inbound connection to connect to a listening port (such as OpenSSH, RDP).
+* Avoid usage of firewall rules that allow any inbound connection to connect to a listening port.
+* Use well-secured bastion hosts or authenticated proxies for allowing connections such as OpenSSH or RDP.
 * Clearly enforce which team has access to which set of systems.
 * Clearly assign administrative roles of different authentication & authorization services to different people.
 
 '''Do not'''
-* Have system administrators with access to every system/every service.
+* Have all system administrators with access to every system/every service.
 * Share administrative user access to authentication & authorization systems.
 * Allow OpenSSH, RDP connections from any host on any network.
 * Allow tools remotely executing code on every system from a centralized location (single Puppet Master, Ansible Tower, Nagios, etc. instance).
+* Use tools such as [https://en.wikipedia.org/wiki/Security-Enhanced_Linux SELinux], [https://endocode.com/blog/2016/11/04/sandboxfeatures/ Systemd rules], [https://github.com/gdestuynder/sudoro/ Sudoro], etc. to limit the amount of adminstrative access to users and processes.
 
 == Patch Systems ==
 ''The act of updating software, in particular in order to deploy fixes to security vulnerabilities that are found in software over time.''
@@ -132,6 +134,10 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 '''Do'''
 * Enable service-specific MFA (GitHub, Google, etc.)
 * Add MFA to all your applications, or use an SSO (Single Sign On) solution with MFA.
+* Add MFA to credential storage where system API keys are stored (as API keys themselves cannot use MFA).
+
+'''Do not'''
+* Use OAuth [https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/ refresh tokens] for everything.
 
 == No direct handling of user credentials ==
 ''The act of never processing the user's password, keys, etc. directly by a service other than the authentication provider. For example, a wiki would never be able to see the user's password, it would only be told that the user is successfully identified.''
@@ -169,9 +175,10 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 
 '''Do'''
 * Use credentials-based authentication and user session management where the session information is passed by the user (https://research.google.com/pubs/pub44860.html)
+* Strongly authenticate access to any resource that needs to be protected.
 
 '''Do not'''
 * Trust traffic from a certain network address.
 * Use IP ACLs to control access to systems.
-* Trust the office network for access to devices.
+* Trust the office network for access to management devices and administration interfaces.
 * Use [https://en.wikipedia.org/wiki/TCP_Wrapper TCP Wrapper] for access control.
