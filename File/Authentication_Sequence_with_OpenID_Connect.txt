@@ -47,3 +47,18 @@ RP->UserAgent: 302 Redirect https:\/\/rp.example.net/
 note over UserAgent: User is authenticated to https:\/\/rp.example.net
 UserAgent->RP: GET https:\/\/rp.example.net/
 RP->UserAgent: rp.example.net's page is displayed
+
+== 15 minutes later... (session require refresh) ==
+
+
+
+UserAgent->RP: GET https:\/\/rp.example.net/
+RP->UserAgent: 302 Redirect to https:\/\/op.example.net/authorize?**prompt=none**[...]
+
+UserAgent->OP: GET https:\/\/op.example.net/authorize?**prompt=none**[...]
+OP->IdP: silently re-authenticate user
+IdP->OP: return new/current user attributes
+OP->UserAgent: 302 Redirect to https:\/\/rp.example.net/callback?[...] (redirect_uri)
+
+note over UserAgent: User session, expiration and profile attributes are refreshed
+RP->UserAgent: rp.example.net's page is displayed

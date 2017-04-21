@@ -141,6 +141,7 @@ For that reason, it is important that the web application (RP) respects the foll
 ** This ensures that access is revoked within ''15 minutes'' in the event that the user's account is disabled by the OpenID Connect Provider (OP).
 ** This issues a new ID token, with new attributes if they have changed.
 ** This may also renew the ID token expiration time.
+** This is generally done with the parameter <code>prompt=none</code> while calling the OpenID Connect <code>authorize</code> endpoint. See also [http://openid.net/specs/openid-connect-implicit-1_0.html#RequestParameters specifications].
 * The web application (RP) can '''optionally''' provide a <code>logout</code> URL, which the OpenID Connect Provider (OP) can call to indicate if a user has logged out (so that the web application immediately know when to log the user out as well).
 
 === Other important security considerations ===
