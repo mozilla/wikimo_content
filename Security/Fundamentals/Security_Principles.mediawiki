@@ -83,10 +83,11 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * Encrypt data at rest when not actively used by the system.
 * Use full-disk encryption where available.
 * Encrypt credentials storage databases (Ansible Vault, CredStash, etc.)
-* Encrypt traffic in transit (TLS).
+* Encrypt traffic in transit (TLS) from the client to the final destination ([https://en.wikipedia.org/wiki/End-to-end_encryption end-to-end]).
+* Encrypt traffic in transit (TLS) between components of Mozilla's infrastructure when [https://en.wikipedia.org/wiki/End-to-end_encryption end-to-end] encryption is not technically feasible.
 
-''Do not'''
-* Terminate TLS for all services in one location, then transmit the information in clear-text in the rest of the network.
+'''Do not'''
+* Terminate TLS for all services in a single location at the network edge and transmit the information in clear-text in the rest of the network.
 * Use STARTTLS without also disabling clear-text connections.
 
 = Know Thy System =
