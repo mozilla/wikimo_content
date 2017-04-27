@@ -18,6 +18,8 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
   </tr>
 </table>
 
+'''NOTE:''' The "'''do'''" and "'''do not'''" used in this document are example of controls or implementation of the principles, but do not represent an exhaustive list of possibilities.
+
 = Least Privilege =
 == Do not present unnecessary services ==
 ''The act of limiting the amount of reachable or usable services to the strict minimum.''
@@ -26,77 +28,87 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 * List all services presented to the network (Internet and Intranets). Justify the presence of each port or service.
 
 '''Do not'''
-* OpenSSH Server (sshd) is running but is never used.
-* A DNS resolution caching server (dnsmasqd) is running locally but only upstream DNS nameservers are used by clients.
+* OpenSSH Server (sshd) is running but no users ever login.
 * A file sharing server (samba/smbd) is running but no files are stored or exchanged on the server.
-* A web-application propose an administration service that you can login to through the website, but it is not being used.
-* A database server (SQL) allows connections from any machine in the same VLAN, even thus only a single machine needs to connect to it.
+* A web-application has a web accessible administration interface, but it is not used.
+* A database server (SQL) allows connections from any machine in the same VLAN, even though only a single machine needs to access it.
 * The administration login panel of the network switch for the office network is accessible by regular office users.
 
 == Do not grant or retain permissions if they're not actively used ==
-''The act of expiring user access to data or services when these are not being used by said user.''
+''The act of expiring user access to data or services when they are not being used by said user.''
 
 '''Do'''
 * Use role-based access control (allows for easy granular escalation of privileges, only when necessary)
 * Expire access automatically when unused.
+* Automatically disable AWS API keys after not having been used for a given period of time and notify the user.
 * Use different accounts for different role types (admin, developer, user, etc.) when no good role-based access control is available.
+* Routinely review user’s access permissions to ensure they’re still needed.
+
 '''Do not'''
-* Allow root access (e.g. via 'sudo') to all systems for all operation engineers, regardless of the actual services they maintain.
+* Grant root access (e.g. via 'sudo') for all operation engineers on all systems, regardless of the actual services those engineers maintain.
 * Give access "just in case".
-* Never revisit access rules for users.
 
 = Defense in Depth =
 == Do not allow lateral movement ==
 ''Make it difficult or impossible for an attacker to move from one host in the network to another host.''
 
 '''Do'''
-* Use host-based firewall rules that self-protect the system regardless of the rules from the network equipment, or the location of the system.
-* Avoid usage of firewall rules that allow any inbound connection to connect to a listening port (such as OpenSSH, RDP).
-* Clearly enforce which team has access to which set of systems.
-* Clearly assign administrative roles of different authentication & authorization services to different people.
+* Prevent inbound network access to services on a host from clients that do not need access to the service through either host-based firewall rules, network firewall rules/AWS security groups, or both (which is preferred).
+* Clearly enforce which teams have access to which set of systems.
+
+'''Do not'''
+* Allow inbound OpenSSH, RDP connections from any host on any network.
+* Run unpatched container management services (e.g. Docker) or kernels which allow a user in one container to escape the container and affect other containers on the same host.
+
+== Segment the environment ==
+''The act of separating services from each other in order to limit the the impact of a security breach.''
+
+'''Do'''
+* In cases where two distinct systems are used to govern access or authorization (e.g. Okta and Duo), ensure that no single user or role has administrative permissions across both systems.
 
 '''Do not'''
 * Have system administrators with access to every system/every service.
-* Share administrative user access to authentication & authorization systems.
-* Allow OpenSSH, RDP connections from any host on any network.
-* Allow tools remotely executing code on every system from a centralized location (single Puppet Master, Ansible Tower, Nagios, etc. instance).
+* Establish service users with access to multiple services.
+* Allow tools remotely executing code on systems from a centralized location (single Puppet Master, Ansible Tower, Nagios, etc. instance) across multiple services.
+* Use the same TLS termination point (e.g. an HTTP reverse proxy or a load balancer) across multiple services.
+* Re-use functionality across services when not required (such as sharing load balancers, databases, etc.)
 
 == Patch Systems ==
 ''The act of updating software, in particular in order to deploy fixes to security vulnerabilities that are found in software over time.''
 
 '''Do'''
-* Establish regular patching time windows.
-* Ensure systems can be turned off and back on without affecting availability.
-* Turn on automatic patching where possible.
+* Establish regular recurring maintenance windows in which to patch software.
+* Ensure individual systems can be turned off and back on without affecting service availability.
+* Enable automatic patching where possible.
 
 == Meet Web Standards ==
-''The act of following the Mozilla Web Standard, which consist of HTTP headers, specific web-server setup, specific [https://www.w3.org/ W3C] security features, etc.''
+''The act of following the Mozilla Web Standard, which covers HTTP headers, web-server setup, and [https://www.w3.org/ W3C] security features.''
 
 '''Do'''
-* Achieve B+ or higher on [https://observatory.mozilla.org Mozilla's Observatory]
+* Achieve B+ or higher on [https://observatory.mozilla.org Mozilla's Observatory].
 * Follow the [[Security/Guidelines/Web_Security]] recommendations.
 
 == Encrypt sensitive data ==
-''The process of converting information or data into a code, especially to prevent unauthorized access.''
+''The process of converting information or data into a code to prevent unauthorized access.''
 
 '''Do'''
-* Encrypt data at rest when not actively used by the system.
-* Use full-disk encryption where available.
-* Encrypt credentials storage databases (Ansible Vault, CredStash, etc.)
-* Encrypt traffic in transit (TLS).
+* Use full-disk encryption where available on systems without physical security (laptops and mobile phones).
+* Encrypt credentials storage databases (Ansible Vault, Credstash, etc.)
+* Encrypt data in transit (during transmission).
+* Also encrypt data in transit inside the internal network.
 
-''Do not'''
-* Terminate TLS for all services in one location, then transmit the information in clear-text in the rest of the network.
+'''Do not'''
+* Terminate TLS (e.g. with a reverse proxy or load balancer) outside a system and then transmit the data in clear-text across the rest of the network.
 * Use STARTTLS without also disabling clear-text connections.
 
 = Know Thy System =
-== Audit and Logging ==
-''Recording system events in order to alert on suspicious behavior, or to retrace actions after the fact.''
+== Logging and forensics ==
+''Recording events in order to alert on suspicious behavior, or to retrace actions after a security breach.''
 
 '''Do'''
-* Send logs to a centralized service (MozDef, Papertrail, S3, etc.)
-* Audit processes at the system level (Auditd, Windows Audit)
-* Run [https://mig.ninja MIG]
+* Audit and log system calls (e.g. with auditd or Windows Audit) made by processes when running in an operating system you control (e.g. not AWS Lambda)
+* Send logs off the account or system (e.g. AWS CloudTrail, system logs, etc.) outside of the account or system (different AWS account, MozDef, Papertrail, etc.)
+* Run [https://mig.ninja MIG].
 
 == Are you at risk? ==
 ''Assessing how exposed you are to danger, harm or loss.''
@@ -112,66 +124,86 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 ''An inventory is an accurate, maintained catalog, or system of records for all assets representing service.''
 
 '''Do'''
-* Keep an automatic inventory of machines, services, responsible parties.
-* Keep an IP-based inventory, in particular when using IPv6 (which cannot realisticly be scanned).
+* Keep an inventory of services and service owners.
+* Keep an inventory of machines (e.g. ServiceNow, AWS Config, Infoblox, etc.) which is updated automatically.
+* Ensure that the inventory contains IP addresses of systems in particular when using IPv6 (which cannot realistically be scanned).
 
 == KISS - Keep It Simple and thus Secure ==
+
 ''KISS comes from [https://en.wikipedia.org/wiki/KISS_principle 'Keep It Simple, Stupid']. You can only secure a system that you can completely understand.''
 
 '''Do'''
-* Keep things simple. Privilege simplicity over complex-satisfies-obscure-requirements architecture.
-* Ensure others understand your design.
+* Keep things simple. Prefer simplicity over a complex and specific architecture.
+* Ensure others can understand the design.
 * Use standardized tooling that others already know how to use.
 * Draw high-level data flow diagrams.
 
 = Authentication and authorization =
-== No authentication that isn't MFA/2FA ==
+== No user authentication that isn't MFA/2FA ==
 ''MFA (multi-factor authentication, also called 2FA for two-factors) is method of confirming a user's claimed identity by utilizing a combination of two different components such as something you know (password) and something you have (phone).''
-<br/>''See also why: [[Security/Fundamentals#mfa]].''
+
+''See also why: [[Security/Fundamentals#mfa]].''
 
 '''Do'''
-* Enable service-specific MFA (GitHub, Google, etc.)
-* Add MFA to all your applications, or use an SSO (Single Sign On) solution with MFA.
+* Use an SSO (Single Sign On) solution with MFA.
+* For services that can not support SSO, use the service’s individual MFA features (e.g. GitHub and Google MFA)
 
 == No direct handling of user credentials ==
-''The act of never processing the user's password, keys, etc. directly by a service other than the authentication provider. For example, a wiki would never be able to see the user's password, it would only be told that the user is successfully identified.''
+''Handling sensitive data like passwords is done only by the authentication provider.''
 
 '''Do'''
-* Use an SSO (Single Sign On) solution that authenticate users on your behalf.
+* Use an SSO (Single Sign On) solution that authenticates users on your service’s behalf, handling the credentials and only reporting back to the calling service if the user has or has not been authenticated.
 
 '''Do not'''
-* Process, transmit or store user credentials (passwords, OTPs, keys, etc.) Let the authentication server directly handle it.
+* Accept, process, transmit or store user credentials (passwords, OTPs, keys, etc.) Let the authentication server directly handle that data.
 * Use direct LDAP authentication for users.
 
 == Centralize authentication and authorization ==
 ''The usage of a single, external source of truth for authentication and authorization.''
-<br/>''See also why: [[Security/Fundamentals#decentralized-user-account-management]].''
+
+''See also why: [[Security/Fundamentals#decentralized-user-account-management]].''
 
 '''Do'''
-* Use an SSO (Single Sign On) solution that authenticate users on your behalf.
-* Use the same SSO to pass on authorization rules.
+* Use an SSO (Single Sign On) solution that authenticates users on your service’s behalf.
+* Use authorization (e.g. group membership) data, that the SSO solution delivers along with authentication, instead of storing authorization data inside the service itself.
 
 == No reuse or sharing of credentials ==
-''The avoidance to use the same or similar password for different services, or to send/share that password across different individuals.''
-<br/>''See also why: [[Security/Fundamentals#shared-passwords]], [[Security/Fundamentals#password-reuse]].''
+''Avoid using the same or similar passwords for different services. Avoid sharing passwords across different individuals.''
+
+''See also why: [[Security/Fundamentals#shared-passwords]], [[Security/Fundamentals#password-reuse]].''
 
 '''Do'''
-* Use password managers.
-* Use purpose-build credential sharing mechanisms when sharing is required (1password for teams, LastPass, etc.)
+* Use a password manager to store distinct passwords for each service a user accesses.
+* Use purpose-built credential sharing mechanisms when sharing is required (1password for teams, LastPass, etc.)
 
 '''Do not'''
-* Send your password to others.
-* Send shared passwords over email or other communication mediums.
-* Use the same password for several services.
+* Send your password to other individuals.
+* Send shared passwords over email or communication mediums other than purpose-built credential sharing mechanisms.
+* Use the same password for multiple services.
 
 == Network identity is not authentication ==
-''The usage of network properties, IP addresses to grant identity or access to services.''
+''The usage of network properties or IP addresses to grant access to services.''
 
 '''Do'''
-* Use credentials-based authentication and user session management where the session information is passed by the user (https://research.google.com/pubs/pub44860.html)
+* Use credential-based authentication and user session management where the session information is passed by the user (https://research.google.com/pubs/pub44860.html)
+* Use API keys for service authentication.
 
 '''Do not'''
 * Trust traffic from a certain network address.
+* Rely on VLANs or AWS VPCs to indicate requests are safe.
 * Use IP ACLs to control access to systems.
 * Trust the office network for access to devices.
 * Use [https://en.wikipedia.org/wiki/TCP_Wrapper TCP Wrapper] for access control.
+
+== Machine credentials are different from user credentials ==
+''Machines have different abilities and needs than humans regarding authentication.''
+
+'''Do'''
+* Prefer using asymmetric API keys with request signing (e.g. x509 client certificates, AWS Signature) over symmetric API keys (e.g. HTTP header)
+* Ensure that API keys can be automatically rotated in the case of a data leak.
+
+'''Do not'''
+* Use machine API keys for user authentication.
+* Use user credentials for machine authentication.
+* Store API keys on devices that are not physically secure (e.g. laptops or mobile phones)
+* Use MFA for machine to machine authentication.
