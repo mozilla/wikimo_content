@@ -191,7 +191,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 '''Do not'''
 * Trust traffic from a certain network address.
 * Rely on VLANs or AWS VPCs to indicate requests are safe.
-* Use IP ACLs to control access to systems.
+* Use IP ACLs as replacement for authentication.
 * Trust the office network for access to devices.
 * Use [https://en.wikipedia.org/wiki/TCP_Wrapper TCP Wrapper] for access control.
 
