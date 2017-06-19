@@ -11,6 +11,17 @@ peer-review and merge).
 
 All documentation is licensed under the MPL (see LICENSE).
 
+# Drafting new documentation, or changes to documents
+
+Sometimes, it's a little hard to edit documents directly from Git in your own text editor.
+When or if that is the case, the currently recommended practice is:
+
+1. Create a draft in your Wikimo space, such as: https://wiki.mozilla.org/User:Gdestuynder/mydraft
+  a. Optionally: Create an issue in https://github.com/mozilla/wikimo_content/issues to indicate you're working on this.
+     This may be particularly useful if you're going to work on this for a long time to avoid work duplication.
+2. Edit, preview, etc. to your heart's content.
+3. Copy paste the result to Git and push to your local/personal GitHub fork of this very repository
+4. Create a PR (Pull-request) with the new contents and also refer to your Wikimo space for a rendered version.
 
 # Usage of the sync.py tool
 
