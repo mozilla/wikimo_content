@@ -1,9 +1,9 @@
 # Wikimo Git documentation
 
 This repository stores  documentation for https://wiki.mozilla.org/ and in particular the
-https://wiki.mozilla.org/Security pages. It is possible to both pull existing pages, or changes in made to pages
+https://wiki.mozilla.org/Security pages. It is possible to both pull existing pages, or changes made to pages
 directly back to Git as well as commit changes to Git first then push them to the wiki. In any case, the Git repository
- has authority and for pages tracked here, it is highly recommended to ensure that your changes are sent via a
+ has authority and, for pages tracked here, it is highly recommended to ensure that your changes are sent via a
 pull-request.
 
 Please do not change the main repository directly (i.e always fork and send a pull-request, get at least one
@@ -50,6 +50,7 @@ function pyvenv() {
 ## Install & configure sync.py
 
 ```
+$ git clone https://github.com/mozilla/wikimo_content && cd wikimo_content
 # <activate your venv>
 $ pip install -r requirements.txt
 $ cp sync.json.inc sync.json
@@ -73,7 +74,7 @@ Push changes - this **will** write to Wikimo.
 $ ./sync.py --push
 ```
 
-To sync the wiki back to git (for ex when someone forgot to use git... ;-).
+To sync the wiki back to git (for example when someone forgot to use git... ;-).
 
 ```
 $ ./sync.py --get
