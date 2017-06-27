@@ -444,6 +444,9 @@ All cookies should be created such that their access is as limited as possible. 
 
 == Directives ==
 
+* Name: Cookie names may be either be prepended with either <tt>__Secure-</tt> or <tt>__Host-</tt> to prevent cookies from being overwritten by insecure sources
+** Use <tt>__Host-</tt> for all cookies needed only on a specific domain (no subdomains) where <tt>Path</tt> is set to <tt>/</tt>
+** Use <tt>__Secure-</tt> for all other cookies sent from secure origins (such as HTTPS)
 * <tt>Secure</tt>: All cookies must be set with the <tt>Secure</tt> flag, indicating that they should only be sent over HTTPS
 * <tt>HttpOnly:</tt> Cookies that don't require access from JavaScript should be set with the <tt>HttpOnly</tt> flag
 * Expiration: Cookies should expire as soon as is necessary: session identifiers in particular should expire quickly
@@ -451,12 +454,6 @@ All cookies should be created such that their access is as limited as possible. 
 ** <tt>Max-Age:</tt> Sets a relative expiration date for a given cookie (not supported by IE <8)
 * <tt>Domain:</tt> Cookies should only be set with this if they need to be accessible on other domains, and should be set to the most restrictive domain possible
 * <tt>Path:</tt> Cookies should be set to the most restrictive path possible, but for most applications this will be set to the root directory
-
-== Experimental Directives ==
-
-* Name: Cookie names may be either be prepended with either <tt>__Secure-</tt> or <tt>__Host-</tt> to prevent cookies from being overwritten by insecure sources
-** Use <tt>__Host-</tt> for all cookies set to an individual host (no Domain parameter) and with no Path parameter
-** Use <tt>__Secure-</tt> for all other cookies
 
 == Examples ==
 
@@ -472,7 +469,7 @@ Set-Cookie: __Host-ACCEPTEDTOS=true; Expires=Fri, 31 Dec 9999 23:59:59 GMT; Path
 == See Also ==
 
 * [https://tools.ietf.org/html/rfc6265 RFC 6265 (HTTP Cookies)]
-* [https://tools.ietf.org/html/draft-west-cookie-prefixes HTTP Cookie Prefixes (Experimental)]
+* [https://tools.ietf.org/html/draft-west-cookie-prefixes HTTP Cookie Prefixes]
 
 
 = Cross-origin Resource Sharing =
@@ -725,6 +722,10 @@ X-XSS-Protection: 1; mode=block</pre>
 ! scope="col" style="width: 8em;" | Date
 ! scope="col" style="width: 6em;" | Editor
 ! Changes
+|-
+| style="padding-left: .5em; text-align: left;" | June, 2017
+| align="center" | April
+| style="padding-left: .5em;" | Moved cookie prefixes to no longer be experimental
 |-
 | style="padding-left: .5em; text-align: left;" | November, 2016
 | align="center" | April
