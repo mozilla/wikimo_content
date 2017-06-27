@@ -74,6 +74,13 @@ PermitRootLogin No
 UsePrivilegeSeparation sandbox
 </source>
 
+File: <code>/etc/ssh/moduli</code>
+
+All Diffie-Hellman moduli in use should be at least 3072-bit-long (they are used for <code>diffie-hellman-group-exchange-sha256</code>) as per our [[Security/Guidelines/Key_Management]] recommendations. See also <code>man moduli</code>.
+
+To deactivate short modules in two commands: <code>awk '$5 >= 3071' /etc/ssh/moduli > /etc/ssh/moduli.tmp && mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
+
+
 === '''Intermediate''' (OpenSSH 5.3) ===
 This is mainly for use by RHEL6, CentOS6, etc. which run older versions of OpenSSH.
 
@@ -110,6 +117,12 @@ Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
 # Using regular users in combination with /bin/su or /usr/bin/sudo ensure a clear audit track.
 PermitRootLogin No
 </source>
+
+File: <code>/etc/ssh/moduli</code>
+
+All Diffie-Hellman moduli in use should be at least 2048-bit-long. From the structure of <code>moduli</code> files, this means the fifth field of all lines in this file should be greater than or equal to 2047.
+
+To deactivate weak moduli in two commands: <code>awk '{if ($5 < 2047) {print ("#", $0)} else print $0}' /etc/ssh/moduli > /etc/ssh/moduli.tmp; mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
 
 === '''Multi-Factor Authentication''' (OpenSSH 6.3+) ===
 Recent versions of OpenSSH support MFA (Multi-Factor Authentication). Using MFA is recommended where possible.
@@ -176,7 +189,7 @@ account    required     pam_nologin.so
 
 * NIST curves (<code>ecdh-sha2-nistp512,ecdh-sha2-nistp384,ecdh-sha2-nistp256</code>) are listed for compatibility, but the use of <code>curve25519</code> is [https://safecurves.cr.yp.to/ generally preferred].
 
-* SSH protocol 2 supports [https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange DH] and [https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman ECDH] key-exchange as well as [https://en.wikipedia.org/wiki/Forward_secrecy forward secrecy].
+* SSH protocol 2 supports [https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange DH] and [https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman ECDH] key-exchange as well as [https://en.wikipedia.org/wiki/Forward_secrecy forward secrecy]. Regarding group sizes, please refer to [[Security/Guidelines/Key_Management]].
 
 The various algorithms supported by a particular OpenSSH version can be listed with the following commands:
 
@@ -433,7 +446,9 @@ Key material identifies the cryptographic secrets that compose a key. All key ma
 This includes:
 * OpenSSH server keys (<code>/etc/ssh/ssh_host_*key</code>)
 * Client keys (<code>~/.ssh/id_{rsa,dsa,ecdsa,ed25519}</code> and <code>~/.ssh/identity</code>).
-* <code>/etc/ssh/moduli</code> also contains prime numbers and generators for use in the Diffie-Hellman key exchange and must be handled like key material.
+
+This do not include:
+* <code>/etc/ssh/moduli</code> since the Diffie-Hellman groups it contains are sent to the clients for key exchange and do not need to be kept secret.
 
 == Client key size and login latency ==
 
@@ -472,3 +487,5 @@ However, it seems safe to say that the latency differences are not significant a
 * [https://security.googleblog.com/2014/04/speeding-up-and-strengthening-https.html CHACHA20 vs AES-GCM performance study]
 * [http://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/PROTOCOL.certkeys?rev=1.9&content-type=text/plain PROTOCOL.certkeys]
 * [https://wiki.gnupg.org/rfc4880bis rfc44880bis from GnuPG]
+* [https://weakdh.org/ Weak Diffie-Hellman and the Logjam Attack]
+* [https://jbeekman.nl/blog/2015/05/ssh-logjam/ On OpenSSH and Logjam, by Jethro Beekman]
