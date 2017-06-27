@@ -317,7 +317,7 @@ Match User machine_user Address 10.0.0.0/8,192.168.0.0/16,172.16.0.0/12
 === Auditing your existing SSH keys ===
 
 Existing keys are generally stored in <code>~/.ssh/</code> (Linux/OSX) or <code>%APPDATA%</code> (Windows).
-Look for <code>id_{rsa,ed25519,ecdsa,dsa}</code>,  or legacy <code>identity</code> files.
+Look for <code>id_{rsa,ed25519,ecdsa,dsa}, identity, IdentityFile, *.pem</code>, and other <code>identity</code> files.
 
 ==== Display SSH keys information ====
 <source code="bash">
