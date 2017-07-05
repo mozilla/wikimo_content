@@ -234,13 +234,13 @@ The header consists of one mandatory parameter (<tt>max-age</tt>) and two option
 
 * <tt>max-age:</tt> how long user agents will redirect to HTTPS, in seconds
 * <tt>includeSubDomains:</tt> whether user agents should upgrade requests on subdomains
-* <tt>preload:</tt> whether the site should be included in the [https://hstspreload.appspot.com/ HSTS preload list]
+* <tt>preload:</tt> whether the site should be included in the [https://hstspreload.org/ HSTS preload list]
 
 <tt>max-age</tt> must be set to a minimum of six months (15768000), but longer periods such as two years (63072000) are recommended.  Note that once this value is set, the site must continue to support HTTPS until the expiry time has been reached.
 
 <tt>includeSubDomains</tt> notifies the browser that all subdomains of the current origin should also be upgraded via HSTS.  For example, setting <tt>includeSubDomains</tt> on <tt>domain.mozilla.com</tt> will also set it on <tt>host1.domain.mozilla.com</tt> and <tt>host2.domain.mozilla.com</tt>. Extreme care is needed when setting the <tt>includeSubDomains</tt> flag, as it could disable sites on subdomains that don't yet have HTTPS enabled.
 
-<tt>preload</tt> allows the website to be included in the [https://hstspreload.appspot.com/ HSTS preload list], upon submission. As a result, web browsers will do HTTPS upgrades to the site without ever having to receive the initial HSTS header.  This prevents downgrade attacks upon first use and is recommended for all high risk websites.  Note that being included in the HSTS preload list requires that <tt>includeSubDomains</tt> also be set.
+<tt>preload</tt> allows the website to be included in the [https://hstspreload.org/ HSTS preload list], upon submission. As a result, web browsers will do HTTPS upgrades to the site without ever having to receive the initial HSTS header.  This prevents downgrade attacks upon first use and is recommended for all high risk websites.  Note that being included in the HSTS preload list requires that <tt>includeSubDomains</tt> also be set.
 
 === Examples ===
 
