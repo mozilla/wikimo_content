@@ -78,7 +78,7 @@ File: <code>/etc/ssh/moduli</code>
 
 All Diffie-Hellman moduli in use should be at least 3072-bit-long (they are used for <code>diffie-hellman-group-exchange-sha256</code>) as per our [[Security/Guidelines/Key_Management]] recommendations. See also <code>man moduli</code>.
 
-To deactivate short modules in two commands: <code>awk '$5 >= 3071' /etc/ssh/moduli > /etc/ssh/moduli.tmp && mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
+To deactivate short moduli in two commands: <code>awk '$5 >= 3071' /etc/ssh/moduli > /etc/ssh/moduli.tmp && mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
 
 
 === '''Intermediate''' (OpenSSH 5.3) ===
@@ -122,7 +122,7 @@ File: <code>/etc/ssh/moduli</code>
 
 All Diffie-Hellman moduli in use should be at least 2048-bit-long. From the structure of <code>moduli</code> files, this means the fifth field of all lines in this file should be greater than or equal to 2047.
 
-To deactivate weak moduli in two commands: <code>awk '{if ($5 < 2047) {print ("#", $0)} else print $0}' /etc/ssh/moduli > /etc/ssh/moduli.tmp; mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
+To deactivate weak moduli in two commands: <code>awk '$5 >= 2047' /etc/ssh/moduli > /etc/ssh/moduli.tmp && mv /etc/ssh/moduli.tmp /etc/ssh/moduli</code>
 
 === '''Multi-Factor Authentication''' (OpenSSH 6.3+) ===
 Recent versions of OpenSSH support MFA (Multi-Factor Authentication). Using MFA is recommended where possible.
