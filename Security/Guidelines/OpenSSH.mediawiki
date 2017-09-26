@@ -408,7 +408,7 @@ $ scp -oProxyJump=ssh.mozilla.com myhost.private.scl3.mozilla.com:/home/kang/tes
 You can also add these lines to your <code>~/.ssh/config</code>
 
 <source>
-Host *.mozilla.com
+Host *.mozilla.com !ssh.mozilla.com
 ProxyJump ssh.mozilla.com
 </source>
 
@@ -418,7 +418,7 @@ It is possible to directly forward ports for single jumps instead of forwarding 
 
 For example, you can add these lines to your <code>~/.ssh/config</code>
 <source>
-Host *.mozilla.com
+Host *.mozilla.com !ssh.mozilla.com
 ProxyCommand ssh ssh.mozilla.com -W %h:%p
 </source>
 This will automatically forward the SSH connection over ssh.mozilla.com when you connect to a mozilla.com SSH server.
