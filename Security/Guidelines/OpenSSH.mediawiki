@@ -35,7 +35,7 @@ See <code>man sshd_config</code>, <code>man ssh_config</code> for more informati
 = OpenSSH '''server''' =
 == Configuration ==
 Different versions of OpenSSH support different options which are not always compatible.
-This guide show settings for the most commonly deployed OpenSSH versions at Mozilla - however, using the latest version of OpenSSH is recommended.
+This guide shows settings for the most commonly deployed OpenSSH versions at Mozilla - however, using the latest version of OpenSSH is recommended.
 
 === '''Modern''' (OpenSSH 6.7+) ===
 File: <code>/etc/ssh/sshd_config</code>
