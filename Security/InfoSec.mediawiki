@@ -11,7 +11,7 @@ Infosec assists Mozillians in defining and operating security controls to ensure
 = Contact =
 Email us at '''infosec''' [at] mozilla.com. For confidential information, encrypt your email using our public PGP: [https://gpg.mozilla.org/pks/lookup?op=get&search=0xBC17301B491B3F21 Operations Security (Mozilla Security Assurance)] .
 
-For security incidents, file a bug in Bugzilla under the product/component [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident].
+For security incidents, file a bug in Bugzilla under the product/component [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Investigation] or [https://bugzilla.mozilla.org/enter_bug.cgi?product=Enterprise%20Information%20Security&component=Incident]. Or email '''foxsignal''' [at] mozilla.com.
 
 Our IRC channel is #infosec or #security at [irc://irc.mozilla.org/security irc.mozilla.org].
 
