@@ -1,0 +1,49 @@
+=== Mozilla IAM FAQ (Frequently Asked Questions) ===
+
+==== '''Q''': ''What is Mozilla IAM?'' ====
+
+Mozilla IAM stands for Mozilla's Identity and Access Management. It's the internal login system that Mozilla uses to login to various web properties and systems.
+
+Usually, you'd use Mozilla IAM as a Mozilla Employee, or has a contributor with access to the tools and resources Mozilla uses day to day.
+An example of that would be Air Mozilla: https://air.mozilla.org
+
+==== '''Q''': ''How do I login with Mozilla IAM?'' ====
+
+Mozilla IAM supports various login methods, such as "LDAP" (Employee logins), GitHub social login, Google social login and email login (which we call "passwordless").
+Certain methods support and enforce the use of a 2nd factor for authentication and may grant access to more sensitive services.
+
+==== '''Q''': ''Why is my login failing with an error message telling me to use "GitHub/Google/LDAP/etc" instead?'' ====
+
+If your login (your primary email address used by Mozilla IAM) matches an existing account which provides higher security (for example, which enforce the use of 2nd factors for authentication), we require that you use the most secure method available to login.
+
+==== '''Q''': ''Why do you support email login ("passwordless") if it's less safe than other methods?'' ====
+
+Sometimes all you want to do is post a comment on a public forum. For that, we often need to provide a valid identity, but we also want to make it as easy as possible for you to contribute.
+Email login ("passwordless") is our current solution for this use case. Some applications we provide may not provide this login method, for example when the application always require more secure methods.
+
+==== '''Q''': ''I would like access to specific groups, such as the NDA group, but it requires me to use a different login method, why?'' ====
+
+We only allow login, or authentication methods that can verifiably require 2 factor authentication in order to join any group that may grant you access to data that is not public, such as what we call [https://wiki.mozilla.org/Security/Data_Classification STAFF CONFIDENTIAL data].
+At the time of writing, only LDAP, Google accounts that use our LDAP backend (i.e. '''not''' '@gmail.com' accounts) and GitHub account support this functionality.
+For example, you could get a GitHub account with 2nd factor authentication enabled. Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/
+
+If more authentication method add support for this in the future and seem to be otherwise safe, we'll gladly allow them as well.
+
+==== '''Q''': ''I used to use email login ("passwordless") to access [https://wiki.mozilla.org/Security/Data_Classification STAFF CONFIDENTIAL data] with my NDA'd account, but I lost access'' ====
+
+We no longer allow email logins to access non-PUBLIC data (see previous FAQ item as well).
+In order to regain access, please use a login method that supports 2nd factor authentication such as GitHub (with 2nd factor enabled). Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/
+
+==== '''Q''': ''Where is the source code, documentation, etc. for all Mozilla IAM Projects?'' ====
+
+Glad you asked! it's all here: https://github.com/mozilla-iam/mozilla-iam/
+
+==== '''Q''': ''I found a bug, vulnerability, issue, etc. Where do I report it?'' ====
+
+Please report all public bugs and issues here: https://github.com/mozilla-iam/mozilla-iam/issues
+For security vulnerabilities, please see https://www.mozilla.org/en-US/security/bug-bounty/web-eligible-sites/ or email us at [mailto:security@mozilla.org security@mozilla.org]
+Thanks for your help!
+
+==== '''Q''': ''My question is not listed here, where can I reach out?'' ====
+
+You can find a link to our public discussion board here: https://github.com/mozilla-iam/mozilla-iam/#discussion
