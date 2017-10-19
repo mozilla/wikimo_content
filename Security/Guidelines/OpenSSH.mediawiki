@@ -262,7 +262,7 @@ $ ssh-add ~/.ssh/id_..._mozilla... # <= replace by your key's path
 
 <source>
 # Add configuration to ~/.ssh/config
-host *.mozilla.com
+host *.mozilla.com !ssh.mozilla.com
 IdentityFile ~/.ssh/id_...mozilla... # <= replace by your key's path
 </source>
 
