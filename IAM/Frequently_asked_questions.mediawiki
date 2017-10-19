@@ -2,10 +2,13 @@
 
 ==== '''Q''': ''What is Mozilla IAM?'' ====
 
-Mozilla IAM stands for Mozilla's Identity and Access Management. It's the internal login system that Mozilla uses to login to various web properties and systems.
+[https://github.com/mozilla-iam/mozilla-iam Mozilla IAM] stands for Mozilla's Identity and Access Management. It's the
+system that Mozilla manage logins to various web properties and systems.
 
 Usually, you'd use Mozilla IAM as a Mozilla Employee, or has a contributor with access to the tools and resources Mozilla uses day to day.
 An example of that would be Air Mozilla: https://air.mozilla.org
+
+Mozilla IAM is '''not''' Firefox Accounts, Persona or part of any Mozilla Product.
 
 ==== '''Q''': ''How do I login with Mozilla IAM?'' ====
 
