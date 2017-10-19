@@ -394,7 +394,7 @@ There are also some third-party patches for various OpenSSH clients that will no
 These are not officially supported and may require you to recompile OpenSSH.
 
 * [https://github.com/gdestuynder/openssh-portable/commits/libnotify OpenSSH Linux]
-* [https://github.com/gdestuynder/putty-pagent-notification/commits/master PuTTY/Pagean]
+* [https://github.com/gdestuynder/putty-pagent-notification/commits/master PuTTY/Pageant]
 * [https://github.com/gdestuynder/gnupg-agent-notification/commit/57697146188d52f5447a50303070371a8cf5c0bb GnuPG Agent Linux]
 * [https://github.com/devinteske/apple/tree/master/OpenSSH-186/openssh OpenSSH MacOS X] (see also http://devinteske.com/)
 }}
