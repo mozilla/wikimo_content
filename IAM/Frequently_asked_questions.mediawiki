@@ -1,3 +1,6 @@
+{{admon/note|FAQ valid as of midnight 01 NOV 2017|The software described below will be deployed at 10pm PST on WED 01 NOV 2017.}}
+
+
 === Mozilla IAM FAQ (Frequently Asked Questions) ===
 
 ==== '''Q''': ''What is Mozilla IAM?'' ====
@@ -26,7 +29,7 @@ Example: LDAP uses two-factor authentication to verify a user's identity and is 
 ==== '''Q''': ''Why do you support email login ("passwordless") if it's less safe than other methods?'' ====
 
 Sometimes all you want to do is post a comment on a public forum. For that, we often need to provide a valid identity, but we also want to make it as easy as possible for you to contribute.
-Email login ("passwordless") is our current solution for this use case. Some applications we provide may not provide this login method, for example when the application requires more secure methods.
+Email login ("passwordless") is our current solution for this use case. Some applications we provide may not provide this login method, for example when the application require more secure methods.
 
 ==== '''Q''': ''I would like access to specific groups, such as the NDA group, but it requires me to use a different login method, why?'' ====
 
@@ -58,41 +61,80 @@ You can find a link to our public discussion board here: https://github.com/mozi
 
 ==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account?'' ====
 
-Two-factor authentication can be configured by using a Time-based One-Time Password (TOTP) application, which automatically generates an authentication code that changes after a certain period of time. See configuration steps below.
-#Download one of these apps:
+Two-factor authentication can be configured by using a Time-based One-Time Password (TOTP) application, which automatically generates an authentication code that changes after a certain period of time. See configuration steps below.<br>
+1.  Download one of these apps:
 *For Android, iOS, and Blackberry: Google Authenticator
 *For Android and iOS: Duo Mobile
 *For Windows Phone: Authenticator
-#In the upper-right corner of any page, click your profile photo, then click Settings. [[File:Github-settings.png]]
-#In the user settings sidebar, click Security. [[File:Github_-_security.png]]
-#Under Two-factor authentication, click Set up two-factor authentication. [[File:Github_-_set_up_2fa.png]]
-#On the Two-factor authentication page, click Set up using an app. [[File:Github_-_set_up_using_an_app.png]]
-#To enable two-factor authentication you must save your two-factor recovery codes in a safe place, such as a password manager, by clicking Download, Print, or Copy. Your recovery codes will help get you back into your account if you've lost access. After saving your codes, click Next. [[File:Github_-_recovery.png]]
-#Scan the QR code with your mobile device's app. After scanning, the app will display a six-digit code that you can enter on GitHub. [[File:Github_-_scan_barcode.png]]
-#The TOTP mobile application will save your GitHub account and generate a new authentication code every few seconds. On GitHub, on the 2FA page, type the code and click Next. [[File:Github_-_enter_passcode.png]]
-#Verify that a success message is shown [[File:Github_-_2fa_success_message.png]]
-#After 2FA has been enabled and you've saved your recovery codes, we recommend you sign out and back in to your account. In case of problems, such as a forgotten password or typo in your email address, you can use recovery codes to access your account and correct the problem.
+2.  In the upper-right corner of any page, click your profile photo, then click Settings.
+   [[File:Github-settings.png|450px]]
+3.  In the user settings sidebar, click Security.
+   [[File:Github_-_security.png|150px]]
+4.  Under Two-factor authentication, click Set up two-factor authentication.
+   [[File:Github_-_set_up_2fa.png|400px]]
+5.  On the Two-factor authentication page, click Set up using an app.
+   [[File:Github_-_set_up_using_an_app.png|400px]]
+6.  To enable two-factor authentication you must save your two-factor recovery codes in a safe place, such as a password manager, by clicking Download, Print, or Copy. Your recovery codes will help get you back into your account if you've lost access. After saving your codes, click Next.
+   [[File:Github_-_recovery.png|450px]]
+7.  Scan the QR code with your mobile device's app. After scanning, the app will display a six-digit code that you can enter on GitHub.
+   [[File:Github_-_scan_barcode.png|400px]]
+8.  The TOTP mobile application will save your GitHub account and generate a new authentication code every few seconds. On GitHub, on the 2FA page, type the code and click Next.
+   [[File:Github_-_enter_passcode.png|400px]]
+9.  Verify that a success message is shown
+   [[File:Github_-_2fa_success_message.png|400px]]
+10.  After 2FA has been enabled and you've saved your recovery codes, we recommend you sign out and back in to your account. In case of problems, such as a forgotten password or typo in your email address, you can use recovery codes to access your account and correct the problem.
 
 ==== '''Q''': ''I have an email address for my mozillians account different than the email I set as primary in my github account. How can I upgrade my mozillians account from passwordless to github?'' ====
 
-#In the following steps we assume you have 2FA set for your github account. If not, see the steps for “How can I set up two-factor authentication (2FA) for my github account?”
-#Login to mozillians with your email
-#Navigate to profile settings page [[File:Mozillians_-_go_to_settings.png]]
-#Scroll down to “Profile Identities” section and click “Add Identity” button [[File:Mozillians_-_add_identity.png]]
-#Select “Log in with Github” option in next page [[File:Mozillians_-_verify_github.png]]
-#Click Authorize mozilla. If you’re logged in to github in the same browser, you can skip the next 2 steps.[[File:Mozillians_-_authorize_mozilla.png]]
-#Enter github credentials and click “Sign In” button [[File:Mozillians_-_add_github_credentials.png]]
-#Enter the two-factor authentication generated by the app or received on your phone via text message [[File:Mozillians_-_enter_2fa_code.png]]
-#Verify that success message is displayed, after adding the new github identity [[File:Mozillians_-_success_message.png]]
-#Scroll down to “Profile Identities” section and verify that your github account is set as your login identity [[File:Mozillians_-_github_login_identity.png]]
+1.  In the following steps we assume you have 2FA set for your github account. If not, see the steps from [https://wiki.mozilla.org/IAM/Frequently_asked_questions#Q:_How_can_I_set_up_two-factor_authentication_.282FA.29_for_my_github_account.3F here] <br>
+2.  Login to mozillians with your email.<br>
+3.  Navigate to profile settings page.
+   [[File:Mozillians_-_go_to_settings.png|400px]]
+4.  Scroll down to “Profile Identities” section and click “Add Identity” button.
+   [[File:Mozillians_-_add_identity.png|450px]]
+5.  Select “Log in with Github” option in next page.
+   [[File:Mozillians_-_verify_github_account.png|280px]]
+6.  Click Authorize mozilla. If you’re logged in to github in the same browser, you can skip the next 2 steps.
+   [[File:Mozillians_-_authorize_mozilla.png|300px]]
+7.  Enter github credentials and click “Sign In” button.
+   [[File:Mozillians_-_add_github_credentials.png|300px]]
+8.  Enter the two-factor authentication generated by the app or received on your phone via text message.
+   [[File:Mozillians_-_enter_2fa_code.png|300px]]
+9.  Verify that success message is displayed, after adding the new github identity.
+   [[File:Mozillians_-_success_message.png|400px]]
+10.  Scroll down to “Profile Identities” section and verify that your github account is set as your login identity. That means this is the account you should use from now on to login to mozillians.
+   [[File:Mozillians_-_github_login_identity.png|400px]]
+11. Trying to login with email to mozillians will return an error page, asking to login with github.
+   [[File:Mozillians_-_forbidden_page_-_github.png|350px]]
 
 ==== '''Q''': ''The email address I use to login to my mozillians account matches the primary email of my github account. How can I upgrade my mozillians account from passwordless to github?'' ====
 
-#In the following steps we assume you have 2FA set for your github account. If not, see the steps for “How can I set up two-factor authentication (2FA) for my github account?”.
-#Navigate to mozillians page and click Log In/Sign Up button
-#Select “Log in with Github” method from mozillians login page [[File:Mozillians_-_login_ways.png]]
-#Enter Github credentials [[File:Mozillians_-_login_with_github_to_upgrade_account.png]]
-#Enter 2fa code from your application [[File:Mozillians_-_enter_2fa_code.png]]
-#Navigate to Settings -> Profile Identities section, and verify that Github is set as your login identity [[File:Mozillians_-_upgrade_to_github.png]]
-#Trying to login passwordless to mozillians will return a forbidden page, asking to login with github [[File:Mozillians_-_forbidden_page_-_github.png]]
+1.  In the following steps we assume you have 2FA set for your github account. If not, see the steps from [https://wiki.mozilla.org/IAM/Frequently_asked_questions#Q:_How_can_I_set_up_two-factor_authentication_.282FA.29_for_my_github_account.3F here].<br>
+2.  Navigate to mozillians page and click Log In/Sign Up button. <br>
+3.  Select “Log in with Github” method from mozillians login page. <br>
+   [[File:Mozillians_-_login_ways.png|350px]]
+4.  Enter Github credentials.
+   [[File:Mozillians_-_login_with_github_to_upgrade_account.png|350px]]
+5.  Enter 2fa code from your application.
+   [[File:Mozillians_-_enter_2fa_code.png|300px]]
+6.  Navigate to Settings -> Profile Identities section, and verify that Github is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+   [[File:Mozillians_-_upgrade_to_github.png|350px]]
+7.  Trying to login with email to mozillians will return an error page, asking to login with github.
+   [[File:Mozillians_-_forbidden_page_-_github.png|350px]]
 
+==== '''Q''': ''How can I upgrade my mozillians account from passwordless to LDAP?'' ====
+1.  Login to mozillians with your email.<br>
+2.  Navigate to profile settings page.
+   [[File:Mozillians_-_go_to_settings.png|350px]]
+3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
+   [[File:Mozillians_-_add_identity_-_ldap.png|350px]]
+4.  Select "Log in with LDAP" in the next page.
+   [[File:Mozillians_-_login_with_ldap.png|300px]]
+5.  Enter your LDAP credentials and click "LOG IN" button.
+   [[File:Mozillians_-enter_ldap_credentials.png|300px]]
+6.  Enter 2fa code from your application and click "Log In" button.
+   [[File:Mozillians_-_ldap_-_enter_2fa_code.png|250px]]
+7. Verify that success message is displayed, after adding the new LDAP identity.
+   [[File:Mozillians_-_success_message.png|350px]]
+8. Scroll down to “Profile Identities” section and verify that your LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+   [[File:Mozillians_-_ldap_login_identity.png|350px]]
