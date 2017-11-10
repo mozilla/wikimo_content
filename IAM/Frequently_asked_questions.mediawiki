@@ -1,6 +1,3 @@
-{{admon/note|FAQ valid as of midnight 01 NOV 2017|The software described below will be deployed at 10pm PST on WED 01 NOV 2017.}}
-
-
 === Mozilla IAM FAQ (Frequently Asked Questions) ===
 
 ==== '''Q''': ''What is Mozilla IAM?'' ====
@@ -93,7 +90,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 4.  Scroll down to “Profile Identities” section and click “Add Identity” button.
    [[File:Mozillians_-_add_identity.png|450px]]
 5.  Select “Log in with Github” option in next page.
-   [[File:Mozillians_-_verify_github_account.png|280px]]
+   [[File:Mozillians_-_verify_account.png|280px]]
 6.  Click Authorize mozilla. If you’re logged in to github in the same browser, you can skip the next 2 steps.
    [[File:Mozillians_-_authorize_mozilla.png|300px]]
 7.  Enter github credentials and click “Sign In” button.
@@ -105,7 +102,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 10.  Scroll down to “Profile Identities” section and verify that your github account is set as your login identity. That means this is the account you should use from now on to login to mozillians.
    [[File:Mozillians_-_github_login_identity.png|400px]]
 11. Trying to login with email to mozillians will return an error page, asking to login with github.
-   [[File:Mozillians_-_forbidden_page_-_github.png|350px]]
+   [[File:Mozillians_-_forbidden_page_message_-_github.png|350px]]
 
 ==== '''Q''': ''The email address I use to login to my mozillians account matches the primary email of my github account. How can I upgrade my mozillians account from passwordless to github?'' ====
 
@@ -120,10 +117,18 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 6.  Navigate to Settings -> Profile Identities section, and verify that Github is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:Mozillians_-_upgrade_to_github.png|350px]]
 7.  Trying to login with email to mozillians will return an error page, asking to login with github.
-   [[File:Mozillians_-_forbidden_page_-_github.png|350px]]
+   [[File:Mozillians_-_forbidden_page_message_-_github.png|350px]]
 
 ==== '''Q''': ''How can I upgrade my mozillians account from passwordless to LDAP?'' ====
+
 1.  Login to mozillians with your email.<br>
+   NOTE: If you are logged in to a Mozilla website or to gmail with your LDAP account in your browser, you will probably be prompted to directly login with LDAP, after clicking "Log In" button in mozillians. In that case, please follow the next 2 steps, in order to login with email.
+   a. Click "Use a different account" link.
+   [[File:Mozillians_-_use_a_different_account.png|300px]]
+   b. Select "Login with email" option. 
+   [[File:Mozillians_-_login_options_available.png|300px]]
+   c. Enter your email address and click "Send Email" button. Next, you will receive an email with the login link to mozillians.
+   [[File:Mozillians_-_enter_email.png|300px]]
 2.  Navigate to profile settings page.
    [[File:Mozillians_-_go_to_settings.png|350px]]
 3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
@@ -138,3 +143,38 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
    [[File:Mozillians_-_success_message.png|350px]]
 8. Scroll down to “Profile Identities” section and verify that your LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:Mozillians_-_ldap_login_identity.png|350px]]
+
+==== '''Q''': '' What happens if I lose access to my LDAP (aka leave Mozilla) and I still need to be able to login as a community member?'' ====
+
+When the LDAP account goes away, we will de-provision that identity from your Auth0 identity. This way you will be able to log in using other authentication providers (e.g. Github, Google or passwordless email). In order to do that you should add at least one such "secondary identity" to your profile while you are a staff member.
+
+==== '''Q''': ''I am a Mozilla staff member and I want to show my personal email address on my Mozillians profile. How do I do that?'' ====
+
+1.  Login to mozillians using your LDAP credentials. <br>
+2.  Navigate to mozillians profile settings page. <br>
+3.  In Profile Identities section, Contact Identities sub-section shows the identities associated with your profile. 
+In order to set a certain email to show on your mozillians profile, you need to click the "Show on Profile" button corresponding to that email.
+   [[File:Mozillians_-_show_on_profile.png|400px]]
+4.  Success message should be displayed.
+   [[File:Mozillians_-_primary_contact_identity_message.png|200px]]
+5.  Now your primary email is displayed under the profile picture and your LDAP is shown in the "Alternate Contact Identities" section of your mozillians profile. 
+   [[File:Mozillians_-_user_profile_-_alternate_indentity.png|400px]]
+6.  If you want your LDAP to not be shown at all on your profile, you should set your LDAP identity as Private and click Update Identities button. 
+   [[File:Mozillians_-_set_LDAP_identity_to_private.png|400px]]
+7.  Now only your personal email is shown on your profile, under the profile picture.
+   [[File:Mozillians_-_user_profile_-_no_alternate_identity.png|400px]]
+
+==== '''Q''': ''I am a volunteer and I own a volunteer LDAP account. How can I upgrade my mozillians account from email (passwordless) login?'' ====
+If you own a volunteer LDAP account, then you can upgrade your mozillians profile to that LDAP account (instead of github with 2FA), by following the next steps: <br>
+1.  Login with email to mozillians. <br>
+2.  Navigate to mozillians profile settings page. <br>
+3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
+   [[File:Mozillians_-_profile_page.png|350px]]
+4.  Select "Log in with LDAP" in the next page.
+   [[File:Mozillians_-_login_with_ldap.png|200px]]
+5.  Enter your volunteer LDAP credentials and click "LOG IN" button.
+   [[File:Mozillians_-_enter_ldap_credentials.png|200px]]
+6.  Verify that success message is displayed, after adding the new LDAP identity.
+   [[File:Mozillians_-_success_message.png|350px]]
+8.  Scroll down to “Profile Identities” section and verify that your volunteer LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+   [[File:Mozillians_-_no_mfa_ldap_added_identity.png|350px]]
