@@ -1,3 +1,4 @@
+{{note|This section is moving over to https://infosec.mozilla.org/|error}}
 =Enterprise Information Security Team=
 {{TOC right|limit=2}}
 Infosec assists Mozillians in defining and operating security controls to ensure that data at Mozilla is protected consistently across the organization.
