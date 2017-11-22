@@ -147,6 +147,7 @@ Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/mas
 '''Do'''
 * Use an SSO (Single Sign On) solution with MFA.
 * For services that can not support SSO, use the service’s individual MFA features (e.g. GitHub and Google MFA)
+* For higher risk services such as the ones carrying secrets (configuration management, secret stores, etc.) or with widespread access (scanners, provisioning, health checks, etc.), require MFA on the service itself for any interactive access (even if MFA was used previously to access - such as with a VPN).
 
 == No direct handling of user credentials ==
 ''Handling sensitive data like passwords is done only by the authentication provider.''
