@@ -165,6 +165,7 @@ In order to set a certain email to show on your mozillians profile, you need to 
    [[File:Mozillians_-_user_profile_-_no_alternate_identity.png|400px]]
 
 ==== '''Q''': ''I am a volunteer and I own a volunteer LDAP account. How can I upgrade my mozillians account from email (passwordless) login?'' ====
+
 If you own a volunteer LDAP account, then you can upgrade your mozillians profile to that LDAP account (instead of github with 2FA), by following the next steps: <br>
 1.  Login with email to mozillians. <br>
 2.  Navigate to mozillians profile settings page. <br>
@@ -176,5 +177,24 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
    [[File:Mozillians_-_enter_ldap_credentials.png|200px]]
 6.  Verify that success message is displayed, after adding the new LDAP identity.
    [[File:Mozillians_-_success_message.png|350px]]
-8.  Scroll down to “Profile Identities” section and verify that your volunteer LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+7.  Scroll down to “Profile Identities” section and verify that your volunteer LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:Mozillians_-_no_mfa_ldap_added_identity.png|350px]]
+
+==== '''Q''': ''How can I verify a google account in mozillians?'' ====
+
+1.  Login to mozillians. <br>
+2.  Navigate to mozillians profile settings page. <br>
+3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
+   [[File:Mozillians_-_add_identity_google.png|350px]]
+4.  If you logged in with github in mozillians, you will probably be asked to select the github login. As you want to verify your google account, you should click "Use a different account link" at this step. 
+   [[File:Mozillians_-_use_different_account.png|200px]]
+5.  Select "Log in with Google" in the next page.
+   [[File:Mozillians_-_login_with_google.png|200px]]
+6.  Enter your google email, then click Next.
+   [[File:Mozillians_-_enter_google_email.png|250px]]
+7.  Enter your google password, then click Next.
+   [[File:Mozillians_-_enter_google_password.png|250px]]
+8.  Verify that success message is displayed, after adding the new Google identity.
+   [[File:Mozillians_-_success_message.png|350px]]
+9.  Scroll down to “Profile Identities” section and verify that your Google account is set as your login identity.
+   [[File:Mozillians_-_google_identity.png|350px]]
