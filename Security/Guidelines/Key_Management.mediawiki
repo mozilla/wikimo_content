@@ -47,7 +47,7 @@ Use of EC is favored over RSA for performances purposes.
 | Asymmetric encryption || ECDSA 512 bits || 256 bits
 |-
 | Symmetric encryption || AES-GCM 256 bits || 256 bits
-|- 
+|-
 | Hash & HMAC || SHA-512 || 256 bits
 |-
 | Hash & HMAC || SHA3-512 || 256 bits
@@ -111,13 +111,13 @@ Key is valid for? (0) 2y
 
 === Protection of user keys ===
 * Protected by strong passphrase.
-* Never copied to another system than your own workstation/personal physical disks/tokens. 
+* Never copied to another system/disk aside from your own secured workstation/personal physical disks/tokens.
 
 === Protection of machine keys ===
 * Storing the key material in a hardware token or HSM is preferred over simply using a strong passphrase.
 * The keys must be accessible only by the admin user (root) and/or the system user requiring access.
 
-Usage of machine keys should be registered in an inventory (a wiki page, LDAP, an inventory database), to allow for rapid auditing of key usage across an infrastructure. 
+Usage of machine keys should be registered in an inventory (a wiki page, LDAP, an inventory database), to allow for rapid auditing of key usage across an infrastructure.
 
 === Expiration of keys ===
 As GnuPG trust model belongs to your master key, some may decide to not expire their master key. This is reasonable if the master key is very well protected, and a separate sub-key (or sub-keys) are used for day to day signing and encryption.
