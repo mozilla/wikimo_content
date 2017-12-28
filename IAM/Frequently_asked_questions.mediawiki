@@ -56,14 +56,14 @@ Thanks for your help!
 
 You can find a link to our public discussion board here: https://github.com/mozilla-iam/mozilla-iam/#discussion
 
-==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account?'' ====
+==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account, using an app on my phone (Android/iOS/Blackberry)?'' ====
 
 Two-factor authentication can be configured by using a Time-based One-Time Password (TOTP) application, which automatically generates an authentication code that changes after a certain period of time. See configuration steps below.<br>
 1.  Download one of these apps:
 *For Android, iOS, and Blackberry: Google Authenticator
 *For Android and iOS: Duo Mobile
 *For Windows Phone: Authenticator
-2.  In the upper-right corner of any page, click your profile photo, then click Settings.
+2.  In the upper-right corner of any github page, click your profile photo, then click Settings.
    [[File:Github-settings.png|450px]]
 3.  In the user settings sidebar, click Security.
    [[File:Github_-_security.png|150px]]
@@ -80,6 +80,32 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 9.  Verify that a success message is shown
    [[File:Github_-_2fa_success_message.png|400px]]
 10.  After 2FA has been enabled and you've saved your recovery codes, we recommend you sign out and back in to your account. In case of problems, such as a forgotten password or typo in your email address, you can use recovery codes to access your account and correct the problem.
+
+==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account, without using an app on my phone?'' ====
+
+If you would rather not install yet another app on your device, you can run the Firekey app (which is a 2-factor auth (TOTP) token generator for the Web) by browsing https://firekey.org/. <br>
+1.  In the upper-right corner of any github page, click your profile photo, then click Settings.
+   [[File:Github-settings.png|450px]]
+2.  In the user settings sidebar, click Security.
+   [[File:Github_-_security.png|150px]]
+3.  Under Two-factor authentication, click Set up two-factor authentication.
+   [[File:Github_-_set_up_2fa.png|400px]]
+4.  On the Two-factor authentication page, click Set up using an app.
+   [[File:Github_-_set_up_using_an_app.png|400px]]
+5.  To enable two-factor authentication you must save your two-factor recovery codes in a safe place, such as a password manager, by clicking Download, Print, or Copy. Your recovery codes will help get you back into your account if you've lost access. After saving your codes, click Next.
+   [[File:Github_-_recovery.png|450px]]
+6.  Get the secret key for your duo setup by either scanning the barcode (the URI generated should have the "secret" parameter) or by clicking the "enter this text code" link. Also, save this secret in a file. 
+   [[File:Github_-_enter_text_code.png|450px]]
+   [[File:Github_-_2fa_secret.png|300px]]
+7.  Copy the 2-factor secret.<br>
+8.  Navigate to https://firekey.org/ and add a new account. Enter a site name and paste the secret in "secret key" field, then click "Add".
+   [[File:Firekey_-_add_account.png|450px]]
+9.  Enter the provided number for the 2FA in github.
+   [[File:Firekey_-_login_code.png|150px]]
+   [[File:Github_-_code.png|450px]]
+10.  Verify that a success message is shown
+   [[File:Github_-_2fa_success_message.png|400px]]
+11.  After 2FA has been enabled and you've saved your recovery codes, we recommend you sign out and back in to your account. In case of problems, such as a forgotten password or typo in your email address, you can use recovery codes to access your account and correct the problem.
 
 ==== '''Q''': ''I have an email address for my mozillians account different than the email I set as primary in my github account. How can I upgrade my mozillians account from passwordless to github?'' ====
 
