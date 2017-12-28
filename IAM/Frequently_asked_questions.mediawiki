@@ -12,10 +12,10 @@ Mozilla IAM is '''not''' Firefox Accounts, Persona or part of any Mozilla Produc
 
 ==== '''Q''': ''How do I login with Mozilla IAM?'' ====
 
-Mozilla IAM supports various login methods, such as "LDAP" (Staff logins), GitHub social login, Google social login and email login (which we call "passwordless").
+Mozilla IAM supports various login methods, such as "LDAP" (Staff logins), Firefox Accounts login, GitHub social login, Google social login and email login (which we call "passwordless").
 Certain methods support and enforce the use of two-factor authentication (2FA) and may grant access to more sensitive services.
 
-==== '''Q''': ''Why is my login failing with an error message telling me to use "GitHub/Google/LDAP/etc" instead?'' ====
+==== '''Q''': ''Why is my login failing with an error message telling me to use "Firefox Accounts/GitHub/Google/LDAP/etc" instead?'' ====
 
 If your login (your primary email address used by Mozilla IAM) matches an existing account which provides higher
 security, we require that you use the most secure method available to login.
@@ -31,9 +31,10 @@ Email login ("passwordless") is our current solution for this use case. Some app
 ==== '''Q''': ''I would like access to specific groups, such as the NDA group, but it requires me to use a different login method, why?'' ====
 
 We only allow login, or authentication methods that can verifiably require two-factor authentication (2FA) in order to join any group that may grant you access to data that is not public, such as what we call [https://wiki.mozilla.org/Security/Data_Classification STAFF CONFIDENTIAL data].
-At the time of writing, only LDAP, Google accounts that use our LDAP backend (i.e. '''not''' '@gmail.com' accounts) and GitHub account support this functionality.
+At the time of writing, only LDAP, Google accounts that use our LDAP backend (i.e. '''not''' '@gmail.com' accounts), Firefox accounts and GitHub accounts support this functionality.
 
-Example: you could get a GitHub account with two-factor authentication enabled. Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/
+Example: you could get a GitHub account with two-factor authentication enabled. Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/. <br>
+Firefox Accounts also supports two-factor-authentication: https://blog.mozilla.org/services/2018/05/22/two-step-authentication-in-firefox-accounts/.
 
 If more authentication methods add support for this in the future and seem to be otherwise safe, we'll gladly allow them as well.
 
@@ -56,14 +57,14 @@ Thanks for your help!
 
 You can find a link to our public discussion board here: https://github.com/mozilla-iam/mozilla-iam/#discussion
 
-==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account?'' ====
+==== '''Q''': ''How can I set up two-factor authentication (2FA) for my github account, using an app on my phone (Android/iOS/Blackberry)?'' ====
 
 Two-factor authentication can be configured by using a Time-based One-Time Password (TOTP) application, which automatically generates an authentication code that changes after a certain period of time. See configuration steps below.<br>
 1.  Download one of these apps:
 *For Android, iOS, and Blackberry: Google Authenticator
 *For Android and iOS: Duo Mobile
 *For Windows Phone: Authenticator
-2.  In the upper-right corner of any page, click your profile photo, then click Settings.
+2.  In the upper-right corner of any github page, click your profile photo, then click Settings.
    [[File:Github-settings.png|450px]]
 3.  In the user settings sidebar, click Security.
    [[File:Github_-_security.png|150px]]
@@ -90,7 +91,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 4.  Scroll down to “Profile Identities” section and click “Add Identity” button.
    [[File:Mozillians_-_add_identity.png|450px]]
 5.  Select “Log in with Github” option in next page.
-   [[File:Mozillians_-_verify_account.png|280px]]
+   [[File:1_-_nlx.png|280px]]
 6.  Click Authorize mozilla. If you’re logged in to github in the same browser, you can skip the next 2 steps.
    [[File:Mozillians_-_authorize_mozilla.png|300px]]
 7.  Enter github credentials and click “Sign In” button.
@@ -102,14 +103,14 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 10.  Scroll down to “Profile Identities” section and verify that your github account is set as your login identity. That means this is the account you should use from now on to login to mozillians.
    [[File:Mozillians_-_github_login_identity.png|400px]]
 11. Trying to login with email to mozillians will return an error page, asking to login with github.
-   [[File:Mozillians_-_forbidden_page_message_-_github.png|350px]]
+   [[File:2-_error.png|350px]]
 
 ==== '''Q''': ''The email address I use to login to my mozillians account matches the primary email of my github account. How can I upgrade my mozillians account from passwordless to github?'' ====
 
 1.  In the following steps we assume you have 2FA set for your github account. If not, see the steps from [https://wiki.mozilla.org/IAM/Frequently_asked_questions#Q:_How_can_I_set_up_two-factor_authentication_.282FA.29_for_my_github_account.3F here].<br>
 2.  Navigate to mozillians page and click Log In/Sign Up button. <br>
-3.  Select “Log in with Github” method from mozillians login page. <br>
-   [[File:Mozillians_-_login_ways.png|350px]]
+3.  Select “Continue with Github” method from mozillians login page. <br>
+   [[File:3_-_moz_login.png|350px]]
 4.  Enter Github credentials.
    [[File:Mozillians_-_login_with_github_to_upgrade_account.png|350px]]
 5.  Enter 2fa code from your application.
@@ -117,26 +118,34 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 6.  Navigate to Settings -> Profile Identities section, and verify that Github is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:Mozillians_-_upgrade_to_github.png|350px]]
 7.  Trying to login with email to mozillians will return an error page, asking to login with github.
-   [[File:Mozillians_-_forbidden_page_message_-_github.png|350px]]
+   [[File:2-_error.png|350px]]
+
+==== '''Q''': ''The email address I use to login to my mozillians account matches the primary email of my Firefox Accounts account. How can I upgrade my mozillians account from passwordless to Firefox Accounts?'' ====
+
+1.  In the following steps we assume you have 2FA set for your Firefox Accounts account. If not, see the steps from [https://blog.mozilla.org/services/2018/05/22/two-step-authentication-in-firefox-accounts/ here].<br>
+2.  Navigate to mozillians page and click Log In/Sign Up button. <br>
+3.  Select “Continue with Firefox” method from mozillians login page. <br>
+   [[File:3_-_moz_login.png|350px]]
+4.  Enter Firefox Accounts credentials.
+   [[File:5_-_fxa_login.png|350px]]
+5.  Enter 2fa code from your application.
+   [[File:9_-_fxa_2fa.png|300px]]
+6.  Navigate to Settings -> Profile Identities section, and verify that Firefox Accounts is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+   [[File:8_-_fxa_primary.png|350px]]
+7.  Trying to login with email to mozillians will return an error page, asking to login with Firefox Accounts.
+   [[File:7_-_fxa_error.png|350px]]
 
 ==== '''Q''': ''How can I upgrade my mozillians account from passwordless to LDAP?'' ====
 
 1.  Login to mozillians with your email.<br>
-   NOTE: If you are logged in to a Mozilla website or to gmail with your LDAP account in your browser, you will probably be prompted to directly login with LDAP, after clicking "Log In" button in mozillians. In that case, please follow the next 2 steps, in order to login with email.
-   a. Click "Use a different account" link.
-   [[File:Mozillians_-_use_a_different_account.png|300px]]
-   b. Select "Login with email" option. 
-   [[File:Mozillians_-_login_options_available.png|300px]]
-   c. Enter your email address and click "Send Email" button. Next, you will receive an email with the login link to mozillians.
-   [[File:Mozillians_-_enter_email.png|300px]]
 2.  Navigate to profile settings page.
    [[File:Mozillians_-_go_to_settings.png|350px]]
 3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
    [[File:Mozillians_-_add_identity_-_ldap.png|350px]]
-4.  Select "Log in with LDAP" in the next page.
-   [[File:Mozillians_-_login_with_ldap.png|300px]]
-5.  Enter your LDAP credentials and click "LOG IN" button.
-   [[File:Mozillians_-enter_ldap_credentials.png|300px]]
+4.  Enter your LDAP email in the "Log in with email" field and click "Enter" button.
+   [[File:4_-_add_Ldap_identity.png|300px]]
+5.  Enter your LDAP password and click "Enter" button.
+   [[File:5_-_add_ldap_password.png|300px]] 
 6.  Enter 2fa code from your application and click "Log In" button.
    [[File:Mozillians_-_ldap_-_enter_2fa_code.png|250px]]
 7. Verify that success message is displayed, after adding the new LDAP identity.
@@ -171,13 +180,15 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
 2.  Navigate to mozillians profile settings page. <br>
 3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
    [[File:Mozillians_-_profile_page.png|350px]]
-4.  Select "Log in with LDAP" in the next page.
-   [[File:Mozillians_-_login_with_ldap.png|200px]]
-5.  Enter your volunteer LDAP credentials and click "LOG IN" button.
-   [[File:Mozillians_-_enter_ldap_credentials.png|200px]]
-6.  Verify that success message is displayed, after adding the new LDAP identity.
+4.  Enter your LDAP email in the "Log in with email" field and click "Enter" button.
+   [[File:10_-_volunteer_LDAP.png|300px]]
+5.  Enter your LDAP password and click "Enter" button.
+   [[File:5_-_add_ldap_password.png|300px]] 
+6.  Enter 2fa code from your application and click "Log In" button.
+   [[File:Mozillians_-_ldap_-_enter_2fa_code.png|250px]]
+7.  Verify that success message is displayed, after adding the new LDAP identity.
    [[File:Mozillians_-_success_message.png|350px]]
-7.  Scroll down to “Profile Identities” section and verify that your volunteer LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
+8.  Scroll down to “Profile Identities” section and verify that your volunteer LDAP account is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:Mozillians_-_no_mfa_ldap_added_identity.png|350px]]
 
 ==== '''Q''': ''How can I verify a google account in mozillians?'' ====
@@ -186,15 +197,35 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
 2.  Navigate to mozillians profile settings page. <br>
 3.  Scroll down to “Profile Identities” section and click “Add Identity” button.
    [[File:Mozillians_-_add_identity_google.png|350px]]
-4.  If you logged in with github in mozillians, you will probably be asked to select the github login. As you want to verify your google account, you should click "Use a different account link" at this step. 
-   [[File:Mozillians_-_use_different_account.png|200px]]
 5.  Select "Log in with Google" in the next page.
-   [[File:Mozillians_-_login_with_google.png|200px]]
+   [[File:3_-_moz_login.png|200px]]
 6.  Enter your google email, then click Next.
    [[File:Mozillians_-_enter_google_email.png|250px]]
 7.  Enter your google password, then click Next.
    [[File:Mozillians_-_enter_google_password.png|250px]]
 8.  Verify that success message is displayed, after adding the new Google identity.
    [[File:Mozillians_-_success_message.png|350px]]
-9.  Scroll down to “Profile Identities” section and verify that your Google account is set as your login identity.
+9.  Scroll down to “Profile Identities” section and verify that your Google account is in your Contact identities section.
    [[File:Mozillians_-_google_identity.png|350px]]
+
+
+==== '''Q''': ''What issues I might encounter by upgrading to Firefox Accounts?'' ====
+
+There are some known issues with using Firefox Accounts in Mozilla IAM: 
+
+1.  Login with Firefox Accounts is unavailable from inside some Android applications, including IRCCloud and Slack. This is due to lack of localStorage support in some Android WebViews. <br>
+2.  Firefox Accounts can only be used in Mozilla IAM with 2FA enabled. Note that once you choose to use Firefox Accounts, it is required to set up 2FA, to avoid being locked out of your account.
+
+=== New Login Experience FAQ (Frequently Asked Questions) ===
+
+==== '''Q''': ''What if I want to use various identities in my browser sessions?'' ====
+Please use [https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers Container Tabs] to separate identities
+
+==== '''Q''': ''What if I want to switch my identity?'' ====
+Please use Logout in the [https://sso.mozilla.com/dashboard SSO Dashboard] user menu. This is effectively a Mozilla IAM global logout.
+
+==== '''Q''': ''I have a Volunteer LDAP account but the New Login Experience sends me an email link.'' ====
+This is a bug, please reach out to us via the [https://discourse.mozilla.org/c/iam IAM Discourse] category.
+
+==== '''Q''': ''Auto-fill does not work with my password manager.'' ====
+We tested the most common password managers successfully. In this case please reach out to us via the [https://discourse.mozilla.org/c/iam IAM Discourse] category and let us know which password manager you use.
