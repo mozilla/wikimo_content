@@ -13,6 +13,8 @@ margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; 
 
 The data classification is intended to allow Mozilla to operate effectively in the open while protecting sensitive information.
 
+These data classification levels use the colors of the [[Security/Standard Levels|Standard Levels]].
+
 If you think there is information that is improperly classified, we encourage you to work with the document owner, using
 this mana page as a reference. If you are unable to resolve this directly, we encourage you to complete the form at
 http://mzl.la/reclassify
