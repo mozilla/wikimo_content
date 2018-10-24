@@ -64,7 +64,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 *For Android, iOS, and Blackberry: Google Authenticator
 *For Android and iOS: Duo Mobile
 *For Windows Phone: Authenticator
-2.  In the upper-right corner of any github page, click your profile photo, then click Settings.
+2.  In the upper-right corner of any GitHub page, click your profile photo, then click Settings.
    [[File:Github-settings.png|450px]]
 3.  In the user settings sidebar, click Security.
    [[File:Github_-_security.png|150px]]
