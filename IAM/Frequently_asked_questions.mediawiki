@@ -124,7 +124,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 
 1.  In the following steps we assume you have 2FA set for your Firefox Accounts account. If not, see the steps from [https://blog.mozilla.org/services/2018/05/22/two-step-authentication-in-firefox-accounts/ here].<br>
 2.  Navigate to mozillians page and click Log In/Sign Up button. 
-3.  Select “Continue with Firefox” method from mozillians login page. <br>
+3.  Select “Continue with Firefox” method from mozillians login page.
    [[File:3_-_moz_login.png|350px]]
 4.  Enter Firefox Accounts credentials.
    [[File:5_-_fxa_login.png|350px]]
