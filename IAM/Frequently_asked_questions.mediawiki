@@ -213,7 +213,7 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
 
 There are some known issues with using Firefox Accounts in Mozilla IAM: 
 
-1.  Login with Firefox Accounts is unavailable from inside some Android applications, including IRCCloud and Slack. This is due to lack of localStorage support in some Android WebViews. <br>
+1.  Login with Firefox Accounts is unavailable from inside some Android applications, including IRCCloud and Slack. This is due to lack of localStorage support in some Android WebViews.
 2.  Firefox Accounts can only be used in Mozilla IAM with 2FA enabled. Note that once you choose to use Firefox Accounts, it is required to set up 2FA, to avoid being locked out of your account.
 
 === New Login Experience FAQ (Frequently Asked Questions) ===
