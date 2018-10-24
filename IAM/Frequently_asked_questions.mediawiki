@@ -33,7 +33,7 @@ Email login ("passwordless") is our current solution for this use case. Some app
 We only allow login, or authentication methods that can verifiably require two-factor authentication (2FA) in order to join any group that may grant you access to data that is not public, such as what we call [https://wiki.mozilla.org/Security/Data_Classification STAFF CONFIDENTIAL data].
 At the time of writing, only LDAP, Google accounts that use our LDAP backend (i.e. '''not''' '@gmail.com' accounts), Firefox accounts and GitHub accounts support this functionality.
 
-Example: you could get a GitHub account with two-factor authentication enabled. Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/. <br>
+Example: you could get a GitHub account with two-factor authentication enabled. Here's some documentation on how to do this: https://help.github.com/articles/about-two-factor-authentication/.
 Firefox Accounts also supports two-factor-authentication: https://blog.mozilla.org/services/2018/05/22/two-step-authentication-in-firefox-accounts/.
 
 If more authentication methods add support for this in the future and seem to be otherwise safe, we'll gladly allow them as well.
