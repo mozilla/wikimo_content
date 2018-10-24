@@ -132,7 +132,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
    [[File:9_-_fxa_2fa.png|300px]]
 6.  Navigate to Settings -> Profile Identities section, and verify that Firefox Accounts is set as your login identity. That means this is the only account you can use from now on to login to mozillians.
    [[File:8_-_fxa_primary.png|350px]]
-7.  Trying to login with email to mozillians will return an error page, asking to login with Firefox Accounts.
+7.  Trying to login with email to Mozillians will return an error page, asking to login with Firefox Accounts.
    [[File:7_-_fxa_error.png|350px]]
 
 ==== '''Q''': ''How can I upgrade my mozillians account from passwordless to LDAP?'' ====
