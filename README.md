@@ -11,6 +11,12 @@ peer-review and merge).
 
 All documentation is licensed under the MPL (see LICENSE).
 
+# Notes on infosec.mozilla.org (no longer hosted on wikimo)
+
+Certain pages used to be hosted on wiki.mozilla.org are now hosted on https://infosec.mozilla.org.
+The wiki.mozilla.org pages redirect there automatically. Please use https://github.com/mozilla/infosec.mozilla.org if
+you wish to improve these pages.
+
 # Drafting new documentation, or changes to documents
 
 Sometimes, it's a little hard to edit documents directly from Git in your own text editor.
