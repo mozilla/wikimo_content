@@ -234,6 +234,7 @@ immediately.
 Short delays in delivery are just part of how email delivery works.
 Longer delays however can be caused by a feature called [https://en.wikipedia.org/wiki/Greylisting Greylisting].
 
+==== '''Q''': ''What is email greylisting?'' ==== 
 Some email providers institute Greylisting on all inbound email for their users
 as a measure to reduce spam. Greylisting temporarily rejects email from mail servers
 where the sender hasn't communicated with the recipient before or due to some other
