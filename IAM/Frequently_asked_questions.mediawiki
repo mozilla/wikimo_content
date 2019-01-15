@@ -219,7 +219,7 @@ There are some known issues with using Firefox Accounts in Mozilla IAM:
 ==== '''Q''': ''Why do the email login links expire after 15 minutes?'' ====
 
 When you login using an email link, that link is valid for 15 minutes from when you request it.
-This expiration window of 15 minutes is driven both by security and a desire for
+This expiration window of 15 minutes is driven both by security considerations and a desire for
 a positive user experience. The link is short lived so that there is a limited window
 of time during which an attacker could use the link if they were able to get access
 to it. This is especially important due to the inherently insecure nature of email
