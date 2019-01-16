@@ -226,7 +226,7 @@ to it. This is especially important due to the inherently insecure nature of ema
 transmission. The user experience of having to wait for over 15 minutes to log into
 a website is one that we want to ensure our users don't experience.
 
-Experience during the past 18+ months shows that for a vast majority of users, this 15 minute expiration window has no effect on
+During the past 18+ months, experience shows that for a vast majority of users, this 15 minute expiration window has no effect on
 them as they receive the email link in their inbox mere seconds after they click the
 button requesting the link. Some users however do not receive the email login link
 immediately.
