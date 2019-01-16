@@ -256,7 +256,7 @@ look in their providers documentation to see if there are whitelisting options
 available to them. There's nothing that Mozilla can do on the sending side to
 force the user's Greylisting mail server to accept and deliver the email.
 
-Users sometime ask to just increase the expiration time, for example to 30 or 60
+Users sometimes ask to just increase the expiration time, for example to 30 or 60
 minutes. We deliberately have not made this change because doing so would decrease our systems' security while not addressing the root cause of this problem (Greylisting).
 and we don't want to present a user experience where a user would have to wait 30
 minutes to be able to log into a website. Instead, we ask that users either:
