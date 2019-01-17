@@ -224,7 +224,6 @@ a positive user experience. The link is short lived so that there is a limited w
 of time during which a potential attacker could use the link if they were able to get access
 to it. This is especially important due to the inherently insecure nature of email
 transmission. 
-a website is one that we want to ensure our users don't experience.
 
 During the past 18+ months, experience shows that for a vast majority of users, this 15 minute expiration window has no effect on
 them as they receive the email link in their inbox mere seconds after they click the
