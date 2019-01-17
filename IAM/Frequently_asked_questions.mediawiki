@@ -259,7 +259,7 @@ Users sometimes ask to just increase the expiration time, for example to 30 or 6
 minutes. We deliberately have not made this change because doing so would decrease our systems' security while not addressing the root cause of this problem (Greylisting).
 Instead, we ask that users either:
 * contact their email provider to ask to have Greylisting disabled
-* have Mozilla's domain, `sso.mozilla.com` whitelisted
+* have Mozilla's domain, <code>sso.mozilla.com</code> whitelisted
 * use an alternative login method to email links
 * use an email address of a different email provider that doesn't employ Greylisting.
 
