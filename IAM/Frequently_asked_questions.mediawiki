@@ -231,7 +231,7 @@ button requesting the link. Some users however do not receive the email login li
 immediately.
 
 Short delays in delivery are just part of how email delivery works.
-Longer delays however can be caused by a feature called [https://en.wikipedia.org/wiki/Greylisting Greylisting].
+Longer delays however can be caused by a feature called [https://en.wikipedia.org/wiki/Greylisting Greylisting]. Continue on to the question below for further information on Greylisting.
 
 ==== '''Q''': ''What is email Greylisting?'' ====
 Some email providers institute Greylisting on all inbound email for their users
