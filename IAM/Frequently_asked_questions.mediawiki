@@ -123,7 +123,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 ==== '''Q''': ''The email address I use to login to my Mozillians account matches the primary email of my Firefox Accounts account. How can I upgrade my Mozillians account from Passwordless to Firefox Accounts?'' ====
 
 1.  In the following steps we assume you have 2FA set for your Firefox Accounts account. If not, see the steps from [https://blog.mozilla.org/services/2018/05/22/two-step-authentication-in-firefox-accounts/ here].
-2.  Navigate to mozillians page and click Log In/Sign Up button. 
+2.  Navigate to mozillians page and click Log In/Sign Up button.
 3.  Select “Continue with Firefox” method from mozillians login page.
    [[File:3_-_moz_login.png|350px]]
 4.  Enter Firefox Accounts credentials.
@@ -145,7 +145,7 @@ Two-factor authentication can be configured by using a Time-based One-Time Passw
 4.  Enter your LDAP email in the "Log in with email" field and click "Enter" button.
    [[File:4_-_add_Ldap_identity.png|300px]]
 5.  Enter your LDAP password and click "Enter" button.
-   [[File:5_-_add_ldap_password.png|300px]] 
+   [[File:5_-_add_ldap_password.png|300px]]
 6.  Enter 2fa code from your application and click "Log In" button.
    [[File:Mozillians_-_ldap_-_enter_2fa_code.png|250px]]
 7. Verify that success message is displayed, after adding the new LDAP identity.
@@ -161,14 +161,14 @@ When the LDAP account goes away, we will de-provision that identity from your Au
 
 1.  Login to mozillians using your LDAP credentials. <br>
 2.  Navigate to mozillians profile settings page. <br>
-3.  In Profile Identities section, Contact Identities sub-section shows the identities associated with your profile. 
+3.  In Profile Identities section, Contact Identities sub-section shows the identities associated with your profile.
 In order to set a certain email to show on your mozillians profile, you need to click the "Show on Profile" button corresponding to that email.
    [[File:Mozillians_-_show_on_profile.png|400px]]
 4.  Success message should be displayed.
    [[File:Mozillians_-_primary_contact_identity_message.png|200px]]
-5.  Now your primary email is displayed under the profile picture and your LDAP is shown in the "Alternate Contact Identities" section of your mozillians profile. 
+5.  Now your primary email is displayed under the profile picture and your LDAP is shown in the "Alternate Contact Identities" section of your mozillians profile.
    [[File:Mozillians_-_user_profile_-_alternate_indentity.png|400px]]
-6.  If you want your LDAP to not be shown at all on your profile, you should set your LDAP identity as Private and click Update Identities button. 
+6.  If you want your LDAP to not be shown at all on your profile, you should set your LDAP identity as Private and click Update Identities button.
    [[File:Mozillians_-_set_LDAP_identity_to_private.png|400px]]
 7.  Now only your personal email is shown on your profile, under the profile picture.
    [[File:Mozillians_-_user_profile_-_no_alternate_identity.png|400px]]
@@ -183,7 +183,7 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
 4.  Enter your LDAP email in the "Log in with email" field and click "Enter" button.
    [[File:10_-_volunteer_LDAP.png|300px]]
 5.  Enter your LDAP password and click "Enter" button.
-   [[File:5_-_add_ldap_password.png|300px]] 
+   [[File:5_-_add_ldap_password.png|300px]]
 6.  Enter 2fa code from your application and click "Log In" button.
    [[File:Mozillians_-_ldap_-_enter_2fa_code.png|250px]]
 7.  Verify that success message is displayed, after adding the new LDAP identity.
@@ -211,10 +211,57 @@ If you own a volunteer LDAP account, then you can upgrade your mozillians profil
 
 ==== '''Q''': ''What issues I might encounter by upgrading to Firefox Accounts?'' ====
 
-There are some known issues with using Firefox Accounts in Mozilla IAM: 
+There are some known issues with using Firefox Accounts in Mozilla IAM:
 
 1.  Login with Firefox Accounts is unavailable from inside some Android applications, including IRCCloud and Slack. This is due to lack of localStorage support in some Android WebViews.
 2.  Firefox Accounts can only be used in Mozilla IAM with 2FA enabled. Note that once you choose to use Firefox Accounts, it is required to set up 2FA, to avoid being locked out of your account.
+
+==== '''Q''': ''Why do the email login links expire after 15 minutes?'' ====
+
+When you login using an email link, that link is valid for 15 minutes from when you request it.
+This expiration window of 15 minutes is driven both by security considerations and a desire for
+a positive user experience. The link is short lived so that there is a limited window
+of time during which a potential attacker could use the link if they were able to get access
+to it. This is especially important due to the inherently insecure nature of email
+transmission. 
+
+During the past 18+ months, experience shows that for a vast majority of users, this 15 minute expiration window has no effect on
+them as they receive the email link in their inbox mere seconds after they click the
+button requesting the link. Some users however do not receive the email login link
+immediately.
+
+Short delays in delivery are just part of how email delivery works.
+Longer delays however can be caused by a feature called [https://en.wikipedia.org/wiki/Greylisting Greylisting]. Continue on to the question below for further information on Greylisting.
+
+==== '''Q''': ''What is email Greylisting?'' ====
+Some email providers institute Greylisting on all inbound email for their users
+as a measure to reduce spam. Greylisting temporarily rejects email from mail servers
+where the sender hasn't communicated with the recipient before or due to some other
+signal indicating the email may be spam. A mail server that is Greylisting expects
+that a valid sender and mail server will continue to retry sending the email over
+time and the Greylisting mail server will eventually accept the mail. In the case
+of a "transactional" email like the email login link,
+[https://en.wikipedia.org/wiki/Greylisting#Delayed_delivery_issues Greylisting prevents users from being able to do a real-time login].
+
+ ==== '''Q''': ''What can I do about my email provider's Greylisting?'' ==== 
+Users who have email providers that use Greylisting will likely see this type of
+severely delayed transactional emails from other senders as well, for example
+when they sign up to a new web site and that web site sends them an email with a
+link to confirm that the user controls the email address they signed up with.
+
+Unfortunately, in order for users with email providers that utilize Greylisting
+to work around this problem, they may need to contact their email provider or
+look in their providers documentation to see if there are whitelisting options
+available to them. There's nothing that Mozilla can do on the sending side to
+force the user's Greylisting mail server to accept and deliver the email.
+
+Users sometimes ask to just increase the expiration time, for example to 30 or 60
+minutes. We deliberately have not made this change because doing so would decrease our systems' security while not addressing the root cause of this problem (Greylisting).
+Instead, we ask that users either:
+* contact their email provider to ask to have Greylisting disabled
+* have Mozilla's domain, `sso.mozilla.com` whitelisted
+* use an alternative login method to email links
+* use an email address of a different email provider that doesn't employ Greylisting.
 
 === New Login Experience FAQ (Frequently Asked Questions) ===
 
