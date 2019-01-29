@@ -243,7 +243,7 @@ time and the Greylisting mail server will eventually accept the mail. In the cas
 of a "transactional" email like the email login link,
 [https://en.wikipedia.org/wiki/Greylisting#Delayed_delivery_issues Greylisting prevents users from being able to do a real-time login].
 
- ==== '''Q''': ''What can I do about my email provider's Greylisting?'' ==== 
+==== '''Q''': ''What can I do about my email provider's Greylisting?'' ==== 
 Users who have email providers that use Greylisting will likely see this type of
 severely delayed transactional emails from other senders as well, for example
 when they sign up to a new web site and that web site sends them an email with a
@@ -259,7 +259,7 @@ Users sometimes ask to just increase the expiration time, for example to 30 or 6
 minutes. We deliberately have not made this change because doing so would decrease our systems' security while not addressing the root cause of this problem (Greylisting).
 Instead, we ask that users either:
 * contact their email provider to ask to have Greylisting disabled
-* have Mozilla's domain, `sso.mozilla.com` whitelisted
+* have Mozilla's domain, <code>sso.mozilla.com</code> whitelisted
 * use an alternative login method to email links
 * use an email address of a different email provider that doesn't employ Greylisting.
 
