@@ -52,7 +52,7 @@ information (e.g.: Google docs, text documents, presentations, attachments to em
 The information would have no negative effect if made public (Low risk data).
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
-bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Staff Confidential</span>
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential</span>
 | Data that can be shared with all of Mozilla staff and NDA’d contributors.
 This information is potentially sensitive and could have a negative impact on Mozilla if made public (Medium risk data).
 |-
@@ -66,6 +66,23 @@ available to the rest of the company (e.g. "employee salary info") (High risk da
 | Data that can be shared only with specific individuals who have been granted access by the data owner.
 This information, if disclosed beyond the individuals, would have a significant negative effect on Mozilla or its users
 (Maximum risk data).
+|-
+|}
+
+= Well-known "WORKGROUP CONFIDENTIAL" sub-groups =
+
+By design, <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Workgroup confidential</span> data is associated with teams or group of people. This category list well-known sub-groups that are used at Mozilla.
+
+
+{| class="wikitable"
+|-
+! Label
+! Definition
+! Examples
+|-
+!  <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">STAFF ONLY</span>
+| Data that can be shared with all Mozilla Staff (i.e. paid employees) only, but not external contributors such as NDA'd Mozillians.
+| Manager name, desk number, employee ID, cost center, etc.
 |-
 |}
 
@@ -86,7 +103,6 @@ This information, if disclosed beyond the individuals, would have a significant 
 
 * Information shared in the monthly MoCo/MoFo internal meeting.
 * Bugzilla bugs with the "Moco confidential" or "infrastructure" flags.
-* Mozilla's employe phonebook.
 * Aggregate survey data about Mozilla employees.
 
 <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
@@ -101,13 +117,14 @@ This information, if disclosed beyond the individuals, would have a significant 
 <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
 
 * Firefox release signing keys.
-* Specify partner conversations.
+* Specific partner conversations.
 * Employee bank account information.
 * User/personal passwords/credentials.
+* [https://www.mozilla.org/en-US/about/governance/policies/participation/ Community Participation Guideline (CPG)] report data.
 
 = Help to label data in emails, gdocs, presentations, wiki, code, videos, etc. =
 
-''The list of example to label data is not an exhaustive list and serves an an indication on how to ensure the data classification labels are clearly communicated.''
+''The list of examples of how to label data is not an exhaustive list and serves an an indication on how to ensure the data classification labels are clearly communicated.''
 
 There are always two people involved with exchanging Confidential information:
 
@@ -121,16 +138,17 @@ using the header feature of the document.
 
 == Google Apps ==
 
-'''Label''' every document (Docs, Spreadsheet, Slides, Drawings, etc.) with its appropriate classification at the top of
+'''Label''' every document (Docs, Sheets, Slides, Drawings, etc.) with its appropriate classification at the top of
 the document.
 * For Docs, we recommend including the label in the header of the document.
 * For Slides, we recommend including the label in the master slide so that it shows on all slides.
+* For Sheets, we recommend creating a dedicated sheet (the tabs at the bottom of the page) either called "Data Classification" or the name of the classification for the entire file. In that new sheet, indicate the data classification.
 * When setting sharing options in the Google documents:
 ** <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block;font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span> documents should be set so that "''anyone at Mozilla ''" have access.
 ** <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span> documents should be set so that only "''specific people''" have access.
 ** <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span> documents should be set so that only "''specific people''" have access and only the owner can add people.
 
-== Wikimo (mediawiki), Etherpad lite ==
+== Wikimo (mediawiki), GitHub public repos ==
 
 * All documentation is by default <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display:inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span> on https://wiki.mozilla.org
 * No confidential information may be hosted on the wiki.
@@ -154,7 +172,7 @@ center;">Mozilla Confidential - Specific Work Groups Only</span> and <span style
 
 Ex: "PUBLIC | This is a channel to discuss anything you like about Firefox".
 
-== Vidyo, Hello, Hangouts, Skype and other video conference tools ==
+== Zoom, Hangouts, Skype and other video conference tools ==
 
 * When using video conferencing, if this is not a public call - ensure that only the people who need to know the information have access to the video conference and chat.
 * Verify the list of participants and verbally announce if you're going to share any non-public information.
