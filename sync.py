@@ -26,7 +26,7 @@ import getopt
 import subprocess
 
 def connect(config):
-    site = mwclient.Site(('https', config['site']), clients_useragent=config['useragent'])
+    site = mwclient.Site((config['site']), path='/', clients_useragent=config['useragent'])
     site.login(config['username'], config['password'])
     return site
 
