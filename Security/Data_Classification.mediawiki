@@ -78,7 +78,7 @@ This information, if disclosed beyond the individuals, would have a significant 
 ! Examples
 |-
 ! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
-
+|
  Firefox source code 
  Public Github Repositories 
  Public brown bags on AirMozilla 
@@ -88,6 +88,7 @@ This information, if disclosed beyond the individuals, would have a significant 
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
 bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential</span>
+| 
  Information shared in the monthly MoCo/MoFo internal meeting 
  Bugzilla bugs with the "Moco confidential" or "infrastructure" flags 
  Aggregate survey data about Mozilla employees 
@@ -95,6 +96,7 @@ bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: upper
 |-
 ! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:
 bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span><br /> or <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Workgroup confidential</span>
+|
  Employee's street address, SSNs, performance data 
  Service passwords/credentials 
  Bugzilla bugs with security or restricted flags 
@@ -103,7 +105,8 @@ bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: upper
  Unannounced communication materials (dates, visuals, plans) for campaigns, product launches, etc
 |-
 ! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
- Firefox release signing keys
+|
+Firefox release signing keys
  Specific partner conversations
  Employee bank account information
  User/personal passwords/credentials
