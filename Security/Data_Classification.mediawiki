@@ -16,14 +16,13 @@ The data classification is intended to allow Mozilla to operate effectively in t
 These data classification levels use the colors of the [[Security/Standard Levels|Standard Levels]].
 
 If you think there is information that is improperly classified, we encourage you to work with the document owner, using
-this mana page as a reference. If you are unable to resolve this directly, we encourage you to complete the form at
-http://mzl.la/reclassify
+this page as a reference. If you are unable to come to a resolution, please reach out to the Infrastructure Security team via Slack or email.
 
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
 
-The Enterprise Information Security team maintains this document.
+The Infrastructure Security team maintains this document.
     </td>
   </tr>
 </table>
@@ -36,8 +35,8 @@ The Enterprise Information Security team maintains this document.
 |-
 |
 When sharing or distributing data, documents, etc. you are responsible for setting and changing a classification label.
-It is strongly advised that you use them with any tools and communications systems where Mozillians may share
-information (e.g.: Google docs, text documents, presentations, attachments to emails, Matrix topics, and other digital media documents).
+While it is required for all Google Workspace documents, it is strongly advised that you use them with any tools and communications systems where Mozillians may share
+information.  (e.g.: text documents, attachments to emails, Matrix topics, and other digital media documents).
 |}
 
 {| class="wikitable"
@@ -47,7 +46,6 @@ information (e.g.: Google docs, text documents, presentations, attachments to em
 |-
 ! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
 
-'''(Default)'''
 | Data that can be shared with the world.
 The information would have no negative effect if made public (Low risk data).
 |-
@@ -69,72 +67,68 @@ This information, if disclosed beyond the individuals, would have a significant 
 |-
 |}
 
-= Well-known "WORKGROUP CONFIDENTIAL" sub-groups =
-
-By design, <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Workgroup confidential</span> data is associated with teams or group of people. This category list well-known sub-groups that are used at Mozilla.
-
-
-{| class="wikitable"
-|-
-! Label
-! Definition
-! Examples
-|-
-!  <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">STAFF ONLY</span>
-| Data that can be shared with all Mozilla Staff (i.e. paid employees) only, but not external contributors such as NDA'd Mozillians.
-| Manager name, desk number, employee ID, cost center, etc.
-|-
-|}
 
 = Examples of data classification =
 
 ''The list of examples is not an  exhaustive list.''
 
-<span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
+{| class="wikitable"
+|-
+! Label
+! Examples
+|-
+! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
 
-* Firefox source code.
-* Public brown bags on AirMozilla.
-* Bugzilla bugs without any security/restricted flags.
-* Documentation on a wiki or the MDN page.
-* Test or expired credentials.
-* Information shared in the weekly MoCo/MoFo project meeting.
+| Firefox source code <br>
+| Public Github Repositories <br>
+| Public brown bags on AirMozilla <br>
+| Bugzilla bugs without any security/restricted flags <br>
+| Documentation on a wiki or the MDN page <br>
+| Newsletters or announcements made for consumer viewership <br>
+|-
+! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential</span>
+| Information shared in the monthly MoCo/MoFo internal meeting <br>
+| Bugzilla bugs with the "Moco confidential" or "infrastructure" flags <br>
+| Aggregate survey data about Mozilla employees <br>
+| Fox Fooding data for soon to be released products or services <br>
+|-
+! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span><br /> or <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Workgroup confidential</span>
+| Employee's street address, SSNs, performance data <br>
+| Service passwords/credentials <br>
+| Bugzilla bugs with security or restricted flags <br>
+| Proprietary or protected information, code, libraries from Mozilla partners <br>
+| Contracts or legal documents <br>
+| Unannounced communication materials (dates, visuals, plans) for campaigns, product launches, etc <br>
+|-
+! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
+| Firefox release signing keys <br>
+| Specific partner conversations <br>
+| Employee bank account information <br>
+| User/personal passwords/credentials <br>
+| Aquistion roadmaps or decisions <br>
+| [https://www.mozilla.org/en-US/about/governance/policies/participation/ Community Participation Guideline (CPG)] report data. <br>
+|-
+|}
 
-<span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span>
 
-* Information shared in the monthly MoCo/MoFo internal meeting.
-* Bugzilla bugs with the "Moco confidential" or "infrastructure" flags.
-* Aggregate survey data about Mozilla employees.
-
-<span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span>
-
-* Employee's street address, SSNs, performance data.
-* Service passwords/credentials.
-* Bugzilla bugs with security or restricted flags.
-* Proprietary or protected information, code, libraries from Mozilla partners.
-* Contracts or legal documents.
-* Unannounced communication materials (dates, visuals, plans) for campaigns, product launches, etc.
-
-<span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Individuals Only</span>
-
-* Firefox release signing keys.
-* Specific partner conversations.
-* Employee bank account information.
-* User/personal passwords/credentials.
-* [https://www.mozilla.org/en-US/about/governance/policies/participation/ Community Participation Guideline (CPG)] report data.
-
-= Help to label data in emails, gdocs, presentations, wiki, code, videos, etc. =
+= Deciding how to correctly classify  =
 
 ''The list of examples of how to label data is not an exhaustive list and serves an an indication on how to ensure the data classification labels are clearly communicated.''
 
-There are always two people involved with exchanging Confidential information:
+There are always at least two people involved with exchanging confidential information:
 
-* The '''Discloser''' is the person who provides the information to the Recipient.
+* The '''Owner''' is the person who created the file. The '''Owner''' and '''Discloser''' are often the same person, but not always.
+* The '''Discloser''' is the person who provides/sends the information to the Recipient.
 * The '''Recipient''' is the person who receives the information.
 
-== Keynote/Powerpoints, box.com, etc. ==
+When in doubt, it's always best to classify at the highest classificaiton. 
 
-'''Label''' every document with its appropriate classification at the top of the document. When possible, we recommend
-using the header feature of the document.
+== All new documents, box.com, etc. ==
+
+'''Label''' every document with its appropriate classification at the top of the document if possible. When possible, we recommend
+using the header feature of the document. 
 
 == Google Apps ==
 
