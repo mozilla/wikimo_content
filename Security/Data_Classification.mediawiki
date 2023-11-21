@@ -9,16 +9,23 @@ data classification
     <td style="min-width: 25em;">__TOC__</td>
     <td style="vertical-align: top; padding-left: 1em;">
 <span style="background-color: #14892c; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;
-margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span>
+margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">READY</span> <br>
 
-We want to emphasize the way we intend this classification scheme is based solely on who the intended audiences of a particular document is meant to be, not based on the content contained within the document.
+<br>
+
+We want to emphasize the way we intend this classification scheme is based solely on who the intended audiences of a particular document is meant to be, not based on the content contained within the document.<br>
+
+<br>
 
 The data classification is intended to allow Mozilla to operate effectively in the open while protecting sensitive information.
 
-These data classification levels use the colors of the [[Security/Standard Levels|Standard Levels]].
+These data classification levels use the colors of the [[Security/Standard Levels|Standard Levels]]. <br>
 
-If you think there is information that is improperly classified, we encourage you to work with the document owner, using this page as a reference. If you are unable to come to a resolution, please reach out to the Infrastructure Security team via Slack (@infrasec) or [mailto:infrastructuresecurity@mozilla.com email].
+<br>
 
+If you think there is information that is improperly classified, we encourage you to work with the document owner, using this page as a reference. If you are unable to come to a resolution, please reach out to the Infrastructure Security team via Slack (@infrasec) or [[mailto:infrastructuresecurity@mozilla.com | email]]. <br>
+
+<br>
 
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
@@ -55,16 +62,14 @@ bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: upper
 | The audience for this document is to be shared with anyone in Mozilla or any individual/entity with a NDA.
 |-
 ! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span>
-| The audience for this document is meant to be limited to only specific workgroups or individuals within Mozilla or outside NDA'd Mozillians only and will not be shared outside of the owners original intent. 
-
-**This classification is a combination of the previous two classifications**
+| '''This classification is a combination of the previous two classifications''' <br> The audience for this document is meant to be limited to only specific workgroups or individuals within Mozilla or outside NDA'd Mozillians only and will not be shared outside of the owners original intent. 
 |-
 |}
 
 
 = Examples of data classification =
 
-''The list of examples is not an exhaustive list, nor should this list be taken as classification of types of data, only intended audiences.''
+'''''The list of examples is not an exhaustive list, nor should this list be taken as classification of types of data, only intended audiences.'''''
 
 {| class="wikitable"
 |-
