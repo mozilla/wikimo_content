@@ -83,7 +83,7 @@ bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: upper
 * Job listings on the Mozilla career page
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
-bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> or <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential</span>
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br /> 
 | 
 * Information shared in the monthly MoCo/MoFo internal meeting 
 * Bugzilla bugs with the "Moco confidential" or "infrastructure" flags 
@@ -91,7 +91,7 @@ bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: upper
 * Fox Fooding data for soon to be released products or services 
 |-
 ! <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:
-bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Work Groups Only</span><br /> or <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block; font-weight:bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span>
+bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span><br /> 
 |
 * Service passwords/credentials 
 * Bugzilla bugs with security or restricted flags 
