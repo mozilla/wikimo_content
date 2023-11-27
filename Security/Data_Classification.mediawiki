@@ -61,7 +61,7 @@ The audience of this classification is meant to be for anyone, internal to Mozil
 bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br />
 | The audience for this document is to be shared with anyone in Mozilla or any individual/entity with a NDA.
 |-
-! <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span>
+! <span style="background-color: #ffd351; border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span>
 | '''This classification is a combination of the previous two classifications''' <br> The audience for this document is meant to be limited to only specific workgroups or individuals within Mozilla or outside NDA'd Mozillians only and will not be shared outside of the owners original intent. 
 |-
 |}
@@ -137,7 +137,7 @@ using the header feature of the document.
 
 == Email subject lines ==
 
-* <span style="background-color: #d04437; border-radius: .25em; color: #ffffff; display: inline-block;
+* <span style="background-color: #ffd351; border-radius: .25em; color: #ffffff; display: inline-block;
 * font-weight:bold;margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
 * center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span> information '''must''' be labeled in the subject line and should not be forwarded without the original senders express permission.
 * For other emails, optionally label subjects with the appropriate classification. This one is up to you, but we encourage you to label emails when the subject is sensitive and it is important to alert recipients.
@@ -149,7 +149,7 @@ Set your Matrix channel topic to start with the classification label. This is al
 Also ensure that non-public channels are protected by password or channel access control.
 
 Remember that <span style="background-color: #ffd351; border-radius: .25em; color: #594300; display: inline-block;font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align:
-center;">Mozilla Confidential - Staff and NDA’d Mozillians Only</span> and <span style="background-color: #d04437;border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding:
+center;">Mozilla Confidential - Staff and NDA’d Mozillians Only</span> and <span style="background-color: #ffd351;border-radius: .25em; color: #ffffff; display: inline-block; font-weight: bold;margin: .1em 0; min-width: 6em; padding:
 .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Specific Workgroups and Individuals Only</span> '''may not''' be shared on Matrix.
 
 Ex: "PUBLIC | This is a channel to discuss anything you like about Firefox".
