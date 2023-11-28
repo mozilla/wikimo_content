@@ -23,10 +23,6 @@ This classification scheme is solely meant to communicate who the intended audie
 
 <br>
 
-If you think there is information that is improperly classified, we encourage you to work with the document owner, using this page as a reference. If you are unable to come to a resolution, please reach out to the Infrastructure Security team via Slack (@infrasec) or [[mailto:infrastructuresecurity@mozilla.com | email]]. <br>
-
-<br>
-
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
 
