@@ -30,7 +30,7 @@ If you think there is information that is improperly classified, we encourage yo
 Updates to this page should be submitted to the [https://github.com/mozilla/wikimo_opsec/ source repository on github].
 Changes are detailed in the [https://github.com/mozilla/wikimo_opsec/commits/master commit history].
 
-The Infrastructure Security team maintains this document.
+The Mozilla Security Assurance team maintains this document.
     </td>
   </tr>
 </table>
