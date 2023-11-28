@@ -55,7 +55,7 @@ information.  (e.g.: text documents, attachments to emails, Matrix topics, and o
 ! <span style="background-color: #cccccc; border-radius: .25em; color: #000000; display: inline-block; font-weight: bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Public</span>
 
 | Data that can be shared with the world.
-The audience of this data is meant to be anyone, internal to Mozilla or to the wider public.
+The audience of this data is meant to be anyone, internal to Mozilla or the wider public.
 |-
 ! <span style="background-color: #4a6785; border-radius: .25em; color: #ffffff; display: inline-block; font-weight:
 bold; margin: .1em 0; min-width: 6em; padding: .05em .5em; text-transform: uppercase; text-align: center;">Mozilla Confidential - Staff and NDA'd Mozillians Only</span><br />
